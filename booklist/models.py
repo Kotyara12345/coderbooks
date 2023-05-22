@@ -1,8 +1,5 @@
 from django.db import models
 from django.shortcuts import reverse
-
-from django.contrib.auth.models import User
-
 from ckeditor.fields import RichTextField
 
 CATEGORIES = (
@@ -25,6 +22,11 @@ def generate_filename_jpg(instance, filename):
 class Book(models.Model):
     title = models.CharField(max_length=200, db_index=True, verbose_name='Название')
     slug = models.SlugField(max_length=200, db_index=True, unique=True, verbose_name='Ссылка')
+    author_book = models.CharField(max_length=200, db_index=True, verbose_name='Автор')
+    release_date = models.CharField(max_length=200, db_index=True, verbose_name='Год выхода')
+    publisher = models.CharField(max_length=200, verbose_name='Издательство')
+    book_pages = models.CharField(max_length=200, verbose_name='Количество страниц')
+    codes = models.CharField(max_length=200, null=True, blank=True, verbose_name='Исходный код')
     description = RichTextField(blank=True, db_index=True, verbose_name='Описание')
     desc_for_find = models.TextField(blank=True, db_index=True, verbose_name='Описание для поиска')
     keywords = models.CharField(max_length=200, blank=True, verbose_name='Кейвордс')
@@ -68,15 +70,4 @@ class Category(models.Model):
         return self.title
 
 
-class Comments(models.Model):
-    class Meta:
-        verbose_name = 'Комментарий'
-        verbose_name_plural = 'Комментарии'
 
-    comment_author_book = models.ForeignKey(User, on_delete=models.CASCADE, default=None, related_name='comments_book')
-    comment_text = models.TextField(verbose_name='Добавить комментарий')
-    comment_article = models.ForeignKey(Book, on_delete=models.CASCADE)
-    comment_created = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return 'Author --> {}; book --> {}; text --> {}'.format(self.comment_author_book, self.comment_article, self.comment_text)

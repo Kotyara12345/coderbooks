@@ -1,5 +1,5 @@
 <!doctype html>
-{% load staticfiles %}
+{% load static %}
 <html lang="ru">
 <head>
     {% block header %}
@@ -15,25 +15,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
         <link rel="icon" type="image/png" href="{% static "image/favicon.ico" %}">
     {% endblock %}
-
-    {% block keywords %}
-        <meta name="keywords"
-              content="Книги по программированию, скачать, pdf программирование, скачать pdf, библиотека программиста, архив книг, скачать книги бесплатно, книги программиста бесплатно, видеокурсы, уроки по программированию, статьи для программиста, помощь программисту">
-    {% endblock %}
     {% block description %}
         <meta name="description"
-              content="CoderNet это самая большая и бесплатная библиотека, огромный сборник видеокурсов и статьи о программировании для начинающего и опытного программиста">
+              content="CoderBooks это самая большая и бесплатная библиотека о программировании для начинающего и опытного программиста">
     {% endblock %}
     <title>
         {% block title %}
-            CoderNet Портал для помощи программистам
-        {% endblock %} | CoderNet
+            CoderBooks Портал для помощи программистам
+        {% endblock %} | CoderBooks
     </title>
 </head>
 <body>
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="/"><h2>&nbsp;&nbsp;&nbsp;&nbsp;CoderNet&nbsp;&nbsp;&nbsp;&nbsp;</h2></a>
+        <a class="navbar-brand" href="/"><h2>&nbsp;&nbsp;&nbsp;&nbsp;CoderBooks&nbsp;&nbsp;&nbsp;&nbsp;</h2></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="fa fa-search"></span>
@@ -97,7 +92,7 @@
                     <div class="col-md-4">
                         <h2>Статьи</h2>
                         <p>Полезные статьи по программированию от опытных программистов, а так же участников нашей
-                            команды CoderNet Team помогут Вам понять логику программирования и найти ответы на Ваши
+                            команды CoderBooks Team помогут Вам понять логику программирования и найти ответы на Ваши
                             вопросы. </p>
                         <p><a class="btn btn-secondary" href="{% url 'articles_list_url' %}" role="button">Перейти
                             &raquo;</a></p>
@@ -192,7 +187,7 @@
     <footer class="footer">
         <div class="container">
             <hr>
-            <blockquote class="blockquote"><p>&copy; {% now "Y" %} The CoderNet Team</p></blockquote>
+            <blockquote class="blockquote"><p>&copy; {% now "Y" %} The CoderBooks Team</p></blockquote>
         </div>
     </footer>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -204,42 +199,23 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();
+   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-
-    <script type="text/javascript">
-        (function (d, w, c) {
-            (w[c] = w[c] || []).push(function () {
-                try {
-                    w.yaCounter46559994 = new Ya.Metrika2({
-                        id: 46559994,
-                        clickmap: true,
-                        trackLinks: true,
-                        accurateTrackBounce: true,
-                        webvisor: true
-                    });
-                } catch (e) {
-                }
-            });
-
-            var n = d.getElementsByTagName("script")[0],
-                s = d.createElement("script"),
-                f = function () {
-                    n.parentNode.insertBefore(s, n);
-                };
-            s.type = "text/javascript";
-            s.async = true;
-            s.src = "https://mc.yandex.ru/metrika/tag.js";
-
-            if (w.opera == "[object Opera]") {
-                d.addEventListener("DOMContentLoaded", f, false);
-            } else {
-                f();
-            }
-        })(document, window, "yandex_metrika_callbacks2");
-    </script>
-    <noscript>
-        <div><img src="https://mc.yandex.ru/watch/46559994" style="position:absolute; left:-9999px;" alt=""/></div>
-    </noscript>
+   ym(87558054, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+   });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/87558054" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
 
 
 {% endblock %}

@@ -6,6 +6,7 @@ from booklist.models import Book
 from django.core.paginator import Paginator
 from django.views import View
 
+from django.http import Http404
 
 def main_page(request):
     return redirect('/books')
@@ -61,7 +62,7 @@ from django.contrib.syndication.views import Feed
 
 
 class Rss(Feed):
-    title = 'CoderNet Портал для помощи программистам'
+    title = 'CoderBooks Портал для помощи программистам'
     description = 'Последние опубликованные книги'
     link = '/'
 
@@ -76,9 +77,11 @@ class Rss(Feed):
 
 #  404 кастом
 
-def error_404(request, exception, template_name='404.html'):
-    return render(request, template_name, status=404)
+def handler404(request, exception, template_name='404.html'):
+    return render(request, '404.html', status=404)
 
+def handler500(request, template_name='500.html'):
+    return render(request, '500.html', status=500)
 
 def account_detail(request):
     return render(request, 'account.html')

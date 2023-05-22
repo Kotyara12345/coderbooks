@@ -1,65 +1,84 @@
 {% extends 'base.html' %}
 {% block lang %}{% if book.lang_category == 1 %}<html lang="ru">{% endif %}{% if book.lang_category == 2 %}<html lang="en">{% endif %}{% endblock %}
 {% block title %}
-    {{ book.title }}
-{% endblock %}
-{% block keywords %}
-    <meta name="keywords" content="{{ book.keywords }}">
+    {{ book.title }}.{% if book.author_book %} {{ book.author_book|truncatewords:2 }} {% endif %}
+{% if book.release_date %} ({{ book.release_date }}) {% endif %}
 {% endblock %}
 {% block description %}
-    <meta name="description" content="{{ book.desc_for_find }}">
-
+<meta name="description" content="Смотреть, читать и скачать бесплатно книгу &#34;{{ book.title }}.{% if book.author_book %} {{ book.author_book|truncatewords:2 }} {% endif %}
+{% if book.release_date %} ({{ book.release_date }}) {% endif %}&#34; в формате pdf на сайте онлайн библиотеки по программированию CoderBooks.ru">
 <meta property="og:type" content="article">
-<meta property="og:title" content="{{ book.title }}">
-<meta property="og:url" content="https://codernet.ru/{{ book.get_absolute_url }}">
-<meta property="og:description" name="description" content="{{ book.desc_for_find }}">
-<meta property="og:image" content="{{ book.img_file.url }}">
+<meta property="og:title" content="{{ book.title }} {% if book.author_book %} {{ book.author_book|truncatewords:3 }} {% endif %}
+{% if book.release_date %} ({{ book.release_date }}) {% endif %}">
+<meta property="og:url" content="https://coderbooks.ru/{{ book.get_absolute_url }}">
+<meta property="og:description" content="Смотреть, читать и скачать бесплатно книгу &#34;{{ book.title }}.{% if book.author_book %} {{ book.author_book|truncatewords:2 }} {% endif %}
+{% if book.release_date %} ({{ book.release_date }}) {% endif %}&#34; в формате pdf на сайте онлайн библиотеки по программированию CoderBooks.ru">
+<meta property="og:image" content="https://coderbooks.ru{{ book.img_file.url }}">
 
+<script type="application/ld+json">
+{
+"@context": "https://schema.org/",
+"@type": "Book",
+"name": "{{ book.title }}",
+"author": {
+"@type": "Person",
+"name": "{{ book.author_book }}"
+},
+"publisher": {
+"@type": "Organization",
+"name": "{{ book.publisher }}"
+},
+"datePublished": "{{ book.release_date }}",
+"image": "https://coderbooks.ru{{ book.img_file.url }}",
+"genre": ["Компьютерная литература", "Литература по программированию"],
+"numberOfPages": "{{ book.book_pages }}"
+  }
+}
+</script>
 {% endblock %}
 {% block content %}
     <br/>
     <a href="#" class="btn btn-outline-secondary " onclick="history.back();">
-        <i class="fa fa-reply" aria-hidden="true"></i></i>&nbsp;Вернуться</a>
+        <i class="bi bi-reply" aria-hidden="true"></i></i>&nbsp;Вернуться</a>
     <br/>
     <br/>
     <h1>{{ book.title }}</h1>
     <br/>
-    <div class="col">
-    <!-- Yandex.RTB R-A-273127-1 -->
-<div id="yandex_rtb_R-A-273127-1"></div>
-<script type="text/javascript">
-    (function(w, d, n, s, t) {
-        w[n] = w[n] || [];
-        w[n].push(function() {
-            Ya.Context.AdvManager.render({
-                blockId: "R-A-273127-1",
-                renderTo: "yandex_rtb_R-A-273127-1",
-                async: true
-            });
-        });
-        t = d.getElementsByTagName("script")[0];
-        s = d.createElement("script");
-        s.type = "text/javascript";
-        s.src = "//an.yandex.ru/system/context.js";
-        s.async = true;
-        t.parentNode.insertBefore(s, t);
-    })(this, this.document, "yandexContextAsyncCallbacks");
-</script>
-    </div>   
-    <br/>
+{% if book.author_book %}
+<h6>Автор: {{ book.author_book }}</h6>
+{% endif %}
+{% if book.release_date %}
+  <h6>Дата выхода: {{ book.release_date }}</h6>
+{% endif %}
+{% if book.publisher %}
+  <h6>Издательство: {{ book.publisher }}</h6>
+{% endif %}
+{% if book.book_pages %}
+  <h6>Количество страниц: {{ book.book_pages }}</h6>
+{% endif %}
+<br> 
     {% if book.book_file %}
-        <p><a href="{{ book.book_file.url }}" target="_blank" download="{{ book.title }}.pdf"
+        <p><a href="https://coderbooks.ru{{ book.book_file.url }}" target="_blank" download="https://coderbooks.ru{{ book.title }}.pdf"
               class="btn btn-outline-secondary"><i
-                class="fa fa-download" aria-hidden="true"></i><b>&nbsp;Скачать</b></a></p>
+                class="bi bi-cloud-arrow-down" aria-hidden="true"></i><b>&nbsp;Скачать</b></a></p>
     {% endif %}
     {% if book.book_file %}
-        <object data="{{ book.book_file.url }}" type="application/pdf" width="100%" height="600px"></object>
+        <div class="chitalka">
+                <object data="https://coderbooks.ru{{ book.book_file.url }}" title="Читать онлайн {{ book.title }}" type="application/pdf" width="100%" height="700"></object>
+        </div>
     {% endif %}
     <br/><br/>
     {% autoescape off %}
         {{ book.description }}
     {% endautoescape %}
-    <br/><br/>
+    <br/>
+{% if book.codes %}
+  <h6>Исходный код: <a href="{{ book.codes }}" target="_blank"
+              class="btn btn-outline-secondary"><b>&nbsp;Перейти</b></a></h6>
+{% endif %}
+	<br>
+	  <div class="d-lg-none">{% include 'partner2.html' %}</div>
+          <div class="d-none d-lg-block">{% include 'partner_mobile2.html' %}</div>
     <table class="table">
         <thead>
         <tr>
@@ -69,13 +88,7 @@
         </thead>
     </table>
     <br/>
-    <script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
-    <script src="//yastatic.net/share2/share.js"></script>
-    <div class="ya-share2"
-         data-services="vkontakte,facebook,odnoklassniki,moimir,gplus,twitter,viber,whatsapp,telegram,blogger"></div>
+    <script src="https://yastatic.net/share2/share.js"></script>
+    <div class="ya-share2" data-curtain data-color-scheme="blackwhite" data-services="messenger,vkontakte,odnoklassniki,telegram,twitter,viber,whatsapp,moimir,pinterest"></div>
     <br/>
-
-    
-
-
 {% endblock %}

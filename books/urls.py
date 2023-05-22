@@ -28,8 +28,10 @@ from django.contrib.auth import logout
 from django.contrib.auth.views import LogoutView
 from django.urls import reverse_lazy
 from authorization.views import LoginView, register
+from .views import handler404, handler500
 
-handler404 = 'books.views.error_404'
+handler404 = 'views.handler404'
+handler500 = 'views.handler500'
 
 sitemaps = {
     # 'articles_category': ArticlesCategorySitemap,
@@ -59,3 +61,4 @@ urlpatterns = [
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

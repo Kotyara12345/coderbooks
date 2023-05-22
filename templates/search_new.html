@@ -1,89 +1,197 @@
-{% extends 'base.html' %}
-    {% block title %}
-    Поиск по запросу {{ question }}
-    {% endblock %} | CoderNet
+<!doctype html>
+{% block lang %}<html lang="ru">{% endblock %}
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+ <link rel="stylesheet" href="{% static 'icons/bootstrap-icons.css' %}">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <link rel="icon" type="image/svg+xml" href="/static/icons/ios/1201.svg">
+    <link rel="apple-touch-icon" type="image/svg+xml" href="/static/icons/ios/192.png">
+    <meta name="theme-color" content="#343a40"/>
+    <link rel="home" type="application/rss+xml" href="{% url 'rss_url' %}"/>
+    {% block description %}
+        <meta name="description"
+              content="CoderBooks это самая большая и бесплатная библиотека о программировании для начинающего и опытного программиста">
+    {% endblock %}
+    <title>
+      {% block title %}
+      Поиск по запросу {{ question }}
+      {% endblock %} | CoderBooks
+    </title>
+    <link rel="manifest" href="/manifest.json">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="CoderBooks учебная литература для программистов|CoderBooks">
+    <meta name="apple-mobile-web-app-title" content="CoderBooks учебная литература для программистов|CoderBooks">
+    <meta name="theme-color" content="#343a40">
+    <meta name="msapplication-navbutton-color" content="#343a40">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="msapplication-starturl" content="https://coderbooks.ru/books/">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "WebSite",
+  "name": "CoderBooks - онлайн библиотека для программиста",
+  "url": "https://coderbooks.ru/books/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://coderbooks.ru/search/?search=",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+    <!-- Yandex.RTB -->
+<script>window.yaContextCb=window.yaContextCb||[]</script>
+<script src="https://yandex.ru/ads/system/context.js" async></script>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+
+            <nav class="navbar navbar-expand-lg bg-white-body-tertiary">
+                <div class="container-fluid">                  
+          
+                </div>
+              </nav>
+          <a class="navbar-brand" href="{% url 'book_list_url' %}"><h2>CoderBooks</h2></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Переключатель навигации">
+            <i class="bi bi-caret-down-fill"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            </ul>
+            {% block search %}     
+                <form class="d-flex" role="search" action="{% url 'search_url' %}">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                           name="search">
+                    <button class="btn btn-outline-secondary" type="submit"><i class="bi bi-search"></i>
+                    </button>
+                </form>
+            {% endblock %}
+          </div>
+        </div>
+      </nav>
+</header> 
+
 {% block page %}
-    {% block content %}<br>
+    <div class="container-fluid">
+    <div class="row">
+
+        <div class="col-sm">
+        <div class="d-lg-none">{% include 'partner.html' %}</div>
+        <div class="d-none d-lg-block">{% include 'partner_mobile.html' %}</div>
+ {% block content %}  
+<div class="container">
+<br> 
         <blockquote class="blockquote text-center">
-            <h2>Поиск по запросу "{{ question }}"</h2>
+            <h3>Поиск по запросу "{{ question }}"</h3>
         </blockquote>
-        <main role="main">
-            <div class="container">
+        <br>               
+{% if not page_object %} 
+<div class="alert alert-light" role="alert"><h4>По Вашему запросу "{{ question }}" ничего не найдено, попробуйте изменить запрос</h4></div>
+{% endif %} 
                 
-                   {% if not page_object %} 
-<div id="yandex_rtb_R-A-273127-1"></div>
-    <script type="text/javascript">
-        (function (w, d, n, s, t) {
-            w[n] = w[n] || [];
-            w[n].push(function () {
-                Ya.Context.AdvManager.render({
-                    blockId: "R-A-273127-1",
-                    renderTo: "yandex_rtb_R-A-273127-1",
-                    async: true
-                });
-            });
-            t = d.getElementsByTagName("script")[0];
-            s = d.createElement("script");
-            s.type = "text/javascript";
-            s.src = "//an.yandex.ru/system/context.js";
-            s.async = true;
-            t.parentNode.insertBefore(s, t);
-        })(this, this.document, "yandexContextAsyncCallbacks");
-    </script>
-<br/>
-<div class="alert alert-light" role="alert"><h3>По Вашему запросу "{{ question }}" ничего не найдено, попробуйте изменить запрос</h3></div>
-    {% endif %} 
-                
-                {% for object in page_object %}
+{% for book in page_object %}   
 
-                    <div class="media">
 
-                        <div class="media">
-                            {% if object.img_file %}<a href='{{ object.get_absolute_url }}'><img class="mr-3"
-                                                                                                 src="{{ object.img_file.url }}"
-                                                                                                 width="64px"
-                                                                                                 alt="{{ object.title }}"></a>{% endif %}
-
-                        </div>
-                        <div class="media-body">
-                            <h5><a href='{{ object.get_absolute_url }}'><p class='text-dark'>{{ object.title }} - {{ object.get_model_name }}</p></a>
-                            </h5>
-
-                            {% if object.description %}
-                                <p class='text-dark'>{% autoescape off %}{{ object.description|truncatewords:20 }}{% endautoescape %}</p>
-                                <span class="badge badge-secondary">{{ object.category.first }}</span>
-                            {% endif %}</div>
-                    </div>
-                    <hr>
-                    <br>
-                {% endfor %}
+<div class="row g-0">
+  <div class="col-md-1">
+    {% if book.img_file %}
+    <a href='{{ book.get_absolute_url }}'><img src="{{ book.img_file.url }}" class="img-fluid img-thumbnail" alt="{{ book.title }}"></a>
+    {% endif %}
+  </div>
+  <div class="col-md-10 px-4">
+    <div class="card-body">
+      <h5 class="card-title"><a href='{{ book.get_absolute_url }}'
+        class='text-decoration-none text-reset'>{{ book.title }}</a></h5>
+      <p class="card-text">{% autoescape off %}
+        {{ book.description|truncatewords:40 }}
+    {% endautoescape %}</p>            
+  <p class="card-text"><small class="badge bg-secondary">{{ book.category.first }}</small></p>
+    </div><hr>
+  </div>
+</div>      
+{% endfor %}   
 
                 {% if is_paginated %}
-                        <nav aria-label="...">
-                            <ul class="pagination justify-content-center">
-                                <li class="page-item {% if not prev_url %}disabled{% endif %}">
-                                    <a href="{{ prev_url }}" class="nav-link btn btn-outline-secondary">Назад</a>
-                                </li>&nbsp;
-                                {% for n in page_object.paginator.page_range %}
-                                    {% if page_object.number == n %}
-                                        <li class="page-item active">
-                                            <a class="nav-link btn btn-outline-secondary active"
-                                               href="{{ last_question }}&page={{ n }}">{{ n }}<span
-                                                    class="sr-only">(current)</span></a>
-                                        </li>&nbsp;
-                                    {% elif n > page_object.number|add:-3 and n < page_object.number|add:3 %}
-                                        <li class="page-item">
-                                            <a class="nav-link btn btn-outline-secondary"
-                                               href="{{ last_question }}&page={{ n }}">{{ n }}</a>
-                                        </li>&nbsp;
-                                    {% endif %}
-                                {% endfor %}
-                                <li class="page-item {% if not next_url %}disabled{% endif %}">
-                                    <a href="{{ next_url }}" class="nav-link btn btn-outline-secondary">Вперёд</a>
-                                </li>&nbsp;
-                            </ul>
-                        </nav>
-                    </div>
-                {% endif %}
-        </main>
-    {% endblock %}{% endblock %}
+                <div class="container text-center">
+                <div class="btn-group me-2" role="group">
+                  <a class="btn btn-outline-secondary page-item {% if not prev_url %}disabled{% endif %}" href="{{ prev_url }}" role="button">Назад</a>&nbsp;
+                  {% for n in page_object.paginator.page_range %}
+                  {% if page_object.number == n %}
+                  <a class="btn btn-outline-secondary active" href="{{ last_question }}&page={{ n }}" role="button">{{ n }}</a>&nbsp;
+                  {% elif n > page_object.number|add:-3 and n < page_object.number|add:3 %}
+                  <a class="btn btn-outline-secondary" href="{{ last_question }}&page={{ n }}" role="button">{{ n }}</a>&nbsp;
+                  {% endif %}{% endfor %}
+                  <a class="btn btn-outline-secondary page-item {% if not next_url %}disabled{% endif %}" href="{{ next_url }}" role="button">Вперёд</a>
+                </div>
+                </div>
+                {% endif %}   
+
+            </div>
+{% endblock %}
+            {% block paginator %}
+            {% endblock %}
+        </div>
+    </div></div>
+{% endblock %}
+<br/>
+        <div class="d-lg-none">{% include 'partner2.html' %}</div>
+        <div class="d-none d-lg-block">{% include 'partner_mobile2.html' %}</div>
+<footer class="footer">
+    <div class="container">
+        <hr>
+        <blockquote class="blockquote"><p>&copy; {% now "Y" %} The CoderNet Team</p></blockquote>    
+    </div>
+</footer>
+</div>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!-- Yandex.Metrika counter -->
+<script>
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();
+   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(87558054, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+   });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/87558054" style="position:absolute; left:-9999px;" alt="" ></div></><!-- /Yandex.Metrika counter -->
+<script>// Проверка того, что наш браузер поддерживает Service Worker API.
+if ('serviceWorker' in navigator) {
+    // Весь код регистрации у нас асинхронный.
+    navigator.serviceWorker.register('/pwabuilder-sw.js')
+      .then(() => navigator.serviceWorker.ready.then((worker) => {
+        worker.sync.register('syncdata');
+      }))
+      .catch((err) => console.log(err));
+}</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-111564187-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-111564187-1');
+</script>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "fywhnfighj");
+</script></body>
+</html>

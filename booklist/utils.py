@@ -15,14 +15,11 @@ class ObjectDetailMixin:
 
     def get(self, request, **kwargs):
         obj = get_object_or_404(self.model, slug=kwargs['slug'])
-        comments = self.comment_model.objects.filter(comment_article__slug__iexact=kwargs['slug'])
-        form_comments = self.form_comments
+
 
         context = {
             self.model.__name__.lower(): obj,
             'categories': Category.objects.all(),
-            'comments': comments,
-            'form_comments': form_comments,
         }
 
         return render(request, self.template, context=context)
