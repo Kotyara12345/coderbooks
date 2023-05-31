@@ -140,7 +140,8 @@
 </div>
         <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <!-- Yandex.Metrika counter -->
-<script async>
+document.addEventListener('DOMContentLoaded', function() {
+                (<script async>
    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
    m[i].l=1*new Date();
    for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
@@ -180,5 +181,6 @@ if ('serviceWorker' in navigator) {
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "fywhnfighj");
 </script>
+});
 </body>
 </html>
