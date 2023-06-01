@@ -1,9 +1,14 @@
 <!-- Yandex.RTB R-A-2223408-5 -->
 <div id="yandex_rtb_R-A-2223408-5"></div>
-<script>window.yaContextCb.push(()=>{
-	Ya.Context.AdvManager.render({
-		"blockId": "R-A-2223408-5",
-		"renderTo": "yandex_rtb_R-A-2223408-5"
-	})
-})
+<script>
+	window.onload = function() {
+                setTimeout(() => {
+			window.yaContextCb.push(()=>{
+				Ya.Context.AdvManager.render({
+					"blockId": "R-A-2223408-5",
+					"renderTo": "yandex_rtb_R-A-2223408-5"
+				});
+			});
+	 	}, 3000);
+    	};
 </script>
