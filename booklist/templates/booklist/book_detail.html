@@ -14,27 +14,6 @@
 <meta property="og:description" content="Смотреть, читать и скачать бесплатно книгу &#34;{{ book.title }}.{% if book.author_book %} {{ book.author_book|truncatewords:2 }} {% endif %}
 {% if book.release_date %} ({{ book.release_date }}) {% endif %}&#34; в формате pdf на сайте онлайн библиотеки по программированию CoderBooks.ru">
 <meta property="og:image" content="https://coderbooks.ru{{ book.img_file.url }}">
-
-<script type="application/ld+json">
-{
-"@context": "https://schema.org/",
-"@type": "Book",
-"name": "{{ book.title }}",
-"author": {
-"@type": "Person",
-"name": "{{ book.author_book }}"
-},
-"publisher": {
-"@type": "Organization",
-"name": "{{ book.publisher }}"
-},
-"datePublished": "{{ book.release_date }}",
-"image": "https://coderbooks.ru{{ book.img_file.url }}",
-"genre": ["Компьютерная литература", "Литература по программированию"],
-"numberOfPages": "{{ book.book_pages }}"
-  }
-}
-</script>
 {% endblock %}
 {% block content %}
     <br/>
