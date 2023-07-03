@@ -36,11 +36,22 @@
   <h6>Количество страниц: {{ book.book_pages }}</h6>
 {% endif %}
 <br> 
-    {% if book.book_file %}
-        <p><a href="https://coderbooks.ru{{ book.book_file.url }}" target="_blank" download="https://coderbooks.ru{{ book.title }}.pdf"
+  <div class="row">
+    <div class="col-sm-2">
+          {% if book.book_file %}
+        <p><a href="{{ book.book_file.url }}" target="_blank" download="https://coderbooks.ru{{ book.title }}.pdf"
               class="btn btn-outline-secondary"><i
                 class="bi bi-cloud-arrow-down" aria-hidden="true"></i><b>&nbsp;Скачать</b></a></p>
     {% endif %}
+    </div>
+    <div class="col-sm-2">
+         {% if book.virus_total %}
+        <p><a href="{{ book.virus_total }}" target="_blank"
+              class="btn btn-outline-secondary"><i
+                class="bi bi-check-circle" aria-hidden="true"></i><b>&nbsp;VirusTotal </b></a></p>
+    {% endif %}
+    </div>
+  </div>
     {% if book.book_file %}
         <div class="chitalka">
                 <object data="https://coderbooks.ru{{ book.book_file.url }}" title="Читать онлайн {{ book.title }}" type="application/pdf" width="100%" height="700"></object>
