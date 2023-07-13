@@ -16,13 +16,13 @@
 <meta property="og:image" content="https://coderbooks.ru{{ book.img_file.url }}">
 {% endblock %}
 {% block content %}
-    <br/>
+    <br>
     <a href="#" class="btn btn-outline-secondary " onclick="history.back();">
         <i class="bi bi-reply" aria-hidden="true"></i></i>&nbsp;Вернуться</a>
-    <br/>
-    <br/>
+    <br>
+    <br>
     <h1>{{ book.title }}</h1>
-    <br/>
+    <br>
 {% if book.author_book %}
 <h6>Автор: {{ book.author_book }}</h6>
 {% endif %}
@@ -57,11 +57,11 @@
                 <object data="https://coderbooks.ru{{ book.book_file.url }}" title="Читать онлайн {{ book.title }}" type="application/pdf" width="100%" height="700"></object>
         </div>
     {% endif %}
-    <br/><br/>
+    <br><br>
     {% autoescape off %}
         {{ book.description }}
     {% endautoescape %}
-    <br/>
+    <br>
 {% if book.codes %}
   <h6>Исходный код: <a href="{{ book.codes }}" target="_blank"
               class="btn btn-outline-secondary"><b>&nbsp;Перейти</b></a></h6>
@@ -77,8 +77,8 @@
             </th>
         </thead>
     </table>
-    <br/>
+    <br>
     <script src="https://yastatic.net/share2/share.js"></script>
     <div class="ya-share2" data-curtain data-color-scheme="blackwhite" data-services="messenger,vkontakte,odnoklassniki,telegram,twitter,viber,whatsapp,moimir,pinterest"></div>
-    <br/>
+    <br>
 {% endblock %}
