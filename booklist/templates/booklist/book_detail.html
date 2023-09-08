@@ -1,4 +1,16 @@
 {% extends 'base.html' %}
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Book",
+    "author": {
+        "@type": "Person",
+        "name": "{{ book.author_book }}"
+    },
+"datePublished": "{{ book.release_date }}",
+"name": "{{ book.title }}"
+}
+</script>
 {% block lang %}{% if book.lang_category == 1 %}<html lang="ru">{% endif %}{% if book.lang_category == 2 %}<html lang="en">{% endif %}{% endblock %}
 {% block title %}
     {{ book.title }}.{% if book.author_book %} {{ book.author_book|truncatewords:2 }} {% endif %}
