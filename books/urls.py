@@ -30,8 +30,8 @@ from django.urls import reverse_lazy
 from authorization.views import LoginView, register
 from .views import handler404, handler500
 
-handler404 = 'views.handler404'
-handler500 = 'views.handler500'
+#handler404 = 'views.handler404'
+#handler500 = 'views.handler500'
 
 sitemaps = {
     # 'articles_category': ArticlesCategorySitemap,
