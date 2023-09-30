@@ -47,6 +47,9 @@
 {% if book.book_pages %}
   <h6>Количество страниц: {{ book.book_pages }}</h6>
 {% endif %}
+{% if book.file_book %}
+  <h6>Размер файла: {{ book.book_file.size|filesizeformat }}</h6> 
+{% endif %}
 <br> 
   <div class="row">
     <div class="col-sm-2">
