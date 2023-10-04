@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+
+
+{% block page %}
+    {% block content %}<br>
+        <main role="main">
+            <div class="container">
+                <blockquote class="blockquote text-center"><h1 class="display-1">error 404 </h1></blockquote>
+                   <p class="lead text-center">
+   {{ error_message }}
+</p>
+<p class="lead text-center">Попробуйте перейти на <a href='{% url 'book_list_url' %}'
+                class='text-decoration-none text-reset'><u>главную</u></a> или воспользуйтесь поиском.</p>
+            </div>
+        </main>
+    {% endblock %}
+
+{% endblock %}
+
+
+<!doctype html>
+{% block lang %}<html lang="ru">{% endblock %}
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+ <link rel="stylesheet" href="{% static 'icons/bootstrap-icons.css' %}">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <link rel="icon" type="image/svg+xml" href="/static/icons/ios/1201.svg">
+    <link rel="apple-touch-icon" type="image/svg+xml" href="/static/icons/ios/192.png">
+    <meta name="theme-color" content="#343a40"/>
+    <link rel="home" type="application/rss+xml" href="{% url 'rss_url' %}"/>
+    {% block description %}
+        <meta name="description"
+              content="CoderBooks это самая большая и бесплатная библиотека о программировании для начинающего и опытного программиста">
+    {% endblock %}
+    <title>
+      {% block title %}
+      Поиск по запросу {{ question }}
+      {% endblock %} | CoderBooks
+    </title>
+    <link rel="manifest" href="/manifest.json">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="CoderBooks учебная литература для программистов|CoderBooks">
+    <meta name="apple-mobile-web-app-title" content="CoderBooks учебная литература для программистов|CoderBooks">
+    <meta name="theme-color" content="#343a40">
+    <meta name="msapplication-navbutton-color" content="#343a40">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="msapplication-starturl" content="https://coderbooks.ru/books/">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+
+            <nav class="navbar navbar-expand-lg bg-white-body-tertiary">
+                <div class="container-fluid">                  
+          
+                </div>
+              </nav>
+          <a class="navbar-brand" href="{% url 'book_list_url' %}"><h2>CoderBooks</h2></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Переключатель навигации">
+            <i class="bi bi-caret-down-fill"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            </ul>
+            {% block search %}     
+                <form class="d-flex" role="search" action="{% url 'search_url' %}">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                           name="search">
+                    <button class="btn btn-outline-secondary" type="submit"><i class="bi bi-search"></i>
+                    </button>
+                </form>
+            {% endblock %}
+          </div>
+        </div>
+      </nav>
+</header> 
+
+{% block page %}
+    <div class="container-fluid">
+    <div class="row">
+
+        <div class="col-sm">
+ {% block content %}  
+ <main role="main">
+    <div class="container">
+        <blockquote class="blockquote text-center"><h1 class="display-1">error 404 </h1></blockquote>
+           <p class="lead text-center">
+ {{ error_message }}
+</p>
+<p class="lead text-center">Попробуйте перейти на <a href='{% url 'book_list_url' %}'
+        class='text-decoration-none text-reset'><u>главную</u></a> или воспользуйтесь поиском.</p>
+    </div>
+</main>
+{% endblock %}
+
+        </div>
+    </div></div>
+{% endblock %}
+<br/>
+<footer class="footer">
+    <div class="container">
+        <hr>
+        <blockquote class="blockquote"><p>&copy; {% now "Y" %} The CoderNet Team</p></blockquote>    
+    </div>
+</footer>
+</div>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!-- Yandex.Metrika counter -->
+<script>
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();
+   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(87558054, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+   });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/87558054" style="position:absolute; left:-9999px;" alt="" ></div></><!-- /Yandex.Metrika counter -->
+<script>// Проверка того, что наш браузер поддерживает Service Worker API.
+if ('serviceWorker' in navigator) {
+    // Весь код регистрации у нас асинхронный.
+    navigator.serviceWorker.register('/pwabuilder-sw.js')
+      .then(() => navigator.serviceWorker.ready.then((worker) => {
+        worker.sync.register('syncdata');
+      }))
+      .catch((err) => console.log(err));
+}</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-111564187-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-111564187-1');
+</script>
+<!-- Clarity tracking code for https://coderbooks.ru/ --><script>    (function(c,l,a,r,i,t,y){        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);    })(window, document, "clarity", "script", "fywhnfighj");</script>
+</body>
+</html>
