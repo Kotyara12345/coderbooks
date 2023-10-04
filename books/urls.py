@@ -22,16 +22,14 @@ from .views import main_page, SearchView
 from django.contrib.sitemaps.views import sitemap
 from books.sitemaps import *
 
-from .views import Rss
+from .views import Rss, account_detail
 
 from django.contrib.auth import logout
 from django.contrib.auth.views import LogoutView
 from django.urls import reverse_lazy
 from authorization.views import LoginView, register
 
-handler403 = 'book.views.handler403'
-handler404 = 'book.views.handler404'
-handler500 = 'book.views.handler500'
+handler404 = 'books.views.error_404'
 
 sitemaps = {
     # 'articles_category': ArticlesCategorySitemap,
