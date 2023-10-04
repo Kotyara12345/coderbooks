@@ -28,7 +28,6 @@ from django.contrib.auth import logout
 from django.contrib.auth.views import LogoutView
 from django.urls import reverse_lazy
 from authorization.views import LoginView, register
-from .views import handler404, handler500
 
 handler403 = 'book.views.handler403'
 handler404 = 'book.views.handler404'
