@@ -77,23 +77,9 @@ class Rss(Feed):
 
 #  404 кастом
 
-def handler404(request, exception):
-    return render(request=request, template_name='templates/404.html', status=404, context={
-        'title': 'Страница не найдена: 404',
-        'error_message': 'К сожалению такая страница была не найдена, или перемещена', 
-    })
+def error_404(request, exception, template_name='404.html'):
+    return render(request, template_name, status=404)
 
 
-def handler500(request):
-    return render(request=request, template_name='500.html', status=500, context={
-        'title': 'Ошибка сервера: 500',
-        'error_message': 'Внутренняя ошибка сайта, вернитесь на главную страницу, отчет об ошибке мы направим администрации сайта',
-    })
-
-
-def handler403(request, exception):
-    return render(request=request, template_name='403.html', status=403, context={
-        'title': 'Ошибка доступа: 403',
-        'error_message': 'Доступ к этой странице ограничен',
-    })
-
+def account_detail(request):
+    return render(request, 'account.html')
