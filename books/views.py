@@ -78,7 +78,7 @@ class Rss(Feed):
 #  404 кастом
 
 def handler404(request, exception):
-    return render(request=request, template_name='404.html', status=404, context={
+    return render(request=request, template_name='templates/404.html', status=404, context={
         'title': 'Страница не найдена: 404',
         'error_message': 'К сожалению такая страница была не найдена, или перемещена', 
     })
