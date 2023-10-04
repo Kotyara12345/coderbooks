@@ -95,7 +95,7 @@
     <div class="container">
         <blockquote class="blockquote text-center"><h1 class="display-1">error 404 </h1></blockquote>
            <p class="lead text-center">
-Данной страницы не существует или она была удалена.
+ {{ error_message }}
 </p>
 <p class="lead text-center">Попробуйте перейти на <a href='{% url 'book_list_url' %}'
         class='text-decoration-none text-reset'><u>главную</u></a> или воспользуйтесь поиском.</p>
