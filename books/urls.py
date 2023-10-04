@@ -22,7 +22,7 @@ from .views import main_page, SearchView
 from django.contrib.sitemaps.views import sitemap
 from books.sitemaps import *
 
-from .views import Rss, account_detail
+from .views import Rss
 
 from django.contrib.auth import logout
 from django.contrib.auth.views import LogoutView
