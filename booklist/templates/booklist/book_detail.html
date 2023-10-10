@@ -28,6 +28,11 @@
 <meta property="og:image" content="https://coderbooks.ru{{ book.img_file.url }}">
 {% endblock %}
 {% block content %}
+
+{% if book.title == "Программируем с Minecraft" %} 
+Баннер
+{% endif %}
+	
     <br>
     <a href="#" class="btn btn-outline-secondary " onclick="history.back();">
         <i class="bi bi-reply" aria-hidden="true"></i></i>&nbsp;Вернуться</a>
