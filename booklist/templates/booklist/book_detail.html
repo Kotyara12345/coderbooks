@@ -28,10 +28,6 @@
 <meta property="og:image" content="https://coderbooks.ru{{ book.img_file.url }}">
 {% endblock %}
 {% block content %}
-
-{% if book.title == "Программируем с Minecraft" %} 
-{% include "banner.html" %}
-{% endif %}
 	
     <br>
     <a href="#" class="btn btn-outline-secondary " onclick="history.back();">
@@ -39,6 +35,10 @@
     <br>
     <br>
     <h1>{{ book.title }}</h1>
+	
+{% if book.title == "Программируем с Minecraft" %} 
+<br>{% include "banner.html" %}
+{% endif %}
     <br>
 {% if book.author_book %}
 <h6>Автор: {{ book.author_book }}</h6>
