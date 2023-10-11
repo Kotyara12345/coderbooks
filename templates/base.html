@@ -46,9 +46,15 @@
   }
 }
 </script>
+	
+{% if book.title == "Программируем с Minecraft" %} 
+	{% else %}
+{% include "include/banner.html.html" %}
+
 <!-- Yandex.RTB -->
 <script>window.yaContextCb=window.yaContextCb||[]</script>
 <script src="https://yandex.ru/ads/system/context.js" async></script>
+{% endif %}
 </head>
 <body>
 <header>
