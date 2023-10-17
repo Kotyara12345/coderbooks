@@ -30,12 +30,13 @@
 {% block content %}
 	
     <br>
-	{% if book.title == "Программируем с Minecraft" %} 
-<br>{% include "banner.html" %}<br>
-{% endif %}
+
     <a href="#" class="btn btn-outline-secondary " onclick="history.back();">
         <i class="bi bi-reply" aria-hidden="true"></i></i>&nbsp;Вернуться</a>
     <br>
+{% if book.title == "Программируем с Minecraft" %} 
+<br>{% include "banner.html" %}
+{% endif %}
     <br>
     <h1>{{ book.title }}</h1>
 	
