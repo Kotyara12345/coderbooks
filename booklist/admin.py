@@ -4,7 +4,7 @@ from .models import Book, Category
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
     list_display = ('title', 'lang_category', 'author_book', 'release_date', 'publisher')
-    list_filter = ('created', 'category')
+    list_filter = ('created', 'category', 'publisher')
     search_fields = ('title', 'description', 'author_book')
     prepopulated_fields = {'slug': ('title',)}
 
