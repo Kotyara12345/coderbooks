@@ -44,7 +44,7 @@ class VideoCategorySitemap(Sitemap):
 
 class BookSitemap(Sitemap):
     changefreq = 'daily'
-    priority = 0.5
+    priority = 1.0
 
     def items(self):
         return Book.objects.all()
@@ -52,14 +52,14 @@ class BookSitemap(Sitemap):
 
 class BookCategorySitemap(Sitemap):
     changefreq = 'daily'
-    priority = 0.5
+    priority = 1.0
 
     def items(self):
         return BookCategory.objects.all()
 
 
 class StaticViewSitemap(Sitemap):
-    priority = 0.5
+    priority = 1.0
     changefreq = 'daily'
 
     def items(self):
