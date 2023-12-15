@@ -3,7 +3,9 @@ from .models import *
 from .utils import *
 from django.views.generic import View
 from django.core.paginator import Paginator
-
+#начало фильтра
+from .forms import BookFilterForm
+#конец фильтра
 
 
 # Create your views here.
@@ -11,6 +13,19 @@ def book_list(request):
     books = Book.objects.all()
     categories = Category.objects.all()
 
+#начало фильтра
+    form = BookFilterForm(request.GET)
+    filtered_queryset = BookFilter(request.GET, queryset=books)
+
+
+    if form.is_valid():
+        if form.cleaned_data['lang_category']:
+            books = books.filter(lang_category__icontains=form.cleaned_data['lang_category'])
+        if form.cleaned_data['author_book']:
+            books = books.filter(author_book__regex=form.cleaned_data['author_book'])
+#конец фильтра
+
+    
     # Пагинатор начало
     paginator = Paginator(books, 12)
     page_number = request.GET.get('page', default=1)
