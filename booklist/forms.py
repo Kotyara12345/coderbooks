@@ -11,7 +11,7 @@ class CommentForm(forms.ModelForm):
             'comment_text': forms.Textarea(attrs={'class': 'form-control'})
         }
 
-
+#начало фильтра
 class BookFilterForm(forms.Form):
 
     def get_choices():
@@ -25,3 +25,4 @@ class BookFilterForm(forms.Form):
 
     author_book = forms.ChoiceField(choices=get_choices, required=False,  widget=forms.Select(attrs={'class': 'form-select'}), label='Автор')
     lang_category = forms.ChoiceField(required=False, choices=LANG_CHOICES,  widget=forms.Select(attrs={'class': 'form-select'}), label='Выберете язык')
+#конец фильтра
