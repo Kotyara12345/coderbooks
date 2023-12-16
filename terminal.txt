@@ -1,0 +1,23 @@
+
+ssh root@185.26.120.22
+
+
+gmQ525Z5Jx3wbnZg
+
+
+cd /var/www/coderbooks
+
+
+git pull git@github.com:Kotyara12345/coderbooks.git
+
+
+sudo systemctl restart gunicorn
+
+
+sudo systemctl daemon-reload
+
+
+sudo systemctl restart gunicorn.socket gunicorn.service
+
+
+sudo nginx -t && sudo systemctl restart nginx
