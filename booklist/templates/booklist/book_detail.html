@@ -65,7 +65,7 @@
           {% if book.book_file %}
         <p><a href="{{ book.book_file.url }}" target="_blank" download="https://coderbooks.ru{{ book.title }}.pdf"
               class="btn btn-outline-secondary"><i
-                class="bi bi-cloud-arrow-down" aria-hidden="true"></i><b>&nbsp;Скачать</b></a></p>
+                class="bi bi-cloud-arrow-down" aria-hidden="true" aria-label="Скачать книгу {{ book.title }}"></i><b>&nbsp;Скачать</b></a></p>
     {% endif %}
     </div>
     <div class="col-sm-3">
@@ -73,7 +73,7 @@
          {% if book.virus_total %}
         <p><a href="{{ book.virus_total }}" target="_blank"
               class="btn btn-outline-secondary"><i
-                class="bi bi-check-circle" aria-hidden="true"></i><b>&nbsp;Проверить на вирусы </b></a></p>
+                class="bi bi-check-circle" aria-hidden="true" aria-label="Проверить скачиваемый файл на вирусы через VirusTotal"></i><b>&nbsp;Проверить на вирусы </b></a></p>
     {% endif %}
     </div>
   </div>
@@ -89,7 +89,7 @@
     <br>
 {% if book.codes %}
   <h6>Исходный код: <a href="{{ book.codes }}" target="_blank"
-              class="btn btn-outline-secondary"><b>&nbsp;Перейти</b></a></h6>
+              class="btn btn-outline-secondary" aria-label="Перейти к вспомогательному материалу для книги {{ book.title }}"><b>&nbsp;Перейти</b></a></h6>
 {% endif %}
 
 <!-- Yandex.RTB R-A-2223408-7 -->
