@@ -16,12 +16,7 @@
 {% include 'partner.html' %}
 <h1>Книги по программированию и IT</h1>
 <hr>
-<!-- Начало фильтра -->
-<form method="GET">
-  {{ form.as_p }}
-  <button type="submit" class="btn btn-primary">Фильтровать</button>  
-</form>
-<!-- Конец фильтра -->
+
     {% for book in page_object %}   
         <div class="row g-0">
           <div class="col-md-1">
