@@ -15,7 +15,7 @@ def book_list(request):
 
 #начало фильтра
     form = BookFilterForm(request.GET)
-    filtered_queryset = BookFilter(request.GET, queryset=books)
+    
 
 
     if form.is_valid():
