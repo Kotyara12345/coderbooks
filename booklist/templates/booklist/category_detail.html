@@ -8,12 +8,6 @@
 {% block content %}
 <br/><h1>&nbsp;&nbsp;{{ category.title }}</h1><hr>
 
-<form method="GET">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit" class="btn btn-secondary">Фильтровать</button> 
-</form>
-<br>
         {% for book in page_object1 %}
 <div class="row g-0">
       {% if book.img_file %}
