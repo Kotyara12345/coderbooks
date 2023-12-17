@@ -6,6 +6,7 @@ from django.core.paginator import Paginator
 
 from .forms import BookFilterForm
 
+from .filters import BookFilter
 # Create your views here.
 def book_list(request):
     books = Book.objects.all()
@@ -23,7 +24,7 @@ def book_list(request):
         if form.cleaned_data['author_book']:
             books = books.filter(author_book__regex=form.cleaned_data['author_book'])
             
-            
+     filterset_class = BookFilter           
             
     
     
