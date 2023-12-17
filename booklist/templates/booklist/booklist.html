@@ -20,9 +20,9 @@
 <form method="GET">
   {% csrf_token %}
   {{ form.as_p }}
-  <button type="submit" class="btn btn-primary">Фильтровать</button> 
+  <button type="submit" class="btn btn-secondary">Фильтровать</button> 
 </form>
-
+<br>
     {% for book in page_object %}   
         <div class="row g-0">
           <div class="col-md-1">
