@@ -24,7 +24,7 @@ def book_list(request):
         if form.cleaned_data['author_book']:
             books = books.filter(author_book__regex=form.cleaned_data['author_book'])
             
-     filterset_class = BookFilter           
+               
             
     
     
