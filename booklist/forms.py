@@ -2,14 +2,6 @@ from django import forms
 from .models import Book, CATEGORIES
 
 
-class CommentForm(forms.ModelForm):
-    class Meta:
-        model = Comments
-        fields = ['comment_text']
-
-        widgets = {
-            'comment_text': forms.Textarea(attrs={'class': 'form-control'})
-        }
 
 
 class BookFilterForm(forms.Form):
