@@ -72,18 +72,6 @@ def category_detail(request, slug):
     
 
     
-    form = BookFilterForm(request.GET)
-    filtered_queryset = BookFilter(request.GET, queryset=books)
-
-
-    if form.is_valid():
-        if form.cleaned_data['lang_category']:
-            books = books.filter(lang_category__icontains=form.cleaned_data['lang_category'])
-        if form.cleaned_data['author_book']:
-            books = books.filter(author_book__regex=form.cleaned_data['author_book'])
-            
-    filterset_class = BookFilter  
-    
     # Пагинатор начало
     paginator1 = Paginator(books, 12)
     page_number1 = request.GET.get('page', default=1)
