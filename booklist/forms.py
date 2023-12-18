@@ -13,11 +13,7 @@ class BookFilterForm(forms.Form):
         return choices
 
 
-    def get_choices_date():
 
-        choices_date = [(None, '----------')]  # Add an empty choice
-        choices_date += [(value, value) for value in Book.objects.values_list('release_date', flat=True)]
-        return choices_date
 
     
     LANG_CHOICES = [
@@ -28,4 +24,3 @@ class BookFilterForm(forms.Form):
 
     author_book = forms.ChoiceField(choices=get_choices, required=False,  widget=forms.Select(attrs={'class': 'form-select'}), label='Автор')
     lang_category = forms.ChoiceField(required=False, choices=LANG_CHOICES,  widget=forms.Select(attrs={'class': 'form-select'}), label='Выберете язык')
-    release_date = forms.ChoiceField(choices=get_choices_date, required=False,  widget=forms.Select(attrs={'class': 'form-select'}), label='Год издания')
