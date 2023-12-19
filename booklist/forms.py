@@ -20,7 +20,7 @@ class BookFilterForm(forms.Form):
         choices_date = [(None, '----------')]  # Add an empty choice
         choices_date += [(value, value) for value in Book.objects.values_list('release_date', flat=True)]
         uniq_choices_date = list(set(choices_date))  
-        sorted_choices_date = sorted(uniq_choices_date, key=lambda x: x[1])   
+        sorted_choices_date = sorted(uniq_choices_date, key=lambda x: x[1], reverse=True))   
         return sorted_choices_date
 
     LANG_CHOICES = [
