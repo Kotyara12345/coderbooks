@@ -22,8 +22,11 @@ def book_list(request):
         if form.cleaned_data['lang_category']:
             books = books.filter(lang_category__icontains=form.cleaned_data['lang_category'])
         if form.cleaned_data['author_book']:
-            books = books.filter(author_book__regex=form.cleaned_data['author_book'])
-            
+            books = books.filter(author_book__regex=form.cleaned_data['author_book'])        
+        if form.cleaned_data['release_date']:
+            books = books.filter(release_date__icontains=form.cleaned_data['release_date'])
+
+    
     filterset_class = BookFilter         
             
     
