@@ -9,7 +9,7 @@
 <br/><h1>&nbsp;&nbsp;{{ category.title }}</h1><hr>
 
 <p>
-  <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+  <a class="btn btn-secondary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
     Фильтрация
   </a>
 </p>
@@ -17,7 +17,7 @@
     <form method="GET">
       {% csrf_token %}
       {{ form.as_p }}
-      <button type="submit" class="btn btn-primary">Фильтровать</button> 
+      <button type="submit" class="btn btn-secondary">Фильтровать</button> 
     </form>
 </div>
 
