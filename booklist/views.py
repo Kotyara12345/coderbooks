@@ -74,6 +74,21 @@ def category_detail(request, slug):
         return render(request, 'booklist/../templates/404.html', context={})
     
 
+
+    form = BookFilterForm(request.GET)
+    filtered_queryset = BookFilter(request.GET, queryset=books)
+
+
+    if form.is_valid():
+        if form.cleaned_data['lang_category']:
+            books = books.filter(lang_category__icontains=form.cleaned_data['lang_category'])
+        if form.cleaned_data['author_book']:
+            books = books.filter(author_book__regex=form.cleaned_data['author_book'])        
+        if form.cleaned_data['release_date']:
+            books = books.filter(release_date__icontains=form.cleaned_data['release_date'])
+
+    
+    filterset_class = BookFilter 
     
     # Пагинатор начало
     paginator1 = Paginator(books, 12)
@@ -103,6 +118,7 @@ def category_detail(request, slug):
         'prev_url1': prev_url1,
         'next_url1': next_url1,
         'paginator1': paginator1,
+        'form': form
     }
     return render(request, 'booklist/category_detail.html', context=context)
 
