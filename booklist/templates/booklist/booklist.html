@@ -30,25 +30,30 @@
     </form>
 </div>
 <br>
-    {% for book in page_object %}   
-        <div class="row g-0">
-          <div class="col-md-1">
-            {% if book.img_file %}
-            <a href='https://coderbooks.ru{{ book.get_absolute_url }}'><img src="https://coderbooks.ru{{ book.img_file.url }}" class="img-fluid img-thumbnail" alt="{{ book.title }}"></a>
-            {% endif %}
+<div class="row">
+  <div class="row d-flex align-items-start justify-content-center">
+  {% for book in page_object %}
+  <div class="col-sm-3">
+    <div class="card border-1">
+      <div class="card-body d-flex flex-column align-items-center justify-content-between">
+          <div class="position-relative">
+            <a href="{{ book.get_absolute_url }}">
+            <img src="{% thumbnail book.image 'default' %}" alt="{{ book.title }}" class="img-fluid">
+            <div class="position-absolute top-0 start-0 d-flex align-items-center justify-content-center">
+              <span class="badge bg-danger">{{ book.rubric.name }}</span>
+              <span class="badge bg-success">{% include "include/book_lang.html" %} </span>
+            </div></a>
           </div>
-          <div class="col-md-8 px-4">
-            <div class="card-body">
-              <a href="{{ book.get_absolute_url }}" class="text-decoration-none text-reset"><h5>{{ book.title }}.{% if book.author_book %} {{ book.author_book }} {% endif %}
-{% if book.release_date %} ({{ book.release_date }}) {% endif %}</h5></a>
-              <p class="card-text">{% autoescape off %}
-                {{ book.description|truncatewords:40 }}
-            {% endautoescape %}</p>            
-          <p class="card-text"><small class="badge bg-secondary">{{ book.category.first }}</small></p>
-            </div><hr>
-          </div>
-        </div>      
-    {% endfor %}
+       
+          <a class="text-decoration-none text-reset" href="{{ book.get_absolute_url }}"><h5 class="card-title">{{ book.title }}</h5></a>
+        <a href="{{ book.get_absolute_url }}" class="btn btn-light">Перейти</a>
+       </div>
+    </div><br>
+  </div>
+{% endfor %}
+</div>
+</div>
+<br>
     {% if is_paginated %}
     <div class="container text-center">
     <div class="btn-group me-2" role="group">
