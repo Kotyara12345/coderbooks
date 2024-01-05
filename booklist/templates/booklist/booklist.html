@@ -13,23 +13,17 @@
     {% endblock %} | CoderBooks
 </title>
 {% block content %}<br>
-{% include 'partner.html' %}
-<h1>Книги по программированию и IT</h1>
-<hr>
 
-<p>
-  <a class="btn btn-secondary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-    Фильтрация
-  </a>
-</p>
-<div class="collapse" id="collapseExample">
-    <form method="GET">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button type="submit" class="btn btn-secondary">Фильтровать</button> 
-    </form>
-</div>
+{% include 'partner.html' %}
+
+<h2>Книги по программированию и IT</h2>
+
+<form method="GET">
+  {{ form.as_p }}
+  <button type="submit" class="btn btn-secondary">Фильтровать</button> 
+</form>
 <br>
+{% if books %}
 <div class="row">
   <div class="row d-flex align-items-start justify-content-center">
   {% for book in page_object %}
@@ -53,19 +47,24 @@
 {% endfor %}
 </div>
 </div>
+
+
 <br>
-    {% if is_paginated %}
-    <div class="container text-center">
-    <div class="btn-group me-2" role="group">
-      <a class="btn btn-outline-secondary page-item {% if not prev_url %}disabled{% endif %}" href="{{ prev_url }}" role="button">Назад</a>&nbsp;
-      {% for n in page_object.paginator.page_range %}
-      {% if page_object.number == n %}
-      <a class="btn btn-outline-secondary active" href="?page={{ n }}" role="button">{{ n }}</a>&nbsp;
-      {% elif n > page_object.number|add:-3 and n < page_object.number|add:3 %}
-      <a class="btn btn-outline-secondary" href="?page={{ n }}" role="button">{{ n }}</a>&nbsp;
-      {% endif %}{% endfor %}
-      <a class="btn btn-outline-secondary page-item {% if not next_url %}disabled{% endif %}" href="{{ next_url }}" role="button">Вперёд</a>
-    </div>
-    </div>
-    {% endif %}
+
+{% if is_paginated %}
+<div class="container text-center">
+<div class="btn-group me-2" role="group">
+  <a class="btn btn-outline-secondary page-item {% if not prev_url %}disabled{% endif %}" href="{{ prev_url }}" role="button">Назад</a>&nbsp;
+  {% for n in page_object.paginator.page_range %}
+  {% if page_object.number == n %}
+  <a class="btn btn-outline-secondary active" href="?page={{ n }}" role="button">{{ n }}</a>&nbsp;
+  {% elif n > page_object.number|add:-3 and n < page_object.number|add:3 %}
+  <a class="btn btn-outline-secondary" href="?page={{ n }}" role="button">{{ n }}</a>&nbsp;
+  {% endif %}{% endfor %}
+  <a class="btn btn-outline-secondary page-item {% if not next_url %}disabled{% endif %}" href="{{ next_url }}" role="button">Вперёд</a>
+</div>
+</div>
+{% endif %}
+
+{% endif %}
 {% endblock %}
