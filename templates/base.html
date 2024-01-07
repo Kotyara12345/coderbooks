@@ -150,12 +150,14 @@
     </div></div>
 {% endblock %}
 <br/>
-<footer class="footer">
+<footer class="footer">  
+	<hr>
     <div class="container">
-        <hr>
-        <blockquote class="blockquote"><p>&copy; {% now "Y" %} The CoderBooks Team	<a href="mailto:coderbooks@inbox.ru" class="text-decoration-none text-reset">coderbooks@inbox.ru</a></p>
+      <div class="position-relative">
+        <blockquote class="blockquote"><p>&copy; {% now "Y" %} The CoderBooks Team	<a href="mailto:coderbooks@inbox.ru" class="text-decoration-none text-reset">coderbooks@inbox.ru</a>
 	
-
+	
+	 <div class="position-absolute bottom-0 end-0">
 <!-- Facebook -->
 <a class="bi bi-facebook text-decoration-none text-reset" href="https://www.facebook.com/coderbooks.ru" target="_blank"></a>
 <!-- Facebook -->
@@ -168,7 +170,8 @@
 
 <!-- telegram -->
 <a class="bi bi-telegram text-decoration-none text-reset" href="https://t.me/coderbooks_chanel" target="_blank"></a>
-		
+	  </div></p>
+      </div>	
 	</blockquote>    
     </div>
 </footer>
