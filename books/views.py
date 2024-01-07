@@ -77,6 +77,9 @@ class Rss(Feed):
     def item_description(self, item):
         return item.description
 
+    def item_enclosure_url(self, item):
+        return item.img_file.url
+
 #  404 кастом
 
 def error_404(request, exception, template_name='404.html'):
