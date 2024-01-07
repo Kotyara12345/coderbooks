@@ -21,26 +21,29 @@
     </form>
 </div>
 
-        {% for book in page_object1 %}
-<div class="row g-0">
-      {% if book.img_file %}
-    <div class="col-md-1">
-      <a href='https://coderbooks.ru{{ book.get_absolute_url }}'><img src="https://coderbooks.ru{{ book.img_file.url }}" class="img-fluid img-thumbnail" alt="{{ book.title }}"></a>
-    </div>
-      {% endif %}
-    <div class="col-md-8 px-4">
-      <div class="card-body">
-               <h5 class="card-title"><a href='{{ book.get_absolute_url }}' class='text-decoration-none text-reset'>{{ book.title }}.{% if book.author_book %} {{ book.author_book }} {% endif %}
-{% if book.release_date %} ({{ book.release_date }}) {% endif %}</a></h5>
-              <p class="card-text">{% autoescape off %}
-                {{ book.description|truncatewords:40 }}
-            {% endautoescape %}</p>            
-      {% if book.lang_category == 1 %}<p class="card-text"><small class="badge bg-secondary">русский</small></p>{% endif %}
-      {% if book.lang_category == 2 %}<p class="card-text"><small class="badge bg-secondary">english</small></p>{% endif %} 
-            </div><hr>
+<div class="row">
+  <div class="row d-flex align-items-start justify-content-center">
+  {% for book in page_object1 %}
+  <div class="col-sm-3">
+    <div class="card border-1">
+      <div class="card-body d-flex flex-column align-items-center justify-content-between">
+          <div class="position-relative">
+            <a href="{{ book.get_absolute_url }}">
+            <img src="{{ book.img_file.url }}" alt="{{ book.title }}" class="img-fluid">
+            <div class="position-absolute top-0 start-0 d-flex align-items-center justify-content-center">
+              <span class="badge bg-danger">{{ book.category.first }}</span>
+              <span class="badge bg-success">{% if book.lang_category == 1 %}русский{% endif %}{% if book.lang_category == 2 %}english{% endif %}  </span>
+            </div></a>
           </div>
-        </div>      
-    {% endfor %}
+       
+          <a class="text-decoration-none text-reset" href="{{ book.get_absolute_url }}"><h5 class="card-title">{{ book.title }}</h5></a>
+        <a href="{{ book.get_absolute_url }}" class="btn btn-light">Перейти</a>
+       </div>
+    </div><br>
+  </div>
+{% endfor %}
+</div>
+</div>
     {% endblock %}    
     <br/>
     {% block paginator %}
