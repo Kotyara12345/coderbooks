@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block description %}
+<meta name="yandex-verification" content="52c5316e8a9a8ec8" >
+<meta name="google-site-verification" content="QXb2o4D0DvOEv7khC4o54tRx_KwkjGMBviXgpVB0H2Q" >
+    <meta name="description"
+          content="CoderBooks это самая большая и бесплатная библиотека для начинающего и опытного программиста">
+{% endblock %}
+<link rel="icon" type="image/svg" href="https://coderbooks.ru/static/icons/apple-icon-120x120.svg">
+<title>
+    {% block title %}
+        CoderBooks учебная литература для программистов
+    {% endblock %} | CoderBooks
+</title>
+{% block content %}<br>
+{% include 'partner.html' %}
+    {% for book in page_object %}   
+        <div class="row g-0">
+          <div class="col-md-1">
+            {% if book.img_file %}
+            <a href='https://coderbooks.ru{{ book.get_absolute_url }}'><img src="https://coderbooks.ru{{ book.img_file.url }}" class="img-fluid img-thumbnail" alt="{{ book.title }}"></a>
+            {% endif %}
+          </div>
+          <div class="col-md-8 px-4">
+            <div class="card-body">
+              <a href="{{ book.get_absolute_url }}" class="text-decoration-none text-reset"><h5>{{ book.title }}.{% if book.author_book %} {{ book.author_book }} {% endif %}
+{% if book.release_date %} ({{ book.release_date }}) {% endif %}</h5></a>
+              <p class="card-text">{% autoescape off %}
+                {{ book.description|truncatewords:40 }}
+            {% endautoescape %}</p>            
+          <p class="card-text"><small class="badge bg-secondary">{{ book.category.first }}</small></p>
+            </div><hr>
+          </div>
+        </div>      
+    {% endfor %}
+    {% if is_paginated %}
+    <div class="container text-center">
+    <div class="btn-group me-2" role="group">
+      <a class="btn btn-outline-secondary page-item {% if not prev_url %}disabled{% endif %}" href="{{ prev_url }}" role="button">Назад</a>&nbsp;
+      {% for n in page_object.paginator.page_range %}
+      {% if page_object.number == n %}
+      <a class="btn btn-outline-secondary active" href="?page={{ n }}" role="button">{{ n }}</a>&nbsp;
+      {% elif n > page_object.number|add:-3 and n < page_object.number|add:3 %}
+      <a class="btn btn-outline-secondary" href="?page={{ n }}" role="button">{{ n }}</a>&nbsp;
+      {% endif %}{% endfor %}
+      <a class="btn btn-outline-secondary page-item {% if not next_url %}disabled{% endif %}" href="{{ next_url }}" role="button">Вперёд</a>
+    </div>
+    </div>
+    {% endif %}
+{% endblock %}
