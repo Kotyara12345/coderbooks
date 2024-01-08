@@ -14,6 +14,23 @@
 </title>
 {% block content %}<br>
 {% include 'partner.html' %}
+<h1>Книги по программированию и IT</h1>
+
+<hr>
+<p>
+  <a class="btn btn-secondary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Фильтрация
+  </a>
+</p>
+<div class="collapse" id="collapseExample">
+    <form method="GET">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-secondary">Фильтровать</button> 
+    </form>
+</div>
+<br>
+
     {% for book in page_object %}   
         <div class="row g-0">
           <div class="col-md-1">
