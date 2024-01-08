@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: *page*
+Disallow: /search/*
+Disallow: /media/*/*.pdf
+Disallow: /books/?csrfmiddlewaretoken=*
+Disallow: /books/*/?_ym_status-check=*
+Disallow: /books/*/?csrfmiddlewaretoken=*
+
+Sitemap: https://coderbooks.ru/sitemaps.xml
