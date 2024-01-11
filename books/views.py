@@ -8,7 +8,7 @@ from django.views import View
 
 from django.http import Http404
 from django.shortcuts import get_object_or_404
-
+from django.template import TemplateDoesNotExist
 
 def main_page(request):
     return redirect('/books')
