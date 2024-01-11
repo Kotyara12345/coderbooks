@@ -7,6 +7,8 @@ from django.core.paginator import Paginator
 from django.views import View
 
 from django.http import Http404
+from django.shortcuts import get_object_or_404
+
 
 def main_page(request):
     return redirect('/books')
@@ -85,6 +87,13 @@ class Rss(Feed):
 def error_404(request, exception, template_name='404.html'):
     return render(request, template_name, status=404)
 
+def other_page(request, page):
+    try:
+        template = get_template('booklist/' + page + '.html')
+    except TemplateDoesNotExist:
+        raise Http404
+    return HttpResponse(template.render(request=request))
+    
 
 def account_detail(request):
     return render(request, 'account.html')
