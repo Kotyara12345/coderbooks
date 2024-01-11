@@ -21,7 +21,7 @@ from .views import main_page, SearchView
 
 from django.contrib.sitemaps.views import sitemap
 from books.sitemaps import *
-
+from django.template.loader import get_template
 from .views import Rss, account_detail
 from .views import other_page
 from django.contrib.auth import logout
