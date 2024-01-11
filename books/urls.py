@@ -23,7 +23,7 @@ from django.contrib.sitemaps.views import sitemap
 from books.sitemaps import *
 
 from .views import Rss, account_detail
-
+from .views import other_page
 from django.contrib.auth import logout
 from django.contrib.auth.views import LogoutView
 from django.urls import reverse_lazy
@@ -49,6 +49,7 @@ urlpatterns = [
     path('search/', SearchView.as_view(), name='search_url'),
     path('', main_page, name='main_page_url'),
     path('books/', include('booklist.urls')),
+    path('page/<str:page>/', other_page, name='other'),
     # path('videos/', include('video.urls')),
     # path('articles/', include('articles.urls')),
     path('sitemaps.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
