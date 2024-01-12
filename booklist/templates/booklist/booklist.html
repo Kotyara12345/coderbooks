@@ -39,7 +39,7 @@
           <div class="position-relative">
             <a href="{{ book.get_absolute_url }}">
             <img src="{{ book.img_file.url }}" alt="{{ book.title }}" class="img-fluid">
-            <div class="position-absolute top-0 start-0 d-flex align-items-center justify-content-center flex-wrap">
+            <div class="position-absolute top-0 start-0 d-flex align-items-center flex-wrap">
               <span class="badge bg-danger">{{ book.category.first }}</span>
               <span class="badge bg-success">{% if book.lang_category == 1 %}русский{% endif %}{% if book.lang_category == 2 %}english{% endif %}</span>
               <span class="badge bg-primary">{{ book.release_date }}</span>
