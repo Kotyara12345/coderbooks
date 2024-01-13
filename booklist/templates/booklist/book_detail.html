@@ -77,11 +77,11 @@
     {% endif %}
     </div>
   </div>
-    {% if book.book_file %}
+    <!--{% if book.book_file %}
         <div class="chitalka">
                 <object data="https://coderbooks.ru{{ book.book_file.url }}" title="Читать онлайн {{ book.title }}" type="application/pdf" width="100%" height="700"></object>
         </div>
-    {% endif %}
+    {% endif %}-->
     <br><br>
     {% autoescape off %}
         {{ book.description }}
