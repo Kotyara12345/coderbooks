@@ -124,8 +124,18 @@
     {% endautoescape %}
     <br>
 {% if book.codes %}
+<!-- русский -->
+{% if book.lang_category == 1 %}
   <h6>Исходный код: <a href="{{ book.codes }}" target="_blank"
               class="btn btn-outline-secondary" aria-label="Перейти к вспомогательному материалу для книги {{ book.title }}"><b>&nbsp;Перейти</b></a></h6>
+{% endif %}
+<!-- русский -->
+<!-- английский -->
+{% if book.lang_category == 1 %}
+  <h6>Исходный код: <a href="{{ book.codes }}" target="_blank"
+              class="btn btn-outline-secondary" aria-label="Go to the additional material for the book {{ book.title }}"><b>&nbsp;Go</b></a></h6>
+{% endif %}
+<!-- английский -->
 {% endif %}
 
 <!-- Yandex.RTB R-A-2223408-7 -->
@@ -167,7 +177,7 @@ window.yaContextCb.push(()=>{
     <br>
 	
     <script src="https://yastatic.net/share2/share.js"></script>
-    <div class="ya-share2" data-curtain data-size="s" data-color-scheme="blackwhite" data-services="messenger,vkontakte,odnoklassniki,telegram,twitter,viber,whatsapp,moimir,skype,tumblr,linkedin,lj,blogger,reddit,surfingbird"></div>
+    <div class="ya-share2" data-curtain data-color-scheme="blackwhite" data-services="messenger,vkontakte,odnoklassniki,telegram,twitter,viber,whatsapp,moimir,skype,tumblr,linkedin,lj,blogger,reddit,surfingbird"></div>
     <br>
 <!-- Yandex.RTB R-A-2223408-8 -->
 <div id="yandex_rtb_R-A-2223408-8"></div>
