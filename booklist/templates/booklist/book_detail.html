@@ -45,35 +45,88 @@
 {% endif %}-->
     <br>
 {% if book.author_book %}
+<!-- русский -->
+{% if book.lang_category == 1 %}
 <h6>Автор: {{ book.author_book }}</h6>
 {% endif %}
+<!-- английский -->
+{% if book.lang_category == 2 %}
+ <h6>Author: {{ book.author_book }}</h6>
+{% endif %}
+{% endif %}
 {% if book.release_date %}
+<!-- русский -->
+{% if book.lang_category == 1 %}
   <h6>Дата выхода: {{ book.release_date }}</h6>
 {% endif %}
+<!-- английский -->
+{% if book.lang_category == 2 %}
+ <h6>Release date: {{ book.release_date }}</h6>
+{% endif %}
+{% endif %}
 {% if book.publisher %}
+<!-- русский -->
+{% if book.lang_category == 1 %}
   <h6>Издательство: {{ book.publisher }}</h6>
 {% endif %}
+<!-- английский -->
+{% if book.lang_category == 2 %}
+  <h6>Publisher: {{ book.publisher }}</h6>
+{% endif %}
+{% endif %}
 {% if book.book_pages %}
+<!-- русский -->
+{% if book.lang_category == 1 %}
   <h6>Количество страниц: {{ book.book_pages }}</h6>
 {% endif %}
+<!-- английский -->
+{% if book.lang_category == 2 %}
+  <h6>Number of pages: {{ book.book_pages }}</h6>
+{% endif %}
+{% endif %}
 {% if book.book_file %}
+<!-- русский -->
+{% if book.lang_category == 1 %}
   <h6>Размер файла: {{ book.book_file.size|filesizeformat }}</h6> 
 {% endif %}
+<!-- английский -->
+{% if book.lang_category == 2 %}
+  <h6>File Size: {{ book.book_file.size|filesizeformat }}</h6>
+{% endif %}
+{% endif %}
+<p>
 <br> 
   <div class="row">
     <div class="col-sm-2">
           {% if book.book_file %}
         <p><a href="{{ book.book_file.url }}" target="_blank" download="https://coderbooks.ru{{ book.title }}.pdf"
-              class="btn btn-outline-secondary"><i
-                class="bi bi-cloud-arrow-down" aria-hidden="true" aria-label="Скачать книгу {{ book.title }}"></i><b>&nbsp;Скачать</b></a></p>
+              class="btn btn-outline-secondary">
+		<!-- русский -->
+{% if book.lang_category == 1 %}
+		<i class="bi bi-cloud-arrow-down" aria-hidden="true" aria-label="Скачать книгу {{ book.title }}"></i><b>&nbsp;Скачать</b></a></p>
+{% endif %}
+
+		<!-- английский -->
+{% if book.lang_category == 1 %}
+		<i class="bi bi-cloud-arrow-down" aria-hidden="true" aria-label="Download the book {{ book.title }}"></i><b>&nbsp;Download</b></a></p>
+{% endif %}
     {% endif %}
     </div>
     <div class="col-sm-3">
 	    
          {% if book.virus_total %}
         <p><a href="{{ book.virus_total }}" target="_blank"
-              class="btn btn-outline-secondary"><i
+              class="btn btn-outline-secondary">
+		<!-- русский -->
+{% if book.lang_category == 1 %}
+		<i
                 class="bi bi-check-circle" aria-hidden="true" aria-label="Проверить скачиваемый файл на вирусы через VirusTotal"></i><b>&nbsp;Проверить на вирусы </b></a></p>
+{% endif %}
+		<!-- английский -->
+{% if book.lang_category == 1 %}
+		<i
+                class="bi bi-check-circle" aria-hidden="true" aria-label="Check the downloaded file for viruses via VirusTotal"></i><b>&nbsp;Check for viruses</b></a></p>
+{% endif %}
     {% endif %}
     </div>
   </div>
