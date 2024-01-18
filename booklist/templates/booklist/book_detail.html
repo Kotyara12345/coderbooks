@@ -17,14 +17,34 @@
 {% if book.release_date %} ({{ book.release_date }}) {% endif %}
 {% endblock %}
 {% block description %}
+	<!-- русский -->
+{% if book.lang_category == 1 %}
 <meta name="description" content="Смотреть, читать и скачать бесплатно книгу &#34;{{ book.title }}.{% if book.author_book %} {{ book.author_book|truncatewords:2 }} {% endif %}
 {% if book.release_date %} ({{ book.release_date }}) {% endif %}&#34; в формате pdf на сайте онлайн библиотеки по программированию CoderBooks.ru">
+{% endif %}
+<!-- русский -->
+<!-- английский -->
+{% if book.lang_category == 2 %}
+<meta name="description" content="Look, read and download a book for free &#34;{{ book.title }}.{% if book.author_book %} {{ book.author_book|truncatewords:2 }} {% endif %}
+{% if book.release_date %} ({{ book.release_date }}) {% endif %}&#34; in the format of PDF on the website of an online library on programming CoderBooks.ru">
+{% endif %}
+<!-- английский -->
 <meta property="og:type" content="article">
 <meta property="og:title" content="{{ book.title }} {% if book.author_book %} {{ book.author_book|truncatewords:3 }} {% endif %}
 {% if book.release_date %} ({{ book.release_date }}) {% endif %}">
 <meta property="og:url" content="https://coderbooks.ru/{{ book.get_absolute_url }}">
+	<!-- русский -->
+{% if book.lang_category == 1 %}
 <meta property="og:description" content="Смотреть, читать и скачать бесплатно книгу &#34;{{ book.title }}.{% if book.author_book %} {{ book.author_book|truncatewords:2 }} {% endif %}
 {% if book.release_date %} ({{ book.release_date }}) {% endif %}&#34; в формате pdf на сайте онлайн библиотеки по программированию CoderBooks.ru">
+{% endif %}
+<!-- русский -->
+<!-- английский -->
+{% if book.lang_category == 2 %}
+<meta property="og:description" content="Look, read and download a book for free &#34;{{ book.title }}.{% if book.author_book %} {{ book.author_book|truncatewords:2 }} {% endif %}
+{% if book.release_date %} ({{ book.release_date }}) {% endif %}&#34; in the format of PDF on the website of an online library on programming CoderBooks.ru">
+{% endif %}
+<!-- английский -->
 <meta property="og:image" content="https://coderbooks.ru{{ book.img_file.url }}">
 {% endblock %}
 {% block content %}
