@@ -144,17 +144,30 @@ window.yaContextCb.push(()=>{
 	  <div class="d-lg-none">{% include 'partner2.html' %}</div>
           <div class="d-none d-lg-block">{% include 'partner_mobile2.html' %}</div>
     <table class="table">
+	    <!-- русский -->
+        {% if book.lang_category == 1 %}
         <thead>
         <tr>
             <th scope="row"><p>Если вам понравилась эта книга поделитесь ею с друзьями, тем самым вы помогаете нам
                 развиваться и добавлять всё больше интересных и нужным вам книг!</p>
             </th>
         </thead>
+	{% endif %}
+     <!-- русский -->
+	    <!-- английский -->
+        {% if book.lang_category == 1 %}
+        <thead>
+        <tr>
+            <th scope="row"><p>If you liked this book, share it with your friends, thus you help us develop and add more interesting and necessary books for you!</p>
+            </th>
+        </thead>
+	{% endif %}
+     <!-- английский -->
     </table>
     <br>
 	
     <script src="https://yastatic.net/share2/share.js"></script>
-    <div class="ya-share2" data-curtain data-color-scheme="blackwhite" data-services="messenger,vkontakte,odnoklassniki,telegram,twitter,viber,whatsapp,moimir,pinterest"></div>
+    <div class="ya-share2" data-curtain data-size="s" data-color-scheme="blackwhite" data-services="messenger,vkontakte,odnoklassniki,telegram,twitter,viber,whatsapp,moimir,skype,tumblr,linkedin,lj,blogger,reddit,surfingbird"></div>
     <br>
 <!-- Yandex.RTB R-A-2223408-8 -->
 <div id="yandex_rtb_R-A-2223408-8"></div>
