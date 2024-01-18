@@ -99,17 +99,39 @@
   <div class="row">
     <div class="col-sm-2">
           {% if book.book_file %}
+	  <!-- русский -->
+	  {% if book.lang_category == 1 %}
         <p><a href="{{ book.book_file.url }}" target="_blank" download="https://coderbooks.ru{{ book.title }}.pdf"
               class="btn btn-outline-secondary"><i
 		class="bi bi-cloud-arrow-down" aria-hidden="true" aria-label="Скачать книгу {{ book.title }}"></i><b>&nbsp;Скачать</b></a></p>
+	   {% endif %}
+            <!-- русский -->
+	    <!-- английский -->
+	  {% if book.lang_category == 1 %}
+        <p><a href="{{ book.book_file.url }}" target="_blank" download="https://coderbooks.ru{{ book.title }}.pdf"
+              class="btn btn-outline-secondary"><i
+		class="bi bi-cloud-arrow-down" aria-hidden="true" aria-label="Download the book {{ book.title }}"></i><b>&nbsp;Download</b></a></p>
+	   {% endif %}
+            <!-- английский -->
           {% endif %}
     </div>
     <div class="col-sm-3">
 	    
          {% if book.virus_total %}
+	    <!-- русский -->
+	 {% if book.lang_category == 1 %}
         <p><a href="{{ book.virus_total }}" target="_blank"
               class="btn btn-outline-secondary"><i
                 class="bi bi-check-circle" aria-hidden="true" aria-label="Проверить скачиваемый файл на вирусы через VirusTotal"></i><b>&nbsp;Проверить на вирусы </b></a></p>
+	 {% endif %}
+            <!-- русский -->
+	    <!-- английский -->
+	 {% if book.lang_category == 2 %}
+        <p><a href="{{ book.virus_total }}" target="_blank"
+              class="btn btn-outline-secondary"><i
+                class="bi bi-check-circle" aria-hidden="true" aria-label="Check the downloadable file for viruses using VirusTotal"></i><b>&nbsp;Scan for viruses </b></a></p>
+	 {% endif %}
+            <!-- английский -->
          {% endif %}
     </div>
   </div>
