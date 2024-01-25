@@ -14,7 +14,7 @@ def generate_filename(instance, filename):
 
 
 def generate_filename_jpg(instance, filename):
-    filename = instance.slug + '.jpg'
+    filename = instance.slug + '.webp'
     return "{0}/{1}".format(instance, filename)
 
 
