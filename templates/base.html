@@ -109,7 +109,7 @@
 {% block page %}
     <div class="container-fluid">
 	    
-{% include 'partner.html' %}
+
 	    	    
         <div class="container">
         <div class="row">
@@ -136,6 +136,7 @@
         {% endblock %}
         <div class="col-sm">
 	    {% block content %}
+		{% include 'partner.html' %}
             {% endblock %}
             {% block paginator %}
             {% endblock %}
