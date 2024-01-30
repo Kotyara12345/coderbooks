@@ -20,7 +20,7 @@ class SearchView(View):
     template_name = 'search_new.html'
 
     def get(self, request, *args, **kwargs):
-
+        categories = Category.objects.all()
         question = request.GET.get('search')
         if not question or len(question) < 3:
             return render(request, 'search_error.html')
@@ -56,6 +56,7 @@ class SearchView(View):
                 'prev_url': prev_url,
                 'next_url': next_url,
                 'page_object': page,
+                'categories': categories,
 
             }
         return render(request, self.template_name, context=context)
