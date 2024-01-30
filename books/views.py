@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from video.models import Course
 from articles.models import Articles
 from booklist.models import Book
+from booklist.models import Category
 
 from django.core.paginator import Paginator
 from django.views import View
@@ -88,12 +89,16 @@ class Rss(Feed):
 def error_404(request, exception, template_name='404.html'):
     return render(request, template_name, status=404)
 
-def other_page(request, page):
+def other_page(request, page):    
+    categories = Category.objects.all()
     try:
         template = get_template('booklist/' + page + '.html')
     except TemplateDoesNotExist:
         raise Http404
-    return HttpResponse(template.render(request=request))
+    context = {
+        'categories': categories
+    }    
+    return HttpResponse(template.render(context, request=request))
     
 
 def account_detail(request):
