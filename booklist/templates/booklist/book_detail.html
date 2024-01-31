@@ -47,192 +47,155 @@
 <!-- английский -->
 <meta property="og:image" content="https://coderbooks.ru{{ book.img_file.url }}">
 {% endblock %}
-{% block content %}
-	
-    <br>
+{% load static %}
+{% block content %}                   
+                
+                    <div class="nh_detail-page">
+                        <h1>{{ book.title }}</h1>
+                        <div class="nh_content-detail">
+                            <div class="nh_detail-image">
+                                <img src="{{ book.img_file.url }}">
+                            </div>
+                            <div class="nh_detail">
+                                <ul class="nh_detail-info">
 
-    <br> 
-    <h1>{{ book.title }}</h1>
+                                    <li>
+                                        {% if book.lang_category == 1 %}
+                                        <span class="nh_info-title">Автор: </span> 
+                                        <span class="nh_info-value">{{ book.author_book }}</span>
+                                        {% endif %}
+                                       
+                                        {% if book.lang_category == 2 %}
+                                        <span class="nh_info-title">Author: </span>
+                                        <span class="nh_info-value">{{ book.author_book }}</span>
+                                        {% endif %}
+                                    </li>
+                                    
+                                    <li>
+                                        {% if book.lang_category == 1 %}
+                                        <span class="nh_info-title">Дата выхода: </span>
+                                        <span class="nh_info-value">{{ book.release_date }}</span>
+                                        {% endif %}
+                                        {% if book.lang_category == 2 %}
+                                        <span class="nh_info-title">Release date: </span>
+                                        <span class="nh_info-value">{{ book.release_date }}</span>
+                                        {% endif %}
+                                    </li>
 
-    <br>
-{% if book.author_book %}
-<!-- русский -->
-{% if book.lang_category == 1 %}
-<h6>Автор: {{ book.author_book }}</h6>
-{% endif %}
-<!-- английский -->
-{% if book.lang_category == 2 %}
- <h6>Author: {{ book.author_book }}</h6>
-{% endif %}
-{% endif %}
-{% if book.release_date %}
-<!-- русский -->
-{% if book.lang_category == 1 %}
-  <h6>Дата выхода: {{ book.release_date }}</h6>
-{% endif %}
-<!-- английский -->
-{% if book.lang_category == 2 %}
- <h6>Release date: {{ book.release_date }}</h6>
-{% endif %}
-{% endif %}
-{% if book.publisher %}
-<!-- русский -->
-{% if book.lang_category == 1 %}
-  <h6>Издательство: {{ book.publisher }}</h6>
-{% endif %}
-<!-- английский -->
-{% if book.lang_category == 2 %}
-  <h6>Publisher: {{ book.publisher }}</h6>
-{% endif %}
-{% endif %}
-{% if book.book_pages %}
-<!-- русский -->
-{% if book.lang_category == 1 %}
-  <h6>Количество страниц: {{ book.book_pages }}</h6>
-{% endif %}
-<!-- английский -->
-{% if book.lang_category == 2 %}
-  <h6>Number of pages: {{ book.book_pages }}</h6>
-{% endif %}
-{% endif %}
-{% if book.book_file %}
-<!-- русский -->
-{% if book.lang_category == 1 %}
-  <h6>Размер файла: {{ book.book_file.size|filesizeformat }}</h6> 
-{% endif %}
-<!-- английский -->
-{% if book.lang_category == 2 %}
-  <h6>File Size: {{ book.book_file.size|filesizeformat }}</h6>
-{% endif %}
-{% endif %}
-<p>
-<br> 
-  <div class="row">
-    <div class="col-sm-2">
-          {% if book.book_file %}
-	  <!-- русский -->
-	  {% if book.lang_category == 1 %}
-        <p><a href="{{ book.book_file.url }}" target="_blank" download="https://coderbooks.ru{{ book.title }}.pdf"
-              class="btn btn-outline-secondary"><i
-		class="bi bi-cloud-arrow-down" aria-hidden="true" aria-label="Скачать книгу {{ book.title }}"></i><b>&nbsp;Скачать</b></a></p>
-	   {% endif %}
-            <!-- русский -->
-	    <!-- английский -->
-	  {% if book.lang_category == 2 %}
-        <p><a href="{{ book.book_file.url }}" target="_blank" download="https://coderbooks.ru{{ book.title }}.pdf"
-              class="btn btn-outline-secondary"><i
-		class="bi bi-cloud-arrow-down" aria-hidden="true" aria-label="Download the book {{ book.title }}"></i><b>&nbsp;Download</b></a></p>
-	   {% endif %}
-            <!-- английский -->
-          {% endif %}
-    </div>
-    <div class="col-sm-3">
-	    
-         {% if book.virus_total %}
-	    <!-- русский -->
-	 {% if book.lang_category == 1 %}
-        <p><a href="{{ book.virus_total }}" target="_blank"
-              class="btn btn-outline-secondary"><i
-                class="bi bi-check-circle" aria-hidden="true" aria-label="Проверить скачиваемый файл на вирусы через VirusTotal"></i><b>&nbsp;Проверить на вирусы </b></a></p>
-	 {% endif %}
-            <!-- русский -->
-	    <!-- английский -->
-	 {% if book.lang_category == 2 %}
-        <p><a href="{{ book.virus_total }}" target="_blank"
-              class="btn btn-outline-secondary"><i
-                class="bi bi-check-circle" aria-hidden="true" aria-label="Check the downloadable file for viruses using VirusTotal"></i><b>&nbsp;Scan for viruses </b></a></p>
-	 {% endif %}
-            <!-- английский -->
-         {% endif %}
-    </div>
-  </div>
-    <!--{% if book.book_file %}
-        <div class="chitalka">
-                <object data="https://coderbooks.ru{{ book.book_file.url }}" title="Читать онлайн {{ book.title }}" type="application/pdf" width="100%" height="700"></object>
-        </div>
-    {% endif %}-->
-    <br><br>
-    {% autoescape off %}
-        {{ book.description }}
-    {% endautoescape %}
-    <br>
-{% if book.codes %}
-<!-- русский -->
-{% if book.lang_category == 1 %}
-  <h6>Исходный код: <a href="{{ book.codes }}" target="_blank"
-              class="btn btn-outline-secondary" aria-label="Перейти к вспомогательному материалу для книги {{ book.title }}"><b>&nbsp;Перейти</b></a></h6>
-{% endif %}
-<!-- русский -->
-<!-- английский -->
-{% if book.lang_category == 2 %}
-  <h6>Source code: <a href="{{ book.codes }}" target="_blank"
-              class="btn btn-outline-secondary" aria-label="Go to the additional material for the book {{ book.title }}"><b>&nbsp;Go</b></a></h6>
-{% endif %}
-<!-- английский -->
-{% endif %}
+                                    <li>
+                                        {% if book.lang_category == 1 %}
+                                        <span class="nh_info-title">Издательство: </span>
+                                        <span class="nh_info-value">{{ book.publisher }}</span>
+                                        {% endif %}
+                                        {% if book.lang_category == 2 %}
+                                        <span class="nh_info-title">Publisher: </span>
+                                        <span class="nh_info-value">{{ book.publisher }}</span>
+                                        {% endif %}
+                                    </li>
 
-<!-- Yandex.RTB R-A-2223408-7 -->
-<script>
-window.yaContextCb.push(()=>{
-	Ya.Context.AdvManager.render({
-		"blockId": "R-A-2223408-7",
-		"type": "fullscreen",
-		"platform": "touch"
-	})
-})
-</script>
-	
-	<br>
-	<iframe src="https://yoomoney.ru/quickpay/fundraise/widget?billNumber=Y6PvfAHiLqk.230907&" width="100%" height="480" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
-	  <div class="d-lg-none">{% include 'partner2.html' %}</div>
-          <div class="d-none d-lg-block">{% include 'partner_mobile2.html' %}</div>
-    <table class="table">
-	    <!-- русский -->
+                                    <li>
+                                        {% if book.lang_category == 1 %}
+                                        <span class="nh_info-title">Количество страниц: </span>
+                                        <span class="nh_info-value">{{ book.book_pages }}</span>
+                                        {% endif %}
+                                        {% if book.lang_category == 2 %}
+                                        <span class="nh_info-title">Number of pages: </span>
+                                        <span class="nh_info-value">{{ book.book_pages }}</span>
+                                        {% endif %}
+                                    </li>
+
+                                    <li>
+                                        {% if book.lang_category == 1 %}
+                                        <span class="nh_info-title">Размер файла: </span>
+                                        <span class="nh_info-value">{{ book.book_file.size|filesizeformat }}</span>
+                                        {% endif %}
+                                        {% if book.lang_category == 2 %}
+                                        <span class="nh_info-title">File Size: </span>
+                                        <span class="nh_info-value">{{ book.book_file.size|filesizeformat }}</span>
+                                        {% endif %}
+                                    </li>
+
+                                </ul>
+                                <div class="nh_detail-buttons">
+                                    <div>
+	                                    {% if book.lang_category == 1 %}
+                                        <a href="{{ book.book_file.url }}" target="_blank" class="nh_button">Скачать</a>
+                                        {% endif %}
+	                                    {% if book.lang_category == 2 %}
+                                        <a href="{{ book.book_file.url }}" target="_blank" class="nh_button">Download</a>
+                                        {% endif %}
+                                    </div>
+
+                                    <div>
+	                                    {% if book.lang_category == 1 %}
+                                        <a href="{{ book.virus_total }}" class="nh_button">Проверить на вирусы</a>
+                                        {% endif %}
+	                                    {% if book.lang_category == 2 %}
+                                        <a href="{{ book.virus_total }}" class="nh_button">Scan for viruses</a>
+                                        {% endif %}
+                                    </div>
+
+                                    <div>
+                                        {% if book.codes %}
+	                                    {% if book.lang_category == 1 %}
+                                        <a href="{{ book.codes }}" target="_blank" class="nh_button">Исходный код</a>
+                                        {% endif %}
+	                                    {% if book.lang_category == 2 %}
+                                        <a href="{{ book.codes }}" target="_blank" class="nh_button">Source Code</a>
+                                        {% endif %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="nh_detail-description">
+                                    {% autoescape off %}
+                                    {{ book.description }}
+                                    {% endautoescape %}
+                            <img src="{% static 'images/qr.jpg' %}" width="100%" height="480" >
+                            <iframe src="https://yoomoney.ru/quickpay/fundraise/widget?billNumber=Y6PvfAHiLqk.230907&" width="100%" height="480" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
+
+                                </div>
+                            </div>
+                        </div>
+                                                                               
         {% if book.lang_category == 1 %}
-        <thead>
-        <tr>
-            <th scope="row"><p>Если вам понравилась эта книга поделитесь ею с друзьями, тем самым вы помогаете нам
+ <p>Если вам понравилась эта книга поделитесь ею с друзьями, тем самым вы помогаете нам
                 развиваться и добавлять всё больше интересных и нужным вам книг!</p>
-            </th>
-        </thead>
+
 	{% endif %}
-     <!-- русский -->
-	    <!-- английский -->
+
         {% if book.lang_category == 2 %}
-        <thead>
-        <tr>
-            <th scope="row"><p>If you liked this book, share it with your friends, thus you help us develop and add more interesting and necessary books for you!</p>
-            </th>
-        </thead>
+<p>If you liked this book, share it with your friends, thus you help us develop and add more interesting and necessary books for you!</p>
+
 	{% endif %}
-     <!-- английский -->
-    </table>
-	
-    <script src="https://yastatic.net/share2/share.js"></script>
-    <div class="ya-share2" data-curtain data-color-scheme="blackwhite" data-services="messenger,vkontakte,odnoklassniki,telegram,twitter,viber,whatsapp,moimir,skype,tumblr,linkedin,lj,blogger,reddit,surfingbird"></div>
-    <br>
-<!-- Yandex.RTB R-A-2223408-8 -->
-<div id="yandex_rtb_R-A-2223408-8"></div>
-<script>
-window.yaContextCb.push(()=>{
-	Ya.Context.AdvManager.render({
-		"blockId": "R-A-2223408-8",
-		"renderTo": "yandex_rtb_R-A-2223408-8",
-		"type": "feed"
-	})
-})
-</script>
 
+                            <script src="https://yastatic.net/share2/share.js"></script>
+                            <div class="ya-share2" data-curtain data-color-scheme="blackwhite" data-services="messenger,vkontakte,odnoklassniki,telegram,twitter,viber,whatsapp,moimir,skype,tumblr,linkedin,lj,blogger,reddit,surfingbird"></div>
+                            <br>
+                        <!-- Yandex.RTB R-A-2223408-8 -->
+                        <div id="yandex_rtb_R-A-2223408-8"></div>
+                        <script>
+                        window.yaContextCb.push(()=>{
+                            Ya.Context.AdvManager.render({
+                                "blockId": "R-A-2223408-8",
+                                "renderTo": "yandex_rtb_R-A-2223408-8",
+                                "type": "feed"
+                            })
+                        })
+                        </script>
+                                                
+                        <!-- Yandex.RTB R-A-2223408-9 -->
+                        <script>
+                        window.yaContextCb.push(()=>{
+                            Ya.Context.AdvManager.render({
+                                "blockId": "R-A-2223408-9",
+                                "type": "floorAd",
+                                "platform": "touch"
+                            })
+                        })
+                        </script>
 
-<!-- Yandex.RTB R-A-2223408-9 -->
-<script>
-window.yaContextCb.push(()=>{
-	Ya.Context.AdvManager.render({
-		"blockId": "R-A-2223408-9",
-		"type": "floorAd",
-		"platform": "touch"
-	})
-})
-</script>	
-	
-{% endblock %}
+                        </div>
+                                              
+        </div>
+     
+        {% endblock %}
