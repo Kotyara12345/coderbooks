@@ -17,7 +17,7 @@ def main_page(request):
 
 
 class SearchView(View):
-    template_name = 'search_new.html'
+    template_name = 'search.html'
 
     def get(self, request, *args, **kwargs):
         categories = Category.objects.all()
