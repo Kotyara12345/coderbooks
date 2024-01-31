@@ -1,0 +1,19 @@
+<aside class="nh_menu nh_toggle-window">
+    <div class="nh_menu-content">
+        <a class="nh_menu-logo" href="/">CoderBooks</a>
+        <form class="nh_search-form" action="#" method="post">
+            <input class="nh_search-input" name="search" placeholder="Поиск">
+            <button class="nh_button-icon nh_search-button" type="submit">
+                <svg><use xlink:href="#icon-search"></use></svg>
+            </button>
+        </form>
+       
+        <ul class="nh_menu-list">
+            {% for category in categories %}
+            <li class="nh_menu-list-item">
+                <a href="{{ category.get_absolute_url }}">{{ category.title }} </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</aside>
