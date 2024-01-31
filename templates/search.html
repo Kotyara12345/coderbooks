@@ -1,43 +1,63 @@
 {% extends 'base.html' %}
-    {% load staticfiles %}
-<title>
-    {% block title %}
-        Поиск
-    {% endblock %} | CoderNet
-</title>
-    {% block search %}
-    <form class="d-flex" role="search" action="{% url 'search_url' %}">
-        <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Поиск">
-        <button class="btn btn-outline-success" type="submit">найти</button>
-    {% endblock %}
-    {% block page %} 
-<main role="main">
-<div class="container">
-<br/>
-<div class="alert alert-success" role="alert">
-<h5 class="mt-0 mb-1">Запрашиваемый Вами запрос не найден! </h5>
-   Но Вы можете попробовать другой запрос или поискать в других разделах сайта
+{% load static %}
+{% block title %}
+Поиск по запросу: "{{ question }}"
+{% endblock %}   
+{% block content %}  
+
+<h1>Поиск по запросу: "{{ question }}"</h1>
+{% if not page_object %} 
+     <div class="alert alert-light" role="alert"><h2>По Вашему запросу "{{ question }}" ничего не найдено, попробуйте изменить запрос</h2></div>
+{% endif %} 
+
+{% for book in page_object %}   
+                    <div class="nh_content-list nh_content-table">
+                        <div class="nh_content-list-item">
+                            <a href="{{ book.get_absolute_url }}"class="nh_item-image">
+                                <img src="{{ book.img_file.url }}">
+                            </a>
+                            <div class="nh_item-content">
+                                <a href="{{ book.get_absolute_url }}" class="nh_item-title">
+                                    <h2>{{ book.title }} - {{ book.author_book }}</h2>
+                                </a>
+                                <div class="nh_item-date">
+                                    <div class="nh_item-date-block">
+                                        <svg><use xlink:href="#icon-calendar"></use></svg>
+                                        <span>{{ book.release_date }}</span>
+                                    </div>
+                                    <div class="nh_item-date-block">
+                                        <svg><use xlink:href="#icon-folder"></use></svg>
+                                        <a href="/">{{ book.category.first }}</a>
+                                    </div>
+                                    <div class="nh_item-date-block">
+                                        <svg><use xlink:href="#icon-earth"></use></svg>
+                                        <span>{% if book.lang_category == 1 %}русский{% endif %}{% if book.lang_category == 2 %}english{% endif %}</span>
+                                    </div>
+                                </div>
+                                <div class="nh_item-description">{% autoescape off %}{{ book.description|truncatewords:30 }}{% endautoescape %}</div>
+                                <a href="{{ book.get_absolute_url }}" class="nh_item-url">Перейти ></a>
+                            </div>
+                        </div>
+                    </div><hr>
+{% endfor %}  
+
+{% if is_paginated %}
+<div class="nh_pagination">
+    <a class="nh_pagination-button {% if not prev_url %}disabled{% endif %}" href="{{ prev_url }}"><</a>
+
+    {% for n in page_object.paginator.page_range %}
+    {% if page_object.number == n %}
+
+    <a class="nh_pagination-button active" href="?page={{ n }}">{{ n }}</a>
+    {% elif n > page_object.number|add:-3 and n < page_object.number|add:3 %}
+
+    <a class="nh_pagination-button" href="{{ last_question }}&page={{ n }}">{{ n }}</a>
+
+    {% endif %}{% endfor %}
+
+    <a class="nh_pagination-button {% if not next_url %}disabled{% endif %}" href="{{ next_url }}">></a>
+
 </div>
-<div class="alert alert-info" role="alert">
-<div class="input-group mb-3">
-<input type="text" class="form-control" placeholder="Введённый запрос" aria-label="Recipient's username" aria-describedby="button-addon2">
-<div class="input-group-append">
-<button class="btn btn-outline-secondary" type="button" id="button-addon2">&nbsp;Книги&nbsp;</button>
-</div>
-</div> 
-<div class="input-group mb-3">
-<input type="text" class="form-control" placeholder="Введённый запрос" aria-label="Recipient's username" aria-describedby="button-addon2">
-<div class="input-group-append">
-<button class="btn btn-outline-secondary" type="button" id="button-addon2">&nbsp;Видео</button>
-</div>
-</div>
-<div class="input-group mb-3">
-<input type="text" class="form-control" placeholder="Введённый запрос" aria-label="Recipient's username" aria-describedby="button-addon2">
-<div class="input-group-append">
-<button class="btn btn-outline-secondary" type="button" id="button-addon2">Статьи</button>
-</div>
-</div>
-</div>
-</div>
-</main>
-    {% endblock %}
+{% endif %}
+
+{% endblock %}
