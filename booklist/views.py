@@ -32,7 +32,7 @@ def book_list(request):
     
     
     # Пагинатор начало
-    paginator = Paginator(books, 20)
+    paginator = Paginator(books, 24)
     page_number = request.GET.get('page', default=1)
     page = paginator.get_page(page_number)
     is_paginated = page.has_other_pages()
@@ -91,7 +91,7 @@ def category_detail(request, slug):
     filterset_class = BookFilter 
     
     # Пагинатор начало
-    paginator1 = Paginator(books, 20)
+    paginator1 = Paginator(books, 24)
     page_number1 = request.GET.get('page', default=1)
     page1 = paginator1.get_page(page_number1)
     is_paginated1 = page1.has_other_pages()
