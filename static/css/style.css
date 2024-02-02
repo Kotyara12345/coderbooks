@@ -239,6 +239,10 @@ h1, .h1 {
     white-space: nowrap;
     margin-bottom: 20px;
 }
+.nh_item-description p {
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
 .nh_item-title {
     margin: 10px 0;
 }
