@@ -33,7 +33,7 @@
                     <span>{% if book.lang_category == 1 %}русский{% endif %}{% if book.lang_category == 2 %}english{% endif %}</span>
                 </div>
             </div>
-            <div class="nh_item-description">{{ book.description|truncatewords:10 }}</div>
+            <div class="nh_item-description">{% autoescape off %}{{ book.description|truncatewords:10 }}{% endautoescape %}</div>
             <a href="{{ book.get_absolute_url }}" class="nh_item-url">Перейти ></a>
         </div>
     </div>
