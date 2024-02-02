@@ -391,6 +391,18 @@ select {
     cursor: pointer;
     padding-left: 5px;
 }
+.nh_mobile-top-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-right: 5px;
+}
+.nh_mobile-top-links .nh_donate_button {
+    height: 32px;
+    font-size: 14px;
+    padding: 0 5px;
+}
 @media (max-width: 1200px) {
     .nh_menu-logo {
         font-size: 36px;
