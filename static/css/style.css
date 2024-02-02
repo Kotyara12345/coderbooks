@@ -60,7 +60,7 @@ h1, .h1 {
 }
 .nh_menu-list.fixed {
     position: fixed;
-    bottom: 130px;
+    bottom: 180px;
 }
 .nh_menu-list-item a {
     color: #fff;
