@@ -302,6 +302,10 @@ h1, .h1 {
     outline: none;
     background-color: transparent;
 }
+.nh_button.white {
+    color: #fff;
+    border-color: #fff;
+}
 .nh_content-advertising {
     text-align: center;
     overflow-x: hidden;
@@ -479,6 +483,12 @@ select {
     }
     .nh_content-table .nh_item-date {
         margin-bottom: 5px;
+    }
+    .nh_footer {
+        height: 170px;
+    }
+    .nh_donate_button {
+        margin-bottom: 10px;
     }
 }
 @media (max-width: 899px) {
