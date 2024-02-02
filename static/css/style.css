@@ -602,3 +602,8 @@ select {
         min-width: auto;
     }
 }
+@media (max-width: 320px) {
+    .nh_mobile-logo {
+        font-size: 16px;
+    }
+}
