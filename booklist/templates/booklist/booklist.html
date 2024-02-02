@@ -26,22 +26,24 @@
         <a href="{{ book.get_absolute_url }}" class="nh_item-title">
             <h2>{{ book.title }} - {{ book.author_book }}</h2>
         </a>
-        <div class="nh_item-date">
-            <div class="nh_item-date-block">
-                <svg><use xlink:href="#icon-calendar"></use></svg>
-                <span>{{ book.release_date }}</span>
+        <div>
+            <div class="nh_item-date">
+                <div class="nh_item-date-block">
+                    <svg><use xlink:href="#icon-calendar"></use></svg>
+                    <span>{{ book.release_date }}</span>
+                </div>
+                <div class="nh_item-date-block">
+                    <svg><use xlink:href="#icon-folder"></use></svg>
+                    <a href="{{ category.get_absolute_url }}">{{ book.category.first }}</a>
+                </div>
+                <div class="nh_item-date-block">
+                    <svg><use xlink:href="#icon-earth"></use></svg>
+                    <span>{% if book.lang_category == 1 %}русский{% endif %}{% if book.lang_category == 2 %}english{% endif %}</span>
+                </div>
             </div>
-            <div class="nh_item-date-block">
-                <svg><use xlink:href="#icon-folder"></use></svg>
-                <a href="{{ category.get_absolute_url }}">{{ book.category.first }}</a>
-            </div>
-            <div class="nh_item-date-block">
-                <svg><use xlink:href="#icon-earth"></use></svg>
-                <span>{% if book.lang_category == 1 %}русский{% endif %}{% if book.lang_category == 2 %}english{% endif %}</span>
-            </div>
+            <div class="nh_item-description">{% autoescape off %}{{ book.description|truncatewords:10 }}{% endautoescape %}</div>
+            <a href="{{ book.get_absolute_url }}" class="nh_item-url">Перейти ></a>
         </div>
-        <div class="nh_item-description">{% autoescape off %}{{ book.description|truncatewords:10 }}{% endautoescape %}</div>
-        <a href="{{ book.get_absolute_url }}" class="nh_item-url">Перейти ></a>
     </div>
 </div>
 {% endfor %}
