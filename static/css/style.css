@@ -569,6 +569,9 @@ select {
         transition: 0.3s;
         opacity: .4;
     }
+    .nh_footer .nh_donate_button {
+        display: none;
+    }
 }
 @media (max-width: 499px) {
     .nh_content-list-item {
