@@ -1,5 +1,5 @@
 
-ssh root@185.26.120.22
+ssh root@89.23.118.53
 
 
 gmQ525Z5Jx3wbnZg
@@ -8,7 +8,7 @@ gmQ525Z5Jx3wbnZg
 cd /var/www/coderbooks
 
 
-git pull git@github.com:Kotyara12345/coderbooks.git
+git pull
 
 
 sudo systemctl restart gunicorn
