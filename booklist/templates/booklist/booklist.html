@@ -1,8 +1,15 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% load static %}
 <title>{% block title %}CoderBooks учебная литература для программистов{% endblock %} | CoderBooks</title>
 {% block content %} 
+{% get_current_language as current_language %}
+
+{% if current_language == lang %}
 <h1>Книги по программированию и IT</h1>
+{% else %}
+<h1>Books on programming and IT</h1>
+{% endif %}
 <div class="nh_filter js-accordion">
     <div class="nh_button js-accordion-title">Фильтрация</div>
     <div class="js-accordion-body">
