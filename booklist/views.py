@@ -12,6 +12,8 @@ def book_list(request):
     books = Book.objects.all()
     categories = Category.objects.all()
 
+    preferred_language = request.META.get('HTTP_ACCEPT_LANGUAGE')
+    lang = 'ru' if preferred_language.startswith('ru') else 'en'
 
     
     form = BookFilterForm(request.GET)
@@ -56,6 +58,7 @@ def book_list(request):
         'next_url': next_url,
         'page_object': page,
         'form': form,
+        'lang': lang,
     }
     return render(request, 'booklist/booklist.html', context=context)
 
