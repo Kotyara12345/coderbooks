@@ -1,3 +1,4 @@
+{% load i18n %}
 <div class="nh_footer">
     <a href="https://yoomoney.ru/to/410012907398549/0" class="nh_button white nh_donate_button" target="_blank">Пожертвовать</a>
     <div class="nh_social-icons">
@@ -21,10 +22,31 @@
         </a>
     </div>
     <div class="nh_footer-menu">
+        {% get_current_language as current_language %}
+
+        {% if current_language == lang %}
         <a href="/about">О нас</a>
+        {% else %}
+        <a href="/about">About us</a>
+        {% endif %}
+
+        {% if current_language == lang %}
         <a href="/copyright">Правообладателям</a>
+        {% else %}
+        <a href="/copyright">Copyright</a>
+        {% endif %}
+
+        {% if current_language == lang %}
         <a href="/privacy-policy">Политика конфиденциальности</a>
+        {% else %}
+        <a href="/privacy-policy">Privacy policy</a>
+        {% endif %}
+
+        {% if current_language == lang %}
         <a href="/agreement">Пользовательское соглашение</a>
+        {% else %}
+        <a href="/agreement">User agreement</a>
+        {% endif %}
     </div>
     <div class="nh_copyright">
         Copyright © {% now "Y" %} <a href="{% url 'book_list_url' %}">CoderBooks</a>
