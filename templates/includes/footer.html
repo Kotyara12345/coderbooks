@@ -28,7 +28,7 @@
         {% get_current_language as current_language %}
 
         {% if current_language == lang %}
-        <a href="/about">О нас | </a>
+        <a href="/about">| О нас | </a>
         {% else %}
         <a href="/about">About us | </a>
         {% endif %}
@@ -46,9 +46,9 @@
         {% endif %}
 
         {% if current_language == lang %}
-        <a href="/agreement">Пользовательское соглашение</a>
+        <a href="/agreement">Пользовательское соглашение | </a>
         {% else %}
-        <a href="/agreement">User agreement</a>
+        <a href="/agreement">User agreement | </a>
         {% endif %}
     </div>
     <div class="nh_copyright">
