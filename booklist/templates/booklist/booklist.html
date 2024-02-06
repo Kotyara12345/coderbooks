@@ -11,14 +11,14 @@
 <h1>Books on programming and IT</h1>
 {% endif %}
 <div class="nh_filter js-accordion">
-    <div class="nh_button js-accordion-title">Фильтрация</div>
+    <div class="nh_button js-accordion-title">{% if current_language == lang %}Фильтрация{% else %}Filtering{% endif %}</div>
     <div class="js-accordion-body">
         <div class="nh_filter-content">
             <form class="nh_filter-form" method="GET">
                 <label>
                     {% csrf_token %}
                     {{ form.as_p }}
-                <button class="nh_button" type="submit">Фильтровать</button>
+                <button class="nh_button" type="submit">{% if current_language == lang %}Фильтровать{% else %}Filter{% endif %}</button>
             </form>
         </div>
     </div>
@@ -49,7 +49,7 @@
                 </div>
             </div>
             <div class="nh_item-description" style="height: 40px">{% autoescape off %}{{ book.description }}{% endautoescape %}</div>
-            <a href="{{ book.get_absolute_url }}" class="nh_item-url">Перейти ></a>
+            <a href="{{ book.get_absolute_url }}" class="nh_item-url">{% if current_language == lang %}Перейти >{% else %}Go to >{% endif %}</a>
         </div>
     </div>
 </div>
