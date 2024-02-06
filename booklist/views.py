@@ -72,6 +72,8 @@ class BookDetail(ObjectDetailMixin, View):
 def category_detail(request, slug):
     category = Category.objects.get(slug=slug)
     categories = Category.objects.all()
+    preferred_language = request.META.get('HTTP_ACCEPT_LANGUAGE')
+    lang = 'ru' if preferred_language.startswith('ru') else 'en'
     books = Book.objects.filter(category=category)
     if not category:
         return render(request, 'booklist/../templates/404.html', context={})
@@ -121,7 +123,8 @@ def category_detail(request, slug):
         'prev_url1': prev_url1,
         'next_url1': next_url1,
         'paginator1': paginator1,
-        'form': form
+        'form': form,        
+        'lang': lang,
     }
     return render(request, 'booklist/category_detail.html', context=context)
 
