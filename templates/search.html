@@ -5,9 +5,22 @@
 {% endblock %}   
 {% block content %}  
 
-<h1>Поиск по запросу: "{{ question }}"</h1>
+{% get_current_language as current_language %}
+
+{% if current_language == lang %}
+<h1>Поиск по запросу:  "{{ question }}"</h1>
+{% else %}
+<h1>Search by request:  "{{ question }}"</h1>
+{% endif %}
+
 {% if not page_object %} 
-     <div class="alert alert-light" role="alert"><h2>По Вашему запросу "{{ question }}" ничего не найдено, попробуйте изменить запрос</h2></div>
+     <div class="alert alert-light" role="alert"><h2>
+ {% if current_language == lang %}
+По Вашему запросу "{{ question }}" ничего не найдено, попробуйте изменить запрос
+{% else %}
+Nothing was found for your query "{{question }}", try changing the query
+{% endif %} 
+     </h2></div>
 {% endif %} 
 
 {% for book in page_object %}   
