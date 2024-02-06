@@ -28,21 +28,21 @@
         {% get_current_language as current_language %}
 
         {% if current_language == lang %}
-        <a href="/about">О нас</a>
+        <a href="/about">О нас | </a>
         {% else %}
-        <a href="/about">About us</a>
+        <a href="/about">About us | </a>
         {% endif %}
 
         {% if current_language == lang %}
-        <a href="/copyright">Правообладателям</a>
+        <a href="/copyright">Правообладателям | </a>
         {% else %}
-        <a href="/copyright">Copyright</a>
+        <a href="/copyright">Copyright | </a>
         {% endif %}
 
         {% if current_language == lang %}
-        <a href="/privacy-policy">Политика конфиденциальности</a>
+        <a href="/privacy-policy">Политика конфиденциальности | </a>
         {% else %}
-        <a href="/privacy-policy">Privacy policy</a>
+        <a href="/privacy-policy">Privacy policy | </a>
         {% endif %}
 
         {% if current_language == lang %}
