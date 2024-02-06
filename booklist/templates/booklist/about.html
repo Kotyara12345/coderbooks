@@ -1,12 +1,17 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block title %}О проекте CoderBooks{% endblock %}
 {% block description %}
         <meta name="description"
               content="CoderBooks это самая большая и бесплатная библиотека о программировании для начинающего и опытного программиста">
     {% endblock %}
 {% block content %}
- <div class="nh_content-static">
-<h1>О команде CoderBooks</h1><br>
+ <div>
+
+  {% get_current_language as current_language %}
+
+  {% if current_language == lang %}
+  <h1>О команде CoderBooks</h1><br>
     <p>
       Добро пожаловать на сайт CoderBooks!
     </p>
@@ -26,5 +31,29 @@
       С уважением,<br>
       Команда CoderBooks
     </p>
+  {% else %}
+  <h1>About the CoderBooks team</h1><br>
+    <p>
+      Welcome to the CoderBooks website!
+    </p>
+    <p>
+      We started our activity in November 2022 and during this time we have posted more than 1000 PDF books on various programming languages on our resource. Our goal is to provide a wide range of people with access to high-quality programming literature.
+    </p>
+    <p>
+      For the convenience of searching for books on the site, we launched a bot in Telegram. You can use it by visiting our bot at the link: <a href="https://t.me/CoderBooks_bot ">CoderBooks_bot</a>.
+    </p>
+    <p>
+      Our team consists of enthusiasts who share a love of programming. If you have any ideas or suggestions on how to make our resource even better, feel free to email us <a href="mailto:coderbooks@inbox.ru ">coderbooks@inbox.ru </a>. We are always open to feedback and are ready to consider and implement interesting proposals.
+    </p>
+    <p>
+      Thank you for choosing CoderBooks! We strive to make your programming learning experience more convenient and interesting.
+    </p>
+    <p>
+      Sincerely,<br>
+      The CoderBooks team
+    </p>
+  {% endif %}
+
+
   </div>
 {% endblock %}
