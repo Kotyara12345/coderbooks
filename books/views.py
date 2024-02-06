@@ -21,6 +21,8 @@ class SearchView(View):
 
     def get(self, request, *args, **kwargs):
         categories = Category.objects.all()
+        preferred_language = request.META.get('HTTP_ACCEPT_LANGUAGE')
+        lang = 'ru' if preferred_language.startswith('ru') else 'en'
         question = request.GET.get('search')
         context = {
                 'categories': categories,
@@ -60,6 +62,7 @@ class SearchView(View):
                 'next_url': next_url,
                 'page_object': page,
                 'categories': categories,
+                'lang': lang,
 
             }
         return render(request, self.template_name, context=context)
