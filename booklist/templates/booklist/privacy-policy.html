@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block title %}Политика конфиденциальности CoderBooks{% endblock %}
 {% block content %}
  <div class="nh_content-static">
+  {% get_current_language as current_language %}
+
+{% if current_language == lang %}
 <h1>Политика конфиденциальности</h1><br>
     <p>
       Посещая web-ресурс CoderBooks.ru, вы соглашаетесь с описанной ниже политикой конфиденциальности.
@@ -35,5 +39,42 @@
     <p>
       Спасибо за доверие и использование CoderBooks.ru! Мы стремимся обеспечить защиту вашей конфиденциальности и предоставить наилучший опыт использования нашего ресурса.
     </p>
+{% else %}
+<h1>Privacy Policy</h1><br>
+    <p>
+      Visiting a web resource CoderBooks.ru You agree to the privacy policy described below.
+    </p>
+
+    <h3>1. Third-party resources</h3>
+<p>
+      The following third-party resources are used on the site:
+      <ul>
+        <li>Google AdSense, Google Analytics, Google Ad Manager;</li>
+        <li>Yandex.Metrica, the Yandex Advertising Network;</li>
+        <li>Microsoft Clarity.</li>
+      </ul>
+    </p>
+
+    <h3>2. Purposes of collecting and processing personal information</h3>
+<p>
+      We collect and process users' personal information in order to improve the quality of services provided, personalize content, analyze user behavior and ensure data security.
+    </p>
+
+    <h3>3. Protection of personal information</h3>
+<p>
+      The CoderBooks administration takes all possible measures to prevent the illegal use of users' personal data.
+    </p>
+
+    <h3>4. Feedback. Questions and suggestions</h3>
+<p>
+      We are open to questions and suggestions. Contact us by email <a href="mailto:coderbooks@inbox.ru ">coderbooks@inbox.ru </a>.
+    </p>
+
+    <p>
+      Thank you for your trust and use CoderBooks.ru ! We strive to protect your privacy and provide the best possible experience using our resource.
+    </p>
+{% endif %}
+  
+
   </div>
 {% endblock %}
