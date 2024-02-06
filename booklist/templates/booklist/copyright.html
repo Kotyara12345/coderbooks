@@ -1,7 +1,12 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block title %}Правообладателям{% endblock %}
 {% block content %}
  <div class="nh_content-static">
+
+{% get_current_language as current_language %}
+
+{% if current_language == lang %}
 <h1>Информация для правообладателей</h1><br>
     <p>
       Уважаемые правообладатели,
@@ -28,5 +33,34 @@
       The CoderBooks Team<br>
       <a href="mailto:coderbooks@inbox.ru">coderbooks@inbox.ru</a>
     </p>
+{% else %}
+<h1>Information for copyright holders</h1><br>
+    <p>
+      Dear copyright holders,
+    </p>
+    <p>
+      Thank you for your interest in respecting the copyrights of the books presented on our website. We take all measures to ensure that intellectual property rights are respected and are ready to respond immediately to any requests related to copyright infringement.
+    </p>
+    <p>
+      Please provide us with the following information by e-mail at <a href="mailto:coderbooks@inbox.ru ">coderbooks@inbox.ru </a>:
+    </p>
+    <ol>
+      <li>
+        <strong>A document confirming the ownership of the copyright to the book:</strong> Please provide a copy or scanned version of the document certifying your rights to this book. This may be a license agreement, a copyright agreement, or other supporting document.
+      </li>
+      <li>
+        <strong>Link to the book page on our website:</strong> Attach a link to the page where the book you have any questions about is posted. This will help us quickly identify the content and take the necessary measures.
+      </li>
+    </ol>
+    <p>
+      We are committed to complying with copyright laws and are ready to work with you to resolve any issues that arise. Please rest assured that we will take all necessary measures to review your request and take appropriate action as soon as possible.
+    </p>
+    <p>
+      Sincerely,<br>
+      The CoderBooks Team<br>
+      <a href="mailto:coderbooks@inbox.ru">coderbooks@inbox.ru</a>
+    </p>
+{% endif %}
+  
   </div>
 {% endblock %}
