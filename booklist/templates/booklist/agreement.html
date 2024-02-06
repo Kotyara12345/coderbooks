@@ -2,6 +2,10 @@
 {% block title %}Пользовательское соглашение{% endblock %}
 {% block content %}
  <div class="nh_content-static">
+
+{% get_current_language as current_language %}
+
+{% if current_language == lang %}
 <h1>Пользовательское соглашение CoderBooks</h1><br>
 
     <h3>1. Принятие условий</h3>
@@ -37,5 +41,44 @@
     <p>
       Спасибо за использование CoderBooks.ru! Мы стремимся предоставить вам качественный контент и удобный опыт использования.
     </p>
+{% else %}
+<h1>CoderBooks User Agreement</h1><br>
+
+    <h3>1. Acceptance of the terms</h3>
+<p>
+      Visiting and using our website means that you fully agree to the terms of this agreement. If you do not agree with any point, please refrain from using our resource.
+    </p>
+
+    <h3>2. Copyright</h3>
+<p>
+      All materials posted on the website CoderBooks.ru , copyrighted. It is allowed to use the materials for personal and educational purposes, provided that copyright is preserved and a link to the source is indicated.
+    </p>
+
+    <h3>3. User's responsibility</h3>
+<p>
+      The User undertakes not to violate the laws and rules of use of Internet resources when using CoderBooks.ru . In addition, the user is responsible for the security of their credentials and account.
+    </p>
+
+    <h3>4. Information protection and disclaimer of warranties</h3>
+<p>
+      Administration CoderBooks.ru protects information about its visitors, but does not guarantee the complete safety of data in case of force majeure. The user downloads the software (books) at his own risk. The administration checks the books before placing them on the site using the service <a href="https://www.virustotal.com/gui /">VirusTotal</a>.
+    </p>
+
+    <h3>5. Changes and updates</h3>
+<p>
+      Administration CoderBooks.ru reserves the right to make changes and updates to the user agreement without prior notice. Check the agreement page regularly for up-to-date information.
+    </p>
+
+    <h3>6. Contact us</h3>
+<p>
+      If you have any questions or suggestions about the user agreement, please contact us at <a href="mailto:coderbooks@inbox.ru ">coderbooks@inbox.ru </a>.
+    </p>
+
+    <p>
+      Thanks for using CoderBooks.ru ! We strive to provide you with high-quality content and a user-friendly experience.
+    </p>
+{% endif %}
+  
+
   </div>
 {% endblock %}
