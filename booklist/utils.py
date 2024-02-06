@@ -14,12 +14,15 @@ class ObjectDetailMixin:
     form_comments = None
 
     def get(self, request, **kwargs):
+        preferred_language = request.META.get('HTTP_ACCEPT_LANGUAGE')
+        lang = 'ru' if preferred_language.startswith('ru') else 'en'
         obj = get_object_or_404(self.model, slug=kwargs['slug'])
 
 
         context = {
             self.model.__name__.lower(): obj,
             'categories': Category.objects.all(),
+            'lang': lang,
         }
 
         return render(request, self.template, context=context)
