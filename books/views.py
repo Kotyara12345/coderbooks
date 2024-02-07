@@ -22,7 +22,8 @@ class SearchView(View):
     def get(self, request, *args, **kwargs):
         categories = Category.objects.all()
         preferred_language = request.META.get('HTTP_ACCEPT_LANGUAGE')
-        lang = 'ru' if preferred_language.startswith('ru') else 'en'
+        lang = 'ru' if preferred_language.startswith('ru') else 'en' if preferred_language else 'en'
+        #lang = 'ru' if preferred_language.startswith('ru') else 'en'
         question = request.GET.get('search')
         context = {
                 'categories': categories,
@@ -99,7 +100,8 @@ def error_404(request, exception, template_name='404.html'):
 def other_page(request, page):
     categories = Category.objects.all()
     preferred_language = request.META.get('HTTP_ACCEPT_LANGUAGE')
-    lang = 'ru' if preferred_language.startswith('ru') else 'en'
+    lang = 'ru' if preferred_language.startswith('ru') else 'en' if preferred_language else 'en'
+    #lang = 'ru' if preferred_language.startswith('ru') else 'en'
     try:
         template = get_template('booklist/' + page + '.html')
     except TemplateDoesNotExist:
