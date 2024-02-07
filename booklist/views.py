@@ -13,7 +13,7 @@ def book_list(request):
     categories = Category.objects.all()
 
     preferred_language = request.META.get('HTTP_ACCEPT_LANGUAGE')
-        if preferred_language:
+    if preferred_language:
         lang = 'ru' if preferred_language.startswith('ru') else 'en'
     else:
         lang = settings.LANGUAGE_CODE # Используем язык, указанный в настройках Django
