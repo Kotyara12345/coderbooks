@@ -4,6 +4,7 @@ from django.shortcuts import redirect
 
 
 from .models import *
+from django.conf import settings
 
 
 class ObjectDetailMixin:
@@ -15,7 +16,11 @@ class ObjectDetailMixin:
 
     def get(self, request, **kwargs):
         preferred_language = request.META.get('HTTP_ACCEPT_LANGUAGE')
-        lang = 'ru' if preferred_language.startswith('ru') else 'en'
+        if preferred_language:
+            lang = 'ru' if preferred_language.startswith('ru') else 'en'
+        else:
+            lang = settings.LANGUAGE_CODE # Используем язык, указанный в настройках Django
+        #lang = 'ru' if preferred_language.startswith('ru') else 'en'
         obj = get_object_or_404(self.model, slug=kwargs['slug'])
 
 
