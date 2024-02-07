@@ -11,6 +11,8 @@ from django.http import Http404
 from django.http import HttpResponse
 from django.template import TemplateDoesNotExist
 from django.template.loader import get_template
+from django.conf import settings
+
 
 def main_page(request):
     return redirect('/books')
@@ -22,7 +24,10 @@ class SearchView(View):
     def get(self, request, *args, **kwargs):
         categories = Category.objects.all()
         preferred_language = request.META.get('HTTP_ACCEPT_LANGUAGE')
-        lang = 'ru' if preferred_language.startswith('ru') else 'en' if preferred_language else 'en'
+        if preferred_language:
+            lang = 'ru' if preferred_language.startswith('ru') else 'en'
+        else:
+            lang = settings.LANGUAGE_CODE # Используем язык, указанный в настройках Django
         #lang = 'ru' if preferred_language.startswith('ru') else 'en'
         question = request.GET.get('search')
         context = {
@@ -100,7 +105,10 @@ def error_404(request, exception, template_name='404.html'):
 def other_page(request, page):
     categories = Category.objects.all()
     preferred_language = request.META.get('HTTP_ACCEPT_LANGUAGE')
-    lang = 'ru' if preferred_language.startswith('ru') else 'en' if preferred_language else 'en'
+    if preferred_language:
+        lang = 'ru' if preferred_language.startswith('ru') else 'en'
+    else:
+        lang = settings.LANGUAGE_CODE # Используем язык, указанный в настройках Django
     #lang = 'ru' if preferred_language.startswith('ru') else 'en'
     try:
         template = get_template('booklist/' + page + '.html')
