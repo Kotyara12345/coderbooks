@@ -79,7 +79,10 @@ def category_detail(request, slug):
     category = Category.objects.get(slug=slug)
     categories = Category.objects.all()
     preferred_language = request.META.get('HTTP_ACCEPT_LANGUAGE')
-    lang = 'ru' if preferred_language.startswith('ru') else 'en' if preferred_language else 'en'
+    if preferred_language:
+        lang = 'ru' if preferred_language.startswith('ru') else 'en'
+    else:
+        lang = settings.LANGUAGE_CODE # Используем язык, указанный в настройках Django
     #lang = 'ru' if preferred_language.startswith('ru') else 'en'
     books = Book.objects.filter(category=category)
     if not category:
