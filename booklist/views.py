@@ -7,6 +7,8 @@ from django.core.paginator import Paginator
 from .forms import BookFilterForm
 
 from .filters import BookFilter
+from django.conf import settings
+
 # Create your views here.
 def book_list(request):
     books = Book.objects.all()
