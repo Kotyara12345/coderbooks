@@ -13,7 +13,8 @@ def book_list(request):
     categories = Category.objects.all()
 
     preferred_language = request.META.get('HTTP_ACCEPT_LANGUAGE')
-    lang = 'ru' if preferred_language.startswith('ru') else 'en'
+    lang = 'ru' if preferred_language.startswith('ru') else 'en' if preferred_language else 'en'
+    #lang = 'ru' if preferred_language.startswith('ru') else 'en'
 
     
     form = BookFilterForm(request.GET)
