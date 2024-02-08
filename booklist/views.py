@@ -79,7 +79,10 @@ class BookDetail(ObjectDetailMixin, View):
 
 
 def category_detail(request, slug):
-    category = Category.objects.get(slug=slug)
+    try:
+        category = Category.objects.get(slug=slug)
+    except Category.DoesNotExist:
+        return render(request, 'booklist/404.html', context={})
     categories = Category.objects.all()
     preferred_language = request.META.get('HTTP_ACCEPT_LANGUAGE')
     if preferred_language:
