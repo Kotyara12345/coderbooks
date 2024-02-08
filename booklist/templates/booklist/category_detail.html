@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% load static %}
 {% block title %}Скачать книги в pdf по {{ category.title }}{% endblock %}
 
@@ -7,6 +8,7 @@
 {% endblock %}
 
 {% block content %} 
+{% get_current_language as current_language %}
 <h1>{{ category.title }}</h1>
 <div class="nh_content-list">
 {% for book in page_object1 %}
@@ -34,7 +36,7 @@
                 </div>
             </div>
             <div class="nh_item-description" style="height: 40px">{% autoescape off %}{{ book.description }}{% endautoescape %}</div>
-            <a href="{{ book.get_absolute_url }}" class="nh_item-url">Перейти ></a>
+            <a href="{{ book.get_absolute_url }}" class="nh_item-url">{% if current_language == lang %}Перейти >{% else %}Go to >{% endif %}</a>
         </div>
     </div>
 </div>
