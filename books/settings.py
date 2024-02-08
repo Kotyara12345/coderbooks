@@ -26,7 +26,7 @@ SECRET_KEY = '%0(8lsj)k9t4dw@=5gsjir)gog5&g#9-7(bcgg)5s*z@s3w^+5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [ 'coderbooks.ru']
+ALLOWED_HOSTS = [ 'coderbooks.ru', 'www.coderbooks.ru']
 
 
 # Application definition
