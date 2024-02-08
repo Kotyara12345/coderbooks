@@ -1,8 +1,15 @@
+{% load i18n %}
+{% get_current_language as current_language %}
 <aside class="nh_menu nh_toggle-window">
     <div class="nh_menu-content">
-        <a class="nh_menu-logo" href="/">CoderBooks</a>
+        <a class="nh_menu-logo" href="{% url 'book_list_url' %}">CoderBooks</a>
         <form class="nh_search-form" action="#" method="post">
-            <input class="nh_search-input" name="search" placeholder="Поиск">
+         {% if current_language == lang %}
+        <input class="nh_search-input" name="search" placeholder="Поиск">
+        {% else %}
+        <input class="nh_search-input" name="search" placeholder="Search">
+        {% endif %}
+            
             <button class="nh_button-icon nh_search-button" type="submit">
                 <svg><use xlink:href="#icon-search"></use></svg>
             </button>
