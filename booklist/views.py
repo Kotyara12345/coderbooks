@@ -104,8 +104,14 @@ def category_detail(request, slug):
         lang = settings.LANGUAGE_CODE # Используем язык, указанный в настройках Django
     #lang = 'ru' if preferred_language.startswith('ru') else 'en'
     books = Book.objects.filter(category=category)
+
+    context = {
+        'categories': categories,
+        'lang': lang,
+    }
+    
     if not category:
-        return render(request, 'booklist/404.html', context={})
+        return render(request, 'booklist/404.html', context=context)
     
 
 
