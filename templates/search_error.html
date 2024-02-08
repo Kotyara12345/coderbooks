@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block title %}
     Ошибка поиска
 {% endblock %}
 
 {% block content %}
-<h1>Поиск по вашему запросу</h1>
+{% get_current_language as current_language %}
+{% if current_language == lang %}<h1>Поиск по вашему запросу</h1>{% else %}<h1>Search for your query</h1>{% endif %}
+{% if current_language == lang %}<h2> Некорректный или слишком маленький!</h2>{% else %}<h2> Incorrect or too small!</h2>{% endif %}
 <h2> Некорректный или слишком маленький!</h2>
 <br>
 <!-- Yandex.RTB R-A-2223408-8 -->
