@@ -10,7 +10,20 @@ from .filters import BookFilter
 from django.conf import settings
 
 def error_404(request, exception):
-    return render(request, 'booklist/404.html', status=404)
+    categories = Category.objects.all()
+
+    preferred_language = request.META.get('HTTP_ACCEPT_LANGUAGE')
+    if preferred_language:
+        lang = 'ru' if preferred_language.startswith('ru') else 'en'
+    else:
+        lang = settings.LANGUAGE_CODE 
+
+    context = {
+        'categories': categories,
+        'lang': lang,
+    }
+    
+    return render(request, 'booklist/404.html', status=404, context=context)
 
 # Create your views here.
 def book_list(request):
