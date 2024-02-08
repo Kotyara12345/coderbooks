@@ -32,6 +32,7 @@ class SearchView(View):
         question = request.GET.get('search')
         context = {
                 'categories': categories,
+                'lang': lang,
             }
         if not question or len(question) < 3:
             return render(request, 'search_error.html', context=context)
