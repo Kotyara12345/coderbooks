@@ -29,7 +29,13 @@ from django.contrib.auth.views import LogoutView
 from django.urls import reverse_lazy
 from authorization.views import LoginView, register
 
-handler404 = 'books.views.error_404'
+from django.conf.urls import handler404
+from booklist.views import error_404
+
+handler404 = error_404
+
+
+#handler404 = 'books.views.error_404'
 
 sitemaps = {
     # 'articles_category': ArticlesCategorySitemap,
