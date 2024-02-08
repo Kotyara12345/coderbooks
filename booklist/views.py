@@ -92,10 +92,6 @@ class BookDetail(ObjectDetailMixin, View):
 
 
 def category_detail(request, slug):
-    try:
-        category = Category.objects.get(slug=slug)
-    except Category.DoesNotExist:
-        return render(request, 'booklist/404.html', context={})
     categories = Category.objects.all()
     preferred_language = request.META.get('HTTP_ACCEPT_LANGUAGE')
     if preferred_language:
@@ -103,15 +99,20 @@ def category_detail(request, slug):
     else:
         lang = settings.LANGUAGE_CODE # Используем язык, указанный в настройках Django
     #lang = 'ru' if preferred_language.startswith('ru') else 'en'
-    books = Book.objects.filter(category=category)
-
     context = {
         'categories': categories,
         'lang': lang,
     }
     
-    if not category:
+    try:
+        category = Category.objects.get(slug=slug)
+    except Category.DoesNotExist:
         return render(request, 'booklist/404.html', context=context)
+    
+
+    books = Book.objects.filter(category=category)
+
+
     
 
 
