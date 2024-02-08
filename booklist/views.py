@@ -89,7 +89,7 @@ def category_detail(request, slug):
     #lang = 'ru' if preferred_language.startswith('ru') else 'en'
     books = Book.objects.filter(category=category)
     if not category:
-        return render(request, 'booklist/../templates/404.html', context={})
+        return render(request, 'booklist/404.html', context={})
     
 
 
