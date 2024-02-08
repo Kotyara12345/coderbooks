@@ -100,8 +100,8 @@ class Rss(Feed):
 
 #  404 кастом
 
-def error_404(request, exception, template_name='404.html'):
-    return render(request, template_name, status=404)
+def error_404(request, exception):
+    return render(request, '404.html', status=404)
 
 def other_page(request, page):
     categories = Category.objects.all()
