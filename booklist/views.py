@@ -9,6 +9,9 @@ from .forms import BookFilterForm
 from .filters import BookFilter
 from django.conf import settings
 
+def error_404(request, exception):
+    return render(request, '404.html', status=404)
+
 # Create your views here.
 def book_list(request):
     books = Book.objects.all()
