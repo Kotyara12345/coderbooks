@@ -30,6 +30,6 @@ class BookFilterForm(forms.Form):
     ]
 
     
-    author_book = forms.ChoiceField(choices=get_choices, required=False,  widget=forms.Select(attrs={'class': 'form-select'}), label='Автор' if current_language == lang else 'Author')
+    author_book = forms.ChoiceField(choices=get_choices, required=False,  widget=forms.Select(attrs={'class': 'form-select'}), label='Автор')
     lang_category = forms.ChoiceField(required=False, choices=LANG_CHOICES,  widget=forms.Select(attrs={'class': 'form-select'}), label='Выберете язык')
     release_date = forms.ChoiceField(choices=get_choices_date, required=False,  widget=forms.Select(attrs={'class': 'form-select'}), label='Год издания')
