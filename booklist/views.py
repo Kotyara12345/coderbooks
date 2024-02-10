@@ -23,7 +23,7 @@ def error_404(request, exception):
         'lang': lang,
     }
     
-    return render(request, '404.html', status=404, context=context)
+    return render(request, 'booklist/404.html', status=404, context=context)
 
 # Create your views here.
 def book_list(request):
