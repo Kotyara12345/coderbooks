@@ -7,5 +7,6 @@ Disallow: /media/*/*.pdf
 Disallow: /books/?csrfmiddlewaretoken=*
 Disallow: /books/*/?_ym_status-check=*
 Disallow: /books/*/?csrfmiddlewaretoken=*
+Disallow: /books/*/*/?__cf_chl_tk=*
 
 Sitemap: https://coderbooks.ru/sitemaps.xml
