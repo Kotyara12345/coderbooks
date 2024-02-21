@@ -1,6 +1,6 @@
 User-agent: *
 Allow: /
-Disallow: *?*
+Disallow: /*?*
 Disallow: *page*
 Disallow: /search/*
 Disallow: /media/*/*.pdf
