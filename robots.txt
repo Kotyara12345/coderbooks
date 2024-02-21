@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /*?*
-Disallow: *page*
+Disallow: /*page*
 Disallow: /search/*
 Disallow: /media/*/*.pdf
 Disallow: /books/?csrfmiddlewaretoken=*
