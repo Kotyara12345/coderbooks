@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Book",
+    "author": {
+        "@type": "Person",
+        "name": "{{ book.author_book }}"
+    },
+"datePublished": "{{ book.release_date }}",
+"name": "{{ book.title }}"
+}
+</script>
+{% block lang %}{% if book.lang_category == 1 %}<html lang="ru">{% endif %}{% if book.lang_category == 2 %}<html lang="en">{% endif %}{% endblock %}
+{% block title %}
+    {{ book.title }}.{% if book.author_book %} {{ book.author_book|truncatewords:2 }} {% endif %}
+{% if book.release_date %} ({{ book.release_date }}) {% endif %}
+{% endblock %}
+{% block description %}
+	<!-- русский -->
+{% if book.lang_category == 1 %}
+<meta name="description" content="Смотреть, читать и скачать бесплатно книгу &#34;{{ book.title }}.{% if book.author_book %} {{ book.author_book|truncatewords:2 }} {% endif %}
+{% if book.release_date %} ({{ book.release_date }}) {% endif %}&#34; в формате pdf на сайте онлайн библиотеки по программированию CoderBooks.ru">
+{% endif %}
+<!-- русский -->
+<!-- английский -->
+{% if book.lang_category == 2 %}
+<meta name="description" content="Look, read and download a book for free &#34;{{ book.title }}.{% if book.author_book %} {{ book.author_book|truncatewords:2 }} {% endif %}
+{% if book.release_date %} ({{ book.release_date }}) {% endif %}&#34; in the format of PDF on the website of an online library on programming CoderBooks.ru">
+{% endif %}
+<!-- английский -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{ book.title }} {% if book.author_book %} {{ book.author_book|truncatewords:3 }} {% endif %}
+{% if book.release_date %} ({{ book.release_date }}) {% endif %}">
+<meta property="og:url" content="https://coderbooks.ru/{{ book.get_absolute_url }}">
+	<!-- русский -->
+{% if book.lang_category == 1 %}
+<meta property="og:description" content="Смотреть, читать и скачать бесплатно книгу &#34;{{ book.title }}.{% if book.author_book %} {{ book.author_book|truncatewords:2 }} {% endif %}
+{% if book.release_date %} ({{ book.release_date }}) {% endif %}&#34; в формате pdf на сайте онлайн библиотеки по программированию CoderBooks.ru">
+{% endif %}
+<!-- русский -->
+<!-- английский -->
+{% if book.lang_category == 2 %}
+<meta property="og:description" content="Look, read and download a book for free &#34;{{ book.title }}.{% if book.author_book %} {{ book.author_book|truncatewords:2 }} {% endif %}
+{% if book.release_date %} ({{ book.release_date }}) {% endif %}&#34; in the format of PDF on the website of an online library on programming CoderBooks.ru">
+{% endif %}
+<!-- английский -->
+<meta property="og:image" content="https://coderbooks.ru{{ book.image.url }}">
+{% endblock %}
+{% load static %}
+{% block content %}                   
+                
+                    <div class="nh_detail-page">
+                        <h1>{{ author.name }}</h1>
+                        <div class="nh_content-detail">
+                            <div class="nh_detail-image">
+                                <img src="{{ author.image.url }}">
+                            </div>
+                            <div class="nh_detail">
+                            
+                             
+                                <span class="nh_info-title">Биография: </span>
+                                <div class="nh_detail-description">
+                                    {% autoescape off %}
+                                    {{ author.description }}
+                                    {% endautoescape %}
+
+                                <ul class="nh_detail-info">
+
+                                    <li>                                        
+                                        <span class="nh_info-title"><br>Книги:</span>
+                                        {% for books in author.author_books.all %}<br>
+                                        <img src="{{ books.image.url }}" width="50" alt="{{ books.title }}">
+                                        <span class="nh_info-value"><a href="{% url 'book_detail' books.url %}">{{ books.title }}</a> </span>
+                                        {% endfor %}
+                                        
+                                    </li> 
+                                </ul>
+ <!--                            <iframe src="https://yoomoney.ru/quickpay/fundraise/widget?billNumber=Y6PvfAHiLqk.230907&" width="100%" height="480" frameborder="0" allowtransparency="true" scrolling="no"></iframe> -->
+
+                                </div>
+                            </div>
+                        </div>
+                                                                               
+
+ <p>Если вам понравилась эта книга поделитесь ею с друзьями, тем самым вы помогаете нам
+                развиваться и добавлять всё больше интересных и нужным вам книг!</p>
+
+
+
+                            <script src="https://yastatic.net/share2/share.js"></script>
+                            <div class="ya-share2" data-curtain data-color-scheme="blackwhite" data-services="messenger,vkontakte,odnoklassniki,telegram,twitter,viber,whatsapp,moimir,skype,tumblr,linkedin,lj,blogger,reddit,surfingbird"></div>
+                            <br>
+            
+                   
+
+                        </div>
+                                              
+        </div>
+     
+        {% endblock %}
