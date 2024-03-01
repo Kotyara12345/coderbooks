@@ -73,19 +73,20 @@ class Book(models.Model):
     virus_total = models.CharField(max_length=300, blank=True, verbose_name='Virus Total')
     created = models.DateTimeField(auto_now_add=True, null=True)
 
+    def __str__(self):
+        return self.title
+        
     def get_model_name(self):
         return 'Книга'
 
-    def get_absolute_url(self):
-        return reverse('book_detail_url', kwargs={'slug': self.slug})
 
     class Meta:
         verbose_name = 'Книга'
         verbose_name_plural = 'Книги'
         ordering = ['-created']
 
-    def __str__(self):
-        return self.title
+    def get_absolute_url(self):
+        return reverse('book_detail_url', kwargs={'slug': self.slug})
 
 
 class Category(models.Model):
