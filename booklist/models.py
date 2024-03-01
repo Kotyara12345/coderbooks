@@ -16,6 +16,8 @@ class Author(models.Model):
         verbose_name = 'Автор'
         verbose_name_plural = 'Авторы'
 
+    def get_absolute_url(self):
+        return reverse('author_detail', kwargs={'slug': self.url})
 
 
 class Publisher(models.Model):
@@ -29,6 +31,10 @@ class Publisher(models.Model):
 
     class Meta:
         verbose_name = 'Издательство'
+      
+    def get_absolute_url(self):
+        return reverse('publisher_detail', kwargs={'slug': self.url})
+
 
 CATEGORIES = (
     (1, 'Русский'),
