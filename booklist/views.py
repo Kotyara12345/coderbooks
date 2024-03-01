@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import *
 from .utils import *
-from django.views.generic import View
+from django.views.generic import View, ListView, DetailView
 from django.core.paginator import Paginator
 
 from .forms import BookFilterForm
@@ -165,4 +165,13 @@ def category_detail(request, slug):
     return render(request, 'booklist/category_detail.html', context=context)
 
 
+class AuthorDetailView(DetailView):
+    model = Author
+    slug_field = 'url'
+
+
+
+class PublisherDetailView(DetailView):
+    model = Publisher
+    slug_field = 'url'
 
