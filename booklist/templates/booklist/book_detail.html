@@ -62,12 +62,24 @@
                                     <li>
                                         {% if book.lang_category == 1 %}
                                         <span class="nh_info-title">Автор(ы): </span> 
+					{% if book.author_book %}
                                         <span class="nh_info-value">{{ book.author_book }}</span>
+					{% else %}
+					{% for author in book.author.all %}
+                                        <span class="nh_info-value"><a href="{{ author.get_absolute_url }}">{{author.name }}</a></span>
+                                        {% endfor %}
+					{% endif %}
                                         {% endif %}
                                        
                                         {% if book.lang_category == 2 %}
                                         <span class="nh_info-title">Author(s): </span>
+                                        {% if book.author_book %}
                                         <span class="nh_info-value">{{ book.author_book }}</span>
+					{% else %}
+					{% for author in book.author.all %}
+                                        <span class="nh_info-value"><a href="{{ author.get_absolute_url }}">{{author.name }}</a></span>
+                                        {% endfor %}
+					{% endif %}
                                         {% endif %}
                                     </li>
                                     
