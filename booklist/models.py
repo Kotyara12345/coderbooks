@@ -2,6 +2,34 @@ from django.db import models
 from django.shortcuts import reverse
 from ckeditor.fields import RichTextField
 
+
+class Author(models.Model):
+    name = models.CharField(max_length=200, db_index=True, verbose_name='Имя')
+    description = models.TextField(blank=True, db_index=True, verbose_name='Описание')
+    url = models.SlugField(max_length=200, db_index=True, unique=True)
+    image = models.ImageField(upload_to="authors/", null=True, blank=True, verbose_name='Фото автора')
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Автор'
+        verbose_name_plural = 'Авторы'
+
+
+
+class Publisher(models.Model):
+    name = models.CharField(max_length=200, db_index=True, verbose_name='Название')
+    description = models.TextField(blank=True, db_index=True, verbose_name='Описание')
+    url = models.SlugField(max_length=200, db_index=True, unique=True)
+    image = models.ImageField(upload_to="publishers/", null=True, blank=True, verbose_name='Фото бренда')
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Издательство'
+
 CATEGORIES = (
     (1, 'Русский'),
     (2, 'Английский')
@@ -23,8 +51,10 @@ class Book(models.Model):
     title = models.CharField(max_length=200, db_index=True, verbose_name='Название')
     slug = models.SlugField(max_length=200, db_index=True, unique=True, verbose_name='Ссылка')
     author_book = models.CharField(max_length=200, db_index=True, verbose_name='Автор')
+    author = models.ManyToManyField('Author', null=True, blank=True, related_name='author_books', verbose_name='Автор')
     release_date = models.CharField(max_length=200, db_index=True, verbose_name='Год выхода')
     publisher = models.CharField(max_length=200, verbose_name='Издательство')
+    publisher_book = models.ManyToManyField('Publisher', null=True, blank=True, related_name='publisher_books', verbose_name='Издательство')
     book_pages = models.CharField(max_length=200, verbose_name='Количество страниц')
     codes = models.CharField(max_length=200, null=True, blank=True, verbose_name='Исходный код')
     description = RichTextField(blank=True, db_index=True, verbose_name='Описание')
