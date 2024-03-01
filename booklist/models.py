@@ -77,8 +77,7 @@ class Book(models.Model):
         return 'Книга'
 
     def get_absolute_url(self):
-        cat_name = self.category.first().slug
-        return reverse('book_detail_url', kwargs={'slug': self.slug, 'cat_name': cat_name})
+        return reverse('book_detail_url', kwargs={'slug': self.slug})
 
     class Meta:
         verbose_name = 'Книга'
