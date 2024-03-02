@@ -69,7 +69,7 @@
 
                                     <li>                                        
                                         <span class="nh_info-title"><br>Книги:</span>
-                                        {% for books in author.author_books.all %}<br>
+                                        {% for books in author.author_booklist.all %}<br>
                                         <span class="nh_info-value"><a href="{% url 'book_detail' books.url %}">{{ books.title }}</a> </span>
                                         {% endfor %}
                                         
