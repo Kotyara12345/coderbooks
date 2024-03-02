@@ -33,7 +33,7 @@
         <a href="{{ book.get_absolute_url }}" class="nh_item-title">
             <h2>{{ book.title }} - {% if book.author_book %}{{ book.author_book }}
 					{% else %}
-					{% for author in book.author.all %}{{author.name }}{% if not forloop.last %},{% endif %}{% endfor %}
+					{% for author in book.author.all %}{{author.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
 		                        
 					{% endif %}</h2>
         </a>
