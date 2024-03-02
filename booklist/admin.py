@@ -19,6 +19,4 @@ class AuthorAdmin(admin.ModelAdmin):
     prepopulated_fields = {'url': ('name',)}
 
 
-@admin.register(Category)
-class CategoryAdmin(admin.ModelAdmin):
-    prepopulated_fields = {'url': ('name',)}
+
