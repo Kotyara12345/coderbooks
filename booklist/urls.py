@@ -10,7 +10,7 @@ handler404 = error_404
 
 urlpatterns = [
     path('author/<str:slug>/', views.AuthorDetailView.as_view(), name='author_detail'),
-    path('publisher/<str:slug>/', views.AuthorDetailView.as_view(), name='publisher_detail'),
+    path('publisher/<str:slug>/', views.PublisherDetailView.as_view(), name='publisher_detail'),
     path('category/<str:slug>/', category_detail, name='category_detail_url'),
     path('<slug:slug>/', BookDetail.as_view(), name='book_detail_url'),
     path('', book_list, name='book_list_url'),
