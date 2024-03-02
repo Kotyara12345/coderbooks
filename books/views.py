@@ -15,7 +15,7 @@ from django.conf import settings
 
 
 def main_page(request):
-    return redirect('/books')
+    return redirect('/')
 
 
 class SearchView(View):
