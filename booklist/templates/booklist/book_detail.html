@@ -73,7 +73,11 @@
                                         {% endif %}
                                        
                                         {% if book.lang_category == 2 %}
-                                        <span class="nh_info-title">Author(s): </span>
+					{% if book.author.all|length > 1 %} 
+					 <span class="nh_info-title">Authors: </span>  
+					    {% else %}
+                                        <span class="nh_info-title">Author: </span>
+					    {% endif %}
                                         {% if book.author_book %}
                                         <span class="nh_info-value">{{ book.author_book }}</span>
 					{% else %}
