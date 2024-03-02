@@ -31,6 +31,7 @@ class Publisher(models.Model):
 
     class Meta:
         verbose_name = 'Издательство'
+        verbose_name_plural = 'Издательства'
       
     def get_absolute_url(self):
         return reverse('publisher_detail', kwargs={'slug': self.url})
