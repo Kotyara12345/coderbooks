@@ -1,9 +1,5 @@
 {% extends 'base.html' %}
 {% block content %} 
 
-                                        {% for books in publisher_book.all %}<br>
-                                        <span class="nh_info-value"><a href="{% url 'book_detail' books.url %}">{{ books.name }}</a> </span>
-                                        {% endfor %}
-
  <h1>{{ publisher_book.name }}</h1>
  {% endblock %}
