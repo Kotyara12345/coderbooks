@@ -1,15 +1,23 @@
 {% load booklist_tag %}
+{% load i18n %}
+{% get_current_language as current_language %}
 <aside class="nh_menu nh_toggle-window">
     <div class="nh_menu-content">
-        <a class="nh_menu-logo" href="/">CoderBooks</a>
+        <a class="nh_menu-logo" href="{% url 'book_list_url' %}">CoderBooks</a>
         <form class="nh_search-form" action="#" method="post">
-            <input class="nh_search-input" name="search" placeholder="Поиск">
+         {% if current_language == lang %}
+        <input class="nh_search-input" name="search" placeholder="Поиск">
+        {% else %}
+        <input class="nh_search-input" name="search" placeholder="Search">
+        {% endif %}
+            
             <button class="nh_button-icon nh_search-button" type="submit">
                 <svg><use xlink:href="#icon-search"></use></svg>
             </button>
         </form>
-        <ul class="nh_menu-list">            
-       {% get_categories as categories %}
+       
+        <ul class="nh_menu-list">
+            {% get_categories as categories %}
             {% for category in categories %}
             <li class="nh_menu-list-item">
                 <a href="{{ category.get_absolute_url }}">{{ category.title }} </a>
