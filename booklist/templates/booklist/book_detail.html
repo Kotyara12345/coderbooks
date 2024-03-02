@@ -13,7 +13,14 @@
 </script>
 {% block lang %}{% if book.lang_category == 1 %}<html lang="ru">{% endif %}{% if book.lang_category == 2 %}<html lang="en">{% endif %}{% endblock %}
 {% block title %}
-    {{ book.title }}.{% if book.author %} {{ author.name|truncatewords:2 }} {% endif %}
+    {{ book.title }}.
+	
+	{% if book.author_book %}{{ book.author_book }}
+					{% else %}
+					{% for author in book.author.all %}{{author.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
+		                        
+					{% endif %}
+	
 {% if book.release_date %} ({{ book.release_date }}) скачать {% endif %}
 {% endblock %}
 {% block description %}
