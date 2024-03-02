@@ -19,4 +19,9 @@ class AuthorAdmin(admin.ModelAdmin):
     prepopulated_fields = {'url': ('name',)}
 
 
+@admin.register(Publisher)
+class PublisherAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'url': ('name',)}
+
+
 
