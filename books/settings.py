@@ -43,6 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'booklist.apps.BooklistConfig',
     'django_filters',
+    'video.apps.VideoConfig',
+    'articles.apps.ArticlesConfig',
+    'authorization.apps.AuthorizationConfig',
 ]
 
 MIDDLEWARE = [
