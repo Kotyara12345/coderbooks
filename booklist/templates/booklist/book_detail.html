@@ -86,7 +86,7 @@
                                         <span class="nh_info-value">{{ book.author_book }}</span>
 					{% else %}
 					{% for author in book.author.all %}
-                                        <span class="nh_info-value"><a href="{{ author.get_absolute_url }}">{{author.name }}</a></span>
+                                        <span class="nh_info-value"><a href="{{ author.get_absolute_url }}">{{ author.name }}</a></span>
 					{% if not forloop.last %},{% endif %}    
                                         {% endfor %}
 					{% endif %}
@@ -107,8 +107,15 @@
                                     <li>
                                         {% if book.lang_category == 1 %}
                                         <span class="nh_info-title">Издательство: </span>
+
+					{% if book.publisher %}
                                         <span class="nh_info-value">{{ book.publisher }}</span>
+					{% else %}
+					{% for publisher_book in book.publisher_book.all %}
+                                        <span class="nh_info-value"><a href="{{ publisher_book.get_absolute_url }}">{{ publisher_book.name }}</a></span>					    
+                                         {% endfor %}
                                         {% endif %}
+					    
                                         {% if book.lang_category == 2 %}
                                         <span class="nh_info-title">Publisher: </span>
                                         <span class="nh_info-value">{{ book.publisher }}</span>
