@@ -165,13 +165,17 @@ def category_detail(request, slug):
     return render(request, 'booklist/category_detail.html', context=context)
 
 
-class AuthorDetailView(DetailView):
+class AuthorDetailView(DetailView, Category):
     model = Author
     slug_field = 'url'
+    
+    categories = Category.objects.all()
 
 
 
-class PublisherDetailView(DetailView):
+class PublisherDetailView(DetailView, Category):
     model = Publisher
     slug_field = 'url'
+    categories = Category.objects.all()
+    
 
