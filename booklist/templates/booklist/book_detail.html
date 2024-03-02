@@ -79,6 +79,7 @@
 					{% else %}
 					{% for author in book.author.all %}
                                         <span class="nh_info-value"><a href="{{ author.get_absolute_url }}">{{author.name }}</a></span>
+					{% if not forloop.last %},{% endif %}    
                                         {% endfor %}
 					{% endif %}
                                         {% endif %}
