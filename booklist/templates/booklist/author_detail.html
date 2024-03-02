@@ -13,8 +13,7 @@
 </script>
 {% block lang %}{% if book.lang_category == 1 %}<html lang="ru">{% endif %}{% if book.lang_category == 2 %}<html lang="en">{% endif %}{% endblock %}
 {% block title %}
-    {{ book.title }}.{{ author.name }}
-{% if book.release_date %} ({{ book.release_date }}) {% endif %}
+    {{ author.name }}
 {% endblock %}
 {% block description %}
 	<!-- русский -->
