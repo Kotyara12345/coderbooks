@@ -111,7 +111,7 @@
 					{% if book.publisher %}
                                         <span class="nh_info-value">{{ book.publisher }}</span>
 					{% else %}
-					{% for publisher_book in book.publisher_books.all %}
+					{% for publisher_book in book.publisher_book.all %}
                                         <span class="nh_info-value"><a href="{{ publisher_book.get_absolute_url }}">{{ publisher_book.name }}</a></span>					    
                                          {% endfor %}
                                         {% endif %}
