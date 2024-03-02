@@ -54,6 +54,7 @@
                         <h1>{{ author.name }}</h1>
                         <div class="nh_content-detail">
                             <div class="nh_detail-image">
+				    {% if author.image %} <img src="{{ author.image.url }}">{% else %} {% endif %}
                                 <img src="{{ author.image.url }}">
                             </div>
                             <div class="nh_detail">
