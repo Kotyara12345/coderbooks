@@ -1,8 +1,36 @@
 {% extends 'base.html' %}
 {% block title %}
-    {{ publisher_book }}
+    {{ publisher_book.name }}
 {% endblock %}
 {% block content %} 
+                    <div class="nh_detail-page">
+                        <h1>{{ publisher_book.name }}</h1>
+                        <div class="nh_content-detail">
+                            <div class="nh_detail-image">
+				    {% if publisher_book.image %} <img src="{{ publisher_book.image.url }}">{% else %} {% endif %}
+                            </div>
+                            <div class="nh_detail">
+                            
+                             
+                                <span class="nh_info-title">Биография: </span>
+                                <div class="nh_detail-description">
+                                    {% autoescape off %}
+                                    {{ publisher_book.description }}
+                                    {% endautoescape %}
 
- <h1>{{ publisher_book.name }}</h1>
+
+					<br>
+                            <iframe src="https://yoomoney.ru/quickpay/fundraise/widget?billNumber=Y6PvfAHiLqk.230907&" width="100%" height="480" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
+
+                                </div>
+                            </div>
+                        </div>                                                                               
+
+                            <script src="https://yastatic.net/share2/share.js"></script>
+                            <div class="ya-share2" data-curtain data-color-scheme="blackwhite" data-services="messenger,vkontakte,odnoklassniki,telegram,twitter,viber,whatsapp,moimir,skype,tumblr,linkedin,lj,blogger,reddit,surfingbird"></div>
+                            <br>            
+                        </div>
+                                              
+        </div>
+
  {% endblock %}
