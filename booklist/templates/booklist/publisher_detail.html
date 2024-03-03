@@ -4,6 +4,11 @@
 {% endblock %}
 {% block content %} 
                     <div class="nh_detail-page">
+
+    {% for book in object.publisher_books.all %}
+      <li>{{ book.title }}</li>
+    {% endfor %}
+			    
                         <h1>{{ publisher_book.name }}</h1>
                         <div class="nh_content-detail">
                             <div class="nh_detail-image">
