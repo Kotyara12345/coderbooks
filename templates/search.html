@@ -32,7 +32,9 @@ Nothing was found for your query "{{question }}", try changing the query
                             </a>
                             <div class="nh_item-content">
                                 <a href="{{ book.get_absolute_url }}" class="nh_item-title">
-                                    <h2>{{ book.title }} - {{ book.author_book }}</h2>
+                         <h2>{{ book.title }} - {% if book.author_book %}{{ book.author_book }}{% else %}
+					{% for author in book.author.all %}{{author.name }}{% if not forloop.last %}, {% endif %}
+                         {% endfor %}{% endif %}</h2>
                                 </a>
                                 <div class="nh_item-date">
                                     <div class="nh_item-date-block">
