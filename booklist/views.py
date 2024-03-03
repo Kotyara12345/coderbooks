@@ -177,6 +177,6 @@ class AuthorDetailView(DetailView):
 #    slug_field = 'url'
 class PublisherDetailView(View):   
     def get(self, request, pk):
-        publisher_book = Publisher.objects.get(id=pk)
+        publisher_book = Publisher.objects.get(slug=pk)
         return render(request, 'booklist/publisher_detail.html', {'publisher_book': publisher_book})
 
