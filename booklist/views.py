@@ -178,9 +178,9 @@ class AuthorDetailView(DetailView):
 class PublisherDetailView(View):   
     def get(self, request, slug):
         publisher_book = Publisher.objects.get(url=slug)
-
+        categories = Category.objects.all()
+       
         context = {
-            'category': category,
             'categories': categories,
             'publisher_book': publisher_book,
         }
