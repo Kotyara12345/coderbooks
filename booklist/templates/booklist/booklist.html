@@ -10,19 +10,7 @@
 {% else %}
 <h1>Books on programming and IT</h1>
 {% endif %}
-<div class="nh_filter js-accordion">
-    <div class="nh_button js-accordion-title">{% if current_language == lang %}Фильтрация{% else %}Filtering{% endif %}</div>
-    <div class="js-accordion-body">
-        <div class="nh_filter-content">
-            <form class="nh_filter-form" method="GET">
-                <label>
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                <button class="nh_button" type="submit">{% if current_language == lang %}Фильтровать{% else %}Filter{% endif %}</button>
-            </form>
-        </div>
-    </div>
-</div>
+
 <div class="nh_content-list">
 {% for book in page_object %}
 <div class="nh_content-list-item">
