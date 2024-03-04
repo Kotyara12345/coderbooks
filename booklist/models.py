@@ -5,7 +5,7 @@ from ckeditor.fields import RichTextField
 
 class Author(models.Model):
     name = models.CharField(max_length=200, db_index=True, verbose_name='Имя')
-    description = models.TextField(blank=True, db_index=True, verbose_name='Описание')
+    description = RichTextField(blank=True, db_index=True, verbose_name='Описание')
     url = models.SlugField(max_length=200, db_index=True, unique=True)
     image = models.ImageField(upload_to="authors/", null=True, blank=True, verbose_name='Фото автора')
 
@@ -22,7 +22,7 @@ class Author(models.Model):
 
 class Publisher(models.Model):
     name = models.CharField(max_length=200, db_index=True, verbose_name='Название')
-    description = models.TextField(blank=True, db_index=True, verbose_name='Описание')
+    description = RichTextField(blank=True, db_index=True, verbose_name='Описание')
     url = models.SlugField(max_length=200, db_index=True, unique=True)
     image = models.ImageField(upload_to="publishers/", null=True, blank=True, verbose_name='Фото бренда')
 
