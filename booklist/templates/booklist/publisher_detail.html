@@ -27,7 +27,7 @@
                                     <li>                                        
                                         <span class="nh_info-title"><br>Книги:</span>
                                         {% for books in publisher_book.publisher_books.all %}<br>
-                                        <span class="nh_info-value"><a href="{% url 'book_detail_url' books.slug %}">{{ books.title }} - {{ books.author_book }}</a> </span>
+                                        <span class="nh_info-value"><a href="{% url 'book_detail_url' books.slug %}">{{ books.title }} - {{ books.author }}</a> </span>
                                         {% endfor %}
                                         
                                     </li> 
