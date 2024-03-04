@@ -21,7 +21,9 @@
 		                        
 					{% endif %}
 	
-{% if book.release_date %} ({{ book.release_date }}) скачать {% endif %}
+{% if book.release_date %} ({{ book.release_date }}) 
+	{% if book.lang_category == 1 %}скачать{% endif %}{% if book.lang_category == 2 %}download{% endif %}
+	 {% endif %}
 {% endblock %}
 {% block description %}
 	<!-- русский -->
