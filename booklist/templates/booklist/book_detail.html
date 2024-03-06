@@ -173,11 +173,17 @@
 
                                     <div>
 	                                    {% if book.lang_category == 1 %}
-                                        <a href="{{ book.virus_total }}" class="nh_button">Проверить на вирусы</a>
-                                        {% endif %}
+					    {% if book.virus_total %}
+                                         <a href="{{ book.virus_total }}" class="nh_button">Проверить на вирусы</a>
+					    {% else %}					    
+                                            {% endif %}
+                                            {% endif %}
 	                                    {% if book.lang_category == 2 %}
+					    {% if book.virus_total %}
                                         <a href="{{ book.virus_total }}" class="nh_button">Scan for viruses</a>
-                                        {% endif %}
+					    {% else %}
+                                            {% endif %}
+				            {% endif %}
                                     </div>
 
                                     <div>
