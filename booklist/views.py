@@ -173,10 +173,15 @@ class AuthorDetailView(View):
     def get(self, request, slug):
         author = Author.objects.get(url=slug)
         categories = Category.objects.all()
-       
+        preferred_language = request.META.get('HTTP_ACCEPT_LANGUAGE')
+        if preferred_language:
+            lang = 'ru' if preferred_language.startswith('ru') else 'en'
+        else:
+            lang = settings.LANGUAGE_CODE
         context = {
             'categories': categories,
             'author': author,
+            'lang': lang,
         }
         
         return render(request, 'booklist/author_detail.html', context=context)
@@ -192,9 +197,16 @@ class PublisherDetailView(View):
         publisher_book = Publisher.objects.get(url=slug)
         categories = Category.objects.all()
        
+        preferred_language = request.META.get('HTTP_ACCEPT_LANGUAGE')
+        if preferred_language:
+            lang = 'ru' if preferred_language.startswith('ru') else 'en'
+        else:
+            lang = settings.LANGUAGE_CODE
+            
         context = {
             'categories': categories,
             'publisher_book': publisher_book,
+            'lang': lang,
         }
         
         return render(request, 'booklist/publisher_detail.html', context=context)
