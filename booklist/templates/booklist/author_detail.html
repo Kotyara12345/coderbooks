@@ -17,21 +17,19 @@
 <!-- русский -->
 {% get_current_language as current_language %}{% if current_language == lang %}
 Все книги {{ author.name }} скачать бесплатно в pdf
-<!-- русский -->
-<!-- английский -->
 {% else %}
-All books by {{ author.name }} are available for free download in PDF format
 <!-- английский -->
+All books by {{ author.name }} are available for free download in PDF format
 {% endif %}
+<!-- английский -->
 {% endblock %}
 {% block description %}
 <!-- русский -->
 {% get_current_language as current_language %}{% if current_language == lang %}
 <!-- русский -->
 <meta name="description" content="🔝 Список книг автора {{ author.name }}, доступных для чтения бесплатно в формате pdf, биография и интересные факты из жизни на в формате pdf на сайте онлайн библиотеки по программированию CoderBooks.ru">
-<!-- русский -->
-<!-- английский -->
 {% else %}
+<!-- английский -->
 <meta name="description" content="🔝 The list of books by author {{ author.name }}, available for free reading in PDF format, along with biography and interesting facts from life in PDF format, is available on the programming online library website CoderBooks.ru.">
 {% endif %}
 <!-- английский -->
