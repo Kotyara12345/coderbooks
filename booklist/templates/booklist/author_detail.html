@@ -49,8 +49,10 @@ All books by {{ author.name }} are available for free download in PDF format
                         <h1>{{ author.name }}</h1>
                         <div class="nh_content-detail">
                             <div class="nh_detail-image">
-				    {% if author.image %} <img src="{{ author.image.url }}">{% else %} 
-				    {% static 'static/image/no_foto.webp' %}
+				    {% if author.image %}
+				    <img src="{{ author.image.url }}">
+				    {% else %} 
+				    <img src="{% static 'static/image/no_foto.webp' %}">
 				    {% endif %}
                             </div>
                             <div class="nh_detail">
