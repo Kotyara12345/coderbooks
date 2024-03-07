@@ -22,6 +22,7 @@
 {% else %}
 All books by {{ author.name }} are available for free download in PDF format
 <!-- английский -->
+{% endif %}
 {% endblock %}
 {% block description %}
 <!-- русский -->
@@ -34,6 +35,7 @@ All books by {{ author.name }} are available for free download in PDF format
 <meta name="description" content="🔝 The list of books by author {{ author.name }}, available for free reading in PDF format, along with biography and interesting facts from life in PDF format, is available on the programming online library website CoderBooks.ru.">
 {% endif %}
 <!-- английский -->
+{% endblock %}
 <meta property="og:type" content="article">
 <meta property="og:title" content="{{ book.title }} {% if book.author %} {{ book.author|truncatewords:3 }} {% endif %}
 {% if book.release_date %} ({{ book.release_date }}) {% endif %}">
