@@ -13,19 +13,24 @@
 </script>
 {% block lang %}{% if book.lang_category == 1 %}<html lang="ru">{% endif %}{% if book.lang_category == 2 %}<html lang="en">{% endif %}{% endblock %}
 {% block title %}
-    {{ author.name }}
-{% endblock %}
-{% block description %}
-	<!-- русский -->
-{% if book.lang_category == 1 %}
-<meta name="description" content="Смотреть, читать и скачать бесплатно книгу &#34;{{ book.title }}.{% if book.author %} {{ book.author|truncatewords:2 }} {% endif %}
-{% if book.release_date %} ({{ book.release_date }}) {% endif %}&#34; в формате pdf на сайте онлайн библиотеки по программированию CoderBooks.ru">
-{% endif %}
+<!-- русский -->
+{% get_current_language as current_language %}{% if current_language == lang %}
+Все книги {{ author.name }} скачать бесплатно в pdf
 <!-- русский -->
 <!-- английский -->
-{% if book.lang_category == 2 %}
-<meta name="description" content="Look, read and download a book for free &#34;{{ book.title }}.{% if book.author %} {{ book.author|truncatewords:2 }} {% endif %}
-{% if book.release_date %} ({{ book.release_date }}) {% endif %}&#34; in the format of PDF on the website of an online library on programming CoderBooks.ru">
+{% else %}
+All books by {{ author.name }} are available for free download in PDF format
+<!-- английский -->
+{% endblock %}
+{% block description %}
+<!-- русский -->
+{% get_current_language as current_language %}{% if current_language == lang %}
+<!-- русский -->
+<meta name="description" content="🔝 Список книг автора {{ author.name }}, доступных для чтения бесплатно в формате pdf, биография и интересные факты из жизни на в формате pdf на сайте онлайн библиотеки по программированию CoderBooks.ru">
+<!-- русский -->
+<!-- английский -->
+{% else %}
+<meta name="description" content="🔝 The list of books by author {{ author.name }}, available for free reading in PDF format, along with biography and interesting facts from life in PDF format, is available on the programming online library website CoderBooks.ru.">
 {% endif %}
 <!-- английский -->
 <meta property="og:type" content="article">
