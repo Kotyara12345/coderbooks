@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% load i18n %}
 <script type="application/ld+json">
 {
@@ -48,7 +49,9 @@ All books by {{ author.name }} are available for free download in PDF format
                         <h1>{{ author.name }}</h1>
                         <div class="nh_content-detail">
                             <div class="nh_detail-image">
-				    {% if author.image %} <img src="{{ author.image.url }}">{% else %} {% endif %}
+				    {% if author.image %} <img src="{{ author.image.url }}">{% else %} 
+				    {% static 'static/image/no_foto.webp' %}
+				    {% endif %}
                             </div>
                             <div class="nh_detail">
                             
