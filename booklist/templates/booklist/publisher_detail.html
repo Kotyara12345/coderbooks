@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% load i18n %}
 {% block title %}
 {% get_current_language as current_language %}{% if current_language == lang %}
@@ -34,7 +35,9 @@ All books by {{ publisher_book.name }} are available for free download in PDF fo
                         <h1>{{ publisher_book.name }}</h1>
                         <div class="nh_content-detail">
                             <div class="nh_detail-image">
-				    {% if publisher_book.image %} <img src="{{ publisher_book.image.url }}">{% else %} {% endif %}
+				    {% if publisher_book.image %} <img src="{{ publisher_book.image.url }}">{% else %} 
+				    {% static 'static/image/no_foto.webp' %}
+				    {% endif %}
                             </div>
                             <div class="nh_detail">
                             
