@@ -1,6 +1,29 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block title %}
-    {{ publisher_book.name }}
+{% get_current_language as current_language %}{% if current_language == lang %}
+Все книги {{ publisher_book.name }} скачать бесплатно в pdf
+{% else %}
+All books by {{ publisher_book.name }} are available for free download in PDF format
+{% endif %}
+{% block description %}
+{% get_current_language as current_language %}{% if current_language == lang %}
+<meta name="description" content="🔝 Список книг издательства {{ publisher_book.name }}, доступных для чтения бесплатно в формате pdf, биография и интересные факты на сайте онлайн библиотеки по программированию CoderBooks.ru">
+{% else %}
+<meta name="description" content="🔝 The list of books by publishing {{ publisher_book.name }}, available for free reading in PDF format, along with biography and interesting facts, is available on the programming online library website CoderBooks.ru.">
+{% endif %}
+<meta property="og:type" content="article">
+{% get_current_language as current_language %}{% if current_language == lang %}
+<meta property="og:title" content="Все книги {{ publisher_book.name }} скачать бесплатно в pdf">
+{% else %}
+<meta property="og:title" content="All books by {{ publisher_book.name }} are available for free download in PDF format">
+{% endif %}
+<meta property="og:url" content="https://coderbooks.ru/{{ book.get_absolute_url }}">
+{% get_current_language as current_language %}{% if current_language == lang %}
+<meta property="og:description" content="🔝 Список книг издательства {{ publisher_book.name }}, доступных для чтения бесплатно в формате pdf, биография и интересные факты на сайте онлайн библиотеки по программированию CoderBooks.ru">
+{% else %}
+<meta property="og:description" content="🔝 The list of books by publishing {{ publisher_book.name }}, available for free reading in PDF format, along with biography and interesting facts, is available on the programming online library website CoderBooks.ru">
+{% endif %}
 {% endblock %}
 {% block content %} 
                     <div class="nh_detail-page">
@@ -14,8 +37,11 @@
                             </div>
                             <div class="nh_detail">
                             
-                             
-                                <span class="nh_info-title">Информация об издательстве: </span>
+                             {% get_current_language as current_language %}{% if current_language == lang %}
+                                <span class="nh_info-title">Информация об издательстве:</span>
+                             {% else %}
+                                <span class="nh_info-title">Information about the publisher:</span>
+                             {% endif %}
                                 <div class="nh_detail-description">
                                      {% autoescape off %}
                                     {{ publisher_book.description }}
@@ -24,8 +50,12 @@
 					
                                 <ul class="nh_detail-info">
 
-                                    <li>                                        
+                                    <li>
+                             {% get_current_language as current_language %}{% if current_language == lang %}
                                         <span class="nh_info-title"><br>Книги:</span>
+                             {% else %}
+                                        <span class="nh_info-title"><br>Books:</span>
+                             {% endif %}
                                         {% for books in publisher_book.publisher_books.all %}<br>
                                         <span class="nh_info-value"><a href="{% url 'book_detail_url' books.slug %}">{{ books.title }}</a></span>
                                         {% endfor %}
