@@ -29,14 +29,14 @@ All books by {{ publisher_book.name }} are available for free download in PDF fo
 {% endblock %}
 {% block content %} 
                     <div class="nh_detail-page">
-
-
 			    
                         <h1>{{ publisher_book.name }}</h1>
                         <div class="nh_content-detail">
                             <div class="nh_detail-image">
-				    {% if publisher_book.image %} <img src="{{ publisher_book.image.url }}">{% else %} 
-				    {% static 'static/image/no_foto.webp' %}
+				    {% if publisher_book.image %} 
+				    <img src="{{ publisher_book.image.url }}">
+				    {% else %} 
+				    <img src="{% static 'static/image/no_foto.webp' %}">
 				    {% endif %}
                             </div>
                             <div class="nh_detail">
