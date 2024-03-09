@@ -19,6 +19,9 @@ from django.conf.urls.static import static
 from django.conf import settings
 from .views import main_page, SearchView
 
+from django.views.generic.base import RedirectView
+
+
 from django.contrib.sitemaps.views import sitemap
 from books.sitemaps import *
 from django.template.loader import get_template
@@ -48,6 +51,7 @@ sitemaps = {
 }
 
 urlpatterns = [
+    path('books/', RedirectView.as_view(url='/', permanent=True)),
     # path('login/', LoginView.as_view(), name='login_url'),
     # path('logout/', LogoutView.as_view(next_page=reverse_lazy('main_page_url')), name='logout_url'),
     path('rss.xml', Rss(), name='rss_url'),
