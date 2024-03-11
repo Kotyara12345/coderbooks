@@ -51,6 +51,7 @@ sitemaps = {
 }
 
 urlpatterns = [
+    path('sitemaps.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     path('books/', RedirectView.as_view(url='/', permanent=True)),
     # path('login/', LoginView.as_view(), name='login_url'),
     # path('logout/', LogoutView.as_view(next_page=reverse_lazy('main_page_url')), name='logout_url'),
@@ -59,7 +60,7 @@ urlpatterns = [
     path('search/', SearchView.as_view(), name='search_url'),
     #path('', main_page, name='main_page_url'),
     path('', include('booklist.urls')),
-    path('sitemaps.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+     
     path('page/<str:page>/', other_page, name='other'),
     # path('videos/', include('video.urls')),
     # path('articles/', include('articles.urls')),
