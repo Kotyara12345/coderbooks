@@ -1,21 +1,7 @@
 {% extends 'base.html' %}
 
 
-{% block page %}
-    {% block content %}<br>
-        <main role="main">
-            <div class="container">
-                <blockquote class="blockquote text-center"><h1 class="display-1">error 404 </h1></blockquote>
-                   <p class="lead text-center">
-   {{ error_message }}
-</p>
-<p class="lead text-center">Попробуйте перейти на <a href='{% url 'book_list_url' %}'
-                class='text-decoration-none text-reset'><u>главную</u></a> или воспользуйтесь поиском.</p>
-            </div>
-        </main>
-    {% endblock %}
 
-{% endblock %}
 
 
 <!doctype html>
