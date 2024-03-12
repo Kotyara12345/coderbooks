@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
-
+{% load i18n %}
+{% block title %}error 404{% endblock %}
 
 {% block page %}
     {% block content %}<br>
@@ -7,6 +8,25 @@
             <div class="container">
                 <blockquote class="blockquote text-center"><h1 class="display-1">error 404 </h1></blockquote>
 	    </div>
+
+ <div class="nh_content-static">
+
+{% get_current_language as current_language %}
+
+{% if current_language == lang %}
+<h1>Упс, к сожалению вы попали на несуществующую страницу </h1><br>
+    <p>
+      Попробуйте перейти на <a href='{% url 'book_list_url' %}'><u>главную</u></a> или воспользуйтесь поиском.</p>            
+    </p>
+
+{% else %}
+<h1>Oops, unfortunately you got to a non-existent page</h1><br>
+    <p>
+       Try switching to <a href='{% url 'book_list_url' %}'><u>main</u></a> or use the search.</p>   
+    </p>
+
+{% endif %}
+		
     </main>
     {% endblock %}
 {% include 'partner.html' %}
