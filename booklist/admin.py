@@ -25,3 +25,8 @@ class PublisherAdmin(admin.ModelAdmin):
 
 
 
+admin.site.site_title = "CoderBooks"
+admin.site.site_header = "CoderBooks"
+
+
+
