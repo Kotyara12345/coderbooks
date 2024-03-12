@@ -70,7 +70,7 @@ class Book(models.Model):
     category = models.ManyToManyField('Category', related_name='books', verbose_name='Категория')
     lang_category = models.IntegerField(choices=CATEGORIES, default=1, db_index=True, verbose_name='Язык')
     book_file = models.FileField(upload_to=generate_filename, null=True, blank=True, verbose_name='Файл PDF')
-    img_file = models.ImageField(upload_to=generate_filename_jpg, null=True, blank=True, verbose_name='IMG')
+    img_file = models.ImageField(upload_to=generate_filename_jpg, null=True, blank=True, verbose_name='Обложка')
     virus_total = models.CharField(max_length=300, blank=True, verbose_name='Virus Total')
     created = models.DateTimeField(auto_now_add=True, null=True)
 
