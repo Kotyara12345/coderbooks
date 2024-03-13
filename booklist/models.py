@@ -55,11 +55,9 @@ def generate_filename_jpg(instance, filename):
     return "{0}/{1}".format(instance, filename)
 
 
-# Create your models here.
 class Book(models.Model):
     title = models.CharField(max_length=200, db_index=True, verbose_name='Название')
     slug = models.SlugField(max_length=200, db_index=True, unique=True, verbose_name='Ссылка')
-    author_book = models.CharField(max_length=200, blank=True, db_index=True, verbose_name='Автор')
     author = models.ManyToManyField('Author', null=True, blank=True, related_name='author_books', verbose_name='Автор')
     release_date = models.CharField(max_length=200, db_index=True, verbose_name='Год выхода')
     publisher = models.CharField(max_length=200, blank=True, verbose_name='Издательство')
