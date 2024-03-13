@@ -117,24 +117,20 @@
                                         {% if book.lang_category == 1 %}
                                         <span class="nh_info-title">Издательство: </span>
 
-					{% if book.publisher %}
-                                        <span class="nh_info-value">{{ book.publisher }}</span>
-					{% else %}
+
 					{% for publisher_book in book.publisher_book.all %}
                                         <span class="nh_info-value"><a href="{{ publisher_book.get_absolute_url }}">{{ publisher_book.name }}</a></span>					    
                                          {% endfor %}
                                         {% endif %}
-					 {% endif %}   
+ 
 					    
                                         {% if book.lang_category == 2 %}
                                         <span class="nh_info-title">Publisher: </span>
-					{% if book.publisher %}
-                                        <span class="nh_info-value">{{ book.publisher }}</span>
-					{% else %}
+
 					{% for publisher_book in book.publisher_book.all %}
                                         <span class="nh_info-value"><a href="{{ publisher_book.get_absolute_url }}">{{ publisher_book.name }}</a></span>					    
                                          {% endfor %}
-                                        {% endif %}
+
 					 {% endif %}  
                                     </li>
 
