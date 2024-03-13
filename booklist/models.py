@@ -61,7 +61,6 @@ class Book(models.Model):
     author_book = models.CharField(max_length=200, blank=True, db_index=True, verbose_name='Автор')
     author = models.ManyToManyField('Author', null=True, blank=True, related_name='author_books', verbose_name='Автор')
     release_date = models.CharField(max_length=200, db_index=True, verbose_name='Год выхода')
-    publisher = models.CharField(max_length=200, blank=True, verbose_name='Издательство')
     publisher_book = models.ManyToManyField('Publisher', null=True, blank=True, related_name='publisher_books', verbose_name='Издательство')
     book_pages = models.CharField(max_length=200, verbose_name='Количество страниц')
     codes = models.CharField(max_length=200, null=True, blank=True, verbose_name='Исходный код')
