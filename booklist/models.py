@@ -72,7 +72,7 @@ class Book(models.Model):
     book_file = models.FileField(upload_to=generate_filename, null=True, blank=True, verbose_name='Файл PDF')
     img_file = models.ImageField(upload_to=generate_filename_jpg, null=True, blank=True, verbose_name='Обложка')
     virus_total = models.CharField(max_length=300, blank=True, verbose_name='Virus Total')
-    created = models.DateTimeField(auto_now_add=True, null=True)
+    created = models.DateTimeField(auto_now_add=True, null=True, verbose_name='Дата добавления')
 
     def __str__(self):
         return self.title
