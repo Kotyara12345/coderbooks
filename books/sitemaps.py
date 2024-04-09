@@ -1,6 +1,8 @@
 from django.contrib.sitemaps import Sitemap
 
 from booklist.models import Book
+from booklist.models import Author
+from booklist.models import Publisher
 from booklist.models import Category as BookCategory
 from video.models import Course
 from video.models import Category as VideoCategory
@@ -48,6 +50,23 @@ class BookSitemap(Sitemap):
 
     def items(self):
         return Book.objects.all()
+
+
+class AuthorSitemap(Sitemap):
+    changefreq = 'daily'
+    priority = 1.0
+
+    def items(self):
+        return Author.objects.all()
+
+
+class PublisherSitemap(Sitemap):
+    changefreq = 'daily'
+    priority = 1.0
+
+    def items(self):
+        return Publisher.objects.all()
+
 
 
 class BookCategorySitemap(Sitemap):
