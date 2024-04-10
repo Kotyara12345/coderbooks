@@ -43,6 +43,8 @@ handler404 = error_404
 sitemaps = {
     # 'articles_category': ArticlesCategorySitemap,
     # 'video_category': VideoCategorySitemap,
+    'author': Author,
+    'publisher': Publisher,
     'books_category': BookCategorySitemap,
     'books': BookSitemap,
     # 'courses': CourseSitemap,
