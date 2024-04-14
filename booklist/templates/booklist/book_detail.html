@@ -160,10 +160,23 @@
                                 <div class="nh_detail-buttons">
                                     <div>
 	                                    {% if book.lang_category == 1 %}
+					    
+					    {% if book.book_file %}
                                         <a href="{{ book.book_file.url }}" target="_blank" class="nh_button">Скачать</a>
+                                            {% else %}
+                                       <div class="alert alert-warning" role="alert">Файл удалён по требованию правообладателя</div>
+					     {% endif %}
+					    
                                         {% endif %}
+					    
 	                                    {% if book.lang_category == 2 %}
+					    
+					    {% if book.book_file %}
                                         <a href="{{ book.book_file.url }}" target="_blank" class="nh_button">Download</a>
+					    {% else %}
+                                       <div class="alert alert-warning" role="alert">The file was deleted at the request of the copyright holder</div>
+					     {% endif %}
+					    
                                         {% endif %}
                                     </div>
 
