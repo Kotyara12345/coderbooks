@@ -148,11 +148,17 @@
                                     <li>
                                         {% if book.lang_category == 1 %}
                                         <span class="nh_info-title">Размер файла: </span>
+					    {% if book.book_file %}
                                         <span class="nh_info-value">{{ book.book_file.size|filesizeformat }}</span>
+					     {% else %}
+					{% endif %}    
                                         {% endif %}
                                         {% if book.lang_category == 2 %}
                                         <span class="nh_info-title">File Size: </span>
+					    {% if book.book_file %}
                                         <span class="nh_info-value">{{ book.book_file.size|filesizeformat }}</span>
+					{% else %}
+					{% endif %}  
                                         {% endif %}
                                     </li>
 
