@@ -146,42 +146,43 @@
                                     </li>
 
                                     <li>
+					    {% if book.book_file %}
                                         {% if book.lang_category == 1 %}
                                         <span class="nh_info-title">Размер файла: </span>
-					    {% if book.book_file %}
-                                        <span class="nh_info-value">{{ book.book_file.size|filesizeformat }}</span>
-					     {% else %}
-					{% endif %}    
+                                        <span class="nh_info-value">{{ book.book_file.size|filesizeformat }}</span> 
                                         {% endif %}
                                         {% if book.lang_category == 2 %}
                                         <span class="nh_info-title">File Size: </span>
-					    {% if book.book_file %}
+			
                                         <span class="nh_info-value">{{ book.book_file.size|filesizeformat }}</span>
-					{% else %}
-					{% endif %}  
-                                        {% endif %}
+					
+					                {% endif %}  
+                        {% else %}
+                        {% endif %}
                                     </li>
 
-                                </ul>
+                                </ul> 
+                                
+                                {% if book.book_file %}
+
                                 <div class="nh_detail-buttons">
                                     <div>
+
+  
+
 	                                    {% if book.lang_category == 1 %}
 					    
-					    {% if book.book_file %}
+					    
                                         <a href="{{ book.book_file.url }}" target="_blank" class="nh_button">Скачать</a>
-                                            {% else %}
-                                       <div class="alert alert-warning" role="alert">Файл удалён по требованию правообладателя</div>
-					     {% endif %}
+
 					    
                                         {% endif %}
 					    
 	                                    {% if book.lang_category == 2 %}
 					    
-					    {% if book.book_file %}
+
                                         <a href="{{ book.book_file.url }}" target="_blank" class="nh_button">Download</a>
-					    {% else %}
-                                       <div class="alert alert-warning" role="alert">The file was deleted at the request of the copyright holder</div>
-					     {% endif %}
+
 					    
                                         {% endif %}
                                     </div>
@@ -212,6 +213,18 @@
                                         {% endif %}
                                     </div>
                                 </div>
+
+                                {% else %}
+
+                                {% if book.lang_category == 1 %}
+                                <p style="text-align:center"><span style="color:#c0392b">Внимание!!!! Книга удалена по требованию правообладателя!!!!</span></p>
+                                {% endif %}
+                                {% if book.lang_category == 2 %}
+                                <p style="text-align:center"><span style="color:#c0392b">Attention!!!! The book was deleted at the request of the copyright holder!!!!</span></p>
+                                {% endif %}
+
+                  {% endif %}
+
                                 <div class="nh_detail-description">
                                     {% autoescape off %}
                                     {{ book.description }}
