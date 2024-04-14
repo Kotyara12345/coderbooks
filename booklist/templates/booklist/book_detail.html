@@ -173,7 +173,7 @@
 	                                    {% if book.lang_category == 1 %}
 					    
 					    
-                                        <a href="{{ book.book_file.url }}" target="_blank" class="nh_button">Скачать</a>
+                                        <a href="{{ book.book_file.url }}" target="_blank" class="nh_button" download>Скачать</a>
 
 					    
                                         {% endif %}
@@ -181,7 +181,7 @@
 	                                    {% if book.lang_category == 2 %}
 					    
 
-                                        <a href="{{ book.book_file.url }}" target="_blank" class="nh_button">Download</a>
+                                        <a href="{{ book.book_file.url }}" target="_blank" class="nh_button" download>Download</a>
 
 					    
                                         {% endif %}
