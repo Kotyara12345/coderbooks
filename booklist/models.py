@@ -3,6 +3,22 @@ from django.shortcuts import reverse
 from ckeditor.fields import RichTextField
 
 
+
+class Release(models.Model):
+    year = models.PositiveSmallIntegerField(db_index=True, verbose_name='Дата выхода')
+
+    def __str__(self):
+        return self.year
+
+    class Meta:
+        verbose_name = 'Дата'
+        verbose_name_plural = 'Даты'
+
+
+  #  def get_absolute_url(self):
+  #      return reverse('year_detail', kwargs={'slug': self.year})
+
+
 class Author(models.Model):
     name = models.CharField(max_length=200, db_index=True, verbose_name='Имя')
     description = RichTextField(blank=True, db_index=True, verbose_name='Описание')
@@ -60,13 +76,12 @@ class Book(models.Model):
     slug = models.SlugField(max_length=200, db_index=True, unique=True, verbose_name='Ссылка')
     author_book = models.CharField(max_length=200, blank=True, db_index=True, verbose_name='Автор')
     author = models.ManyToManyField('Author', null=True, blank=True, related_name='author_books', verbose_name='Автор')
-    release_date = models.CharField(max_length=200, db_index=True, verbose_name='Год выхода')
+    release_date = models.CharField(max_length=200, blank=True, db_index=True, verbose_name='Год выхода')    
+    release = models.ManyToManyField('Release', null=True, blank=True, related_name='release_books', verbose_name='Дата выхода')
     publisher_book = models.ManyToManyField('Publisher', null=True, blank=True, related_name='publisher_books', verbose_name='Издательство')
     book_pages = models.CharField(max_length=200, verbose_name='Количество страниц')
     codes = models.CharField(max_length=200, null=True, blank=True, verbose_name='Исходный код')
     description = RichTextField(blank=True, db_index=True, verbose_name='Описание')
-    desc_for_find = models.TextField(blank=True, db_index=True, verbose_name='Описание для поиска')
-    keywords = models.CharField(max_length=200, blank=True, verbose_name='Кейвордс')
     category = models.ManyToManyField('Category', related_name='books', verbose_name='Категория')
     lang_category = models.IntegerField(choices=CATEGORIES, default=1, db_index=True, verbose_name='Язык')
     book_file = models.FileField(upload_to=generate_filename, null=True, blank=True, verbose_name='Файл PDF')
