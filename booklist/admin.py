@@ -3,7 +3,7 @@ from .models import Book, Category, Author, Publisher
 
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
-    list_display = ('title', 'lang_category', 'author_book', 'author_list', 'release_date')
+    list_display = ('title', 'lang_category', 'author_book', 'author_list', 'publisher_book', 'release_date')
 
     def author_list(self, obj):
         return ", ".join([author.name for author in obj.author.all()])
@@ -22,11 +22,12 @@ class CategoryAdmin(admin.ModelAdmin):
 @admin.register(Author)
 class AuthorAdmin(admin.ModelAdmin):
     prepopulated_fields = {'url': ('name',)}
-
+    search_fields = ('name')
 
 @admin.register(Publisher)
 class PublisherAdmin(admin.ModelAdmin):
-    prepopulated_fields = {'url': ('name',)}
+    prepopulated_fields = {'url': ('name',)}    
+    search_fields = ('name')
 
 
 
