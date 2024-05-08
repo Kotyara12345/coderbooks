@@ -13,7 +13,7 @@ class Release(models.Model):
     class Meta:
         verbose_name = 'Дата'
         verbose_name_plural = 'Даты'
-        ordering = ['year']
+        ordering = ['-year']
 
   #  def get_absolute_url(self):
   #      return reverse('year_detail', kwargs={'slug': self.year})
