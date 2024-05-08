@@ -5,7 +5,7 @@ from ckeditor.fields import RichTextField
 
 
 class Release(models.Model):
-    year = models.PositiveSmallIntegerField(db_index=True, verbose_name='Дата выхода')
+    year = models.CharField(max_length=4, db_index=True, verbose_name='Дата выхода')
 
     def __str__(self):
         return self.year
