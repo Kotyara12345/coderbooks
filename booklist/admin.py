@@ -13,6 +13,11 @@ class BookAdmin(admin.ModelAdmin):
     def author_list(self, obj):
         return ", ".join([author.name for author in obj.author.all()])
     author_list.short_description = 'Авторы' 
+
+        
+    def release_list(self, obj):
+        return ", ".join([release.name for release in obj.release.all()])
+    release_list.short_description = 'Релиз' 
     
     list_filter = ('created', 'category', 'publisher_book', 'author_book')
     search_fields = ('title', 'description', 'author_book')
