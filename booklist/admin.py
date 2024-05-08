@@ -22,12 +22,12 @@ class CategoryAdmin(admin.ModelAdmin):
 @admin.register(Author)
 class AuthorAdmin(admin.ModelAdmin):
     prepopulated_fields = {'url': ('name',)}
-    search_fields = ('name')
+    #search_fields = ('name')
 
 @admin.register(Publisher)
 class PublisherAdmin(admin.ModelAdmin):
     prepopulated_fields = {'url': ('name',)}    
-    search_fields = ('name')
+    #search_fields = ('name')
 
 
 
