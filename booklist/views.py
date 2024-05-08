@@ -214,7 +214,7 @@ class PublisherDetailView(View):
 
 class ReleaseDetailView(View):
     def get(self, request, slug):
-        release = Release.objects.get(url=slug)
+        release = Release.objects.get(year=slug)
         categories = Category.objects.all()
         preferred_language = request.META.get('HTTP_ACCEPT_LANGUAGE')
         if preferred_language:
