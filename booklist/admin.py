@@ -27,7 +27,7 @@ class AuthorAdmin(admin.ModelAdmin):
 @admin.register(Publisher)
 class PublisherAdmin(admin.ModelAdmin):
     prepopulated_fields = {'url': ('name',)}    
-    #search_fields = ('name')
+    search_fields = ('name',)
 
 
 
