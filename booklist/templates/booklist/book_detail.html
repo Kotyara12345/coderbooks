@@ -21,17 +21,12 @@
 		                        
 					{% endif %}
 
-			                {% if book.release_date %}<span>{{ book.release_date }}</span>
+			                {% if book.release_date %}({{ book.release_date }})
 					{% else %}
-					{% for release in book.release.all %}<span>{{release.year }}</span>{% endfor %}	                        
+					{% for release in book.release.all %}({{release.year }}){% endfor %}	                        
 					{% endif %}
 	
-        {% if book.release_date %} ({{ book.release_date }}) 					
-	{% else %}
-	{% for release in book.release.all %}
-	({{release.year }})
-	{% endfor %}
-	{% endif %}	
+	
 	{% if book.lang_category == 1 %}скачать{% endif %}{% if book.lang_category == 2 %}download{% endif %}
 	 
 {% endblock %}
