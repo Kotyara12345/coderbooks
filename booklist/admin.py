@@ -13,7 +13,9 @@ class BookAdmin(admin.ModelAdmin):
     search_fields = ('title', 'description', 'author_book')
     prepopulated_fields = {'slug': ('title',)}
 
-admin.site.register(Release)
+@admin.register(Release)
+class ReleaseAdmin(admin.ModelAdmin):
+    list_display = ('year')
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
