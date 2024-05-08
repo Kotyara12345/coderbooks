@@ -74,8 +74,7 @@ def generate_filename_jpg(instance, filename):
 class Book(models.Model):
     title = models.CharField(max_length=200, db_index=True, verbose_name='Название')
     slug = models.SlugField(max_length=200, db_index=True, unique=True, verbose_name='Ссылка')
-    author_book = models.CharField(max_length=200, blank=True, db_index=True, verbose_name='Автор')
-    author = models.ManyToManyField('Author', null=True, blank=True, related_name='author_books', verbose_name='Автор')
+    author = models.ManyToManyField('Author', null=True, related_name='author_books', verbose_name='Автор')
     release_date = models.CharField(max_length=200, blank=True, db_index=True, verbose_name='Год выхода')    
     release = models.ManyToManyField('Release', null=True, blank=True, related_name='release_books', verbose_name='Дата выхода')
     publisher_book = models.ManyToManyField('Publisher', null=True, blank=True, related_name='publisher_books', verbose_name='Издательство')
