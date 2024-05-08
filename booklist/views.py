@@ -221,10 +221,30 @@ class ReleaseDetailView(View):
             lang = 'ru' if preferred_language.startswith('ru') else 'en'
         else:
             lang = settings.LANGUAGE_CODE
-        context = {
-            'categories': categories,
-            'release': release,
-            'lang': lang,
+        
+        
+            # Пагинатор начало
+    paginator2 = Paginator(books, 24)
+    page_number1 = request.GET.get('page', default=1)
+    page1 = paginator2.get_page(page_number1)
+    is_paginated1 = page2.has_other_pages()
+
+    if page2.has_previous():
+        prev_url2 = '?page={}'.format(page1.previous_page_number())
+    else:
+        prev_url2 = ''
+
+    if page1.has_next():
+        next_url2 = '?page={}'.format(page1.next_page_number())
+    else:
+        next_url2 = ''
+    # Пагинатор конец
+        
+    context = {
+        'categories': categories,
+        'release': release,
+        'lang': lang,
+        'page_object2': page2,
         }
         
         return render(request, 'booklist/release_detail.html', context=context)
