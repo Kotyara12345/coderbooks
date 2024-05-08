@@ -11,7 +11,7 @@
 {% get_current_language as current_language %}
 <h1>{{ release.year }}</h1>
 <div class="nh_content-list">
-{% for book in page_object1 %}
+{% for book in page_object2 %}
 <div class="nh_content-list-item">
     <a href="{{ book.get_absolute_url }}"class="nh_item-image">
         <img src="{{ book.img_file.url }}">
