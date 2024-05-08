@@ -20,7 +20,7 @@ class BookAdmin(admin.ModelAdmin):
 
 @admin.register(Release)
 class ReleaseAdmin(admin.ModelAdmin):
-    list_display = ('year')
+    list_display = ('year',)
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
