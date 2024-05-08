@@ -21,8 +21,7 @@
         <a href="{{ book.get_absolute_url }}" class="nh_item-title">
             <h2>{{ book.title }} - {% if book.author_book %}{{ book.author_book }}
 					{% else %}
-					{% for author in book.author.all %}{{author.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
-		                        
+					{% for author in book.author.all %}{{author.name }}{% if not forloop.last %}, {% endif %}{% endfor %}	                        
 					{% endif %}</h2>
         </a>
         <div>
@@ -30,13 +29,11 @@
                 <div class="nh_item-date-block">
                     <svg><use xlink:href="#icon-calendar"></use></svg>
                     
-			    {% if book.release_date %}<span>{{ book.release_date }}</span>
+			                {% if book.release_date %}<span>{{ book.release_date }}</span>
 					{% else %}
-					{% for release in book.release.all %}<span>{{release.year }}</span>{% endfor %}
-		                        
+					{% for release in book.release.all %}<span>{{release.year }}</span>{% endfor %}	                        
 					{% endif %}
-			    
-			    
+			    			    
                 </div>
                 <div class="nh_item-date-block">
                     <svg><use xlink:href="#icon-folder"></use></svg>
