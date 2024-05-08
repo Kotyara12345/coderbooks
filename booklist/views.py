@@ -211,3 +211,20 @@ class PublisherDetailView(View):
         
         return render(request, 'booklist/publisher_detail.html', context=context)
 
+
+class ReleaseDetailView(View):
+    def get(self, request, slug):
+        release = Release.objects.get(url=slug)
+        categories = Category.objects.all()
+        preferred_language = request.META.get('HTTP_ACCEPT_LANGUAGE')
+        if preferred_language:
+            lang = 'ru' if preferred_language.startswith('ru') else 'en'
+        else:
+            lang = settings.LANGUAGE_CODE
+        context = {
+            'categories': categories,
+            'release': release,
+            'lang': lang,
+        }
+        
+        return render(request, 'booklist/release_detail.html', context=context)
