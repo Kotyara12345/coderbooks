@@ -3,7 +3,7 @@ from .models import Book, Category, Author, Publisher
 
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
-    list_display = ('title', 'lang_category', 'author_book', 'author_list', 'publisher_book', 'release_date')
+    list_display = ('title', 'lang_category', 'author_book', 'author_list', 'release_date')
 
     def author_list(self, obj):
         return ", ".join([author.name for author in obj.author.all()])
