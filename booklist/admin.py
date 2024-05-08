@@ -19,7 +19,7 @@ class BookAdmin(admin.ModelAdmin):
         return ", ".join([release.name for release in obj.release.all()])
     release_list.short_description = 'Релиз' 
     
-    list_filter = ('created', 'category', 'publisher_book', 'author_book')
+    list_filter = ('created', 'category', 'publisher_book', 'author_list')
     search_fields = ('title', 'description', 'author_book')
     prepopulated_fields = {'slug': ('title',)}
 
