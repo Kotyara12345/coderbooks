@@ -20,10 +20,20 @@
 					{% for author in book.author.all %}{{author.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
 		                        
 					{% endif %}
+
+			                {% if book.release_date %}<span>{{ book.release_date }}</span>
+					{% else %}
+					{% for release in book.release.all %}<span>{{release.year }}</span>{% endfor %}	                        
+					{% endif %}
 	
-{% if book.release_date %} ({{ book.release_date }}) 
+        {% if book.release_date %} ({{ book.release_date }}) 					
+	{% else %}
+	{% for release in book.release.all %}
+	({{release.year }})
+	{% endfor %}
+	{% endif %}	
 	{% if book.lang_category == 1 %}скачать{% endif %}{% if book.lang_category == 2 %}download{% endif %}
-	 {% endif %}
+	 
 {% endblock %}
 {% block description %}
 	<!-- русский -->
