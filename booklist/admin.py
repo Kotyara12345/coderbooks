@@ -15,7 +15,7 @@ class BookAdmin(admin.ModelAdmin):
 
         
     def release_list(self, obj):
-        return ", ".join([release.name for release in obj.release.all()])
+        return ", ".join([release.year for release in obj.release.all()])
     release_list.short_description = 'Релиз' 
     
     list_filter = ('created', 'category', 'publisher_book', 'author')
