@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Book, Category, Author, Publisher
+from .models import Book, Category, Author, Publisher, Release
 
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
@@ -13,6 +13,7 @@ class BookAdmin(admin.ModelAdmin):
     search_fields = ('title', 'description', 'author_book')
     prepopulated_fields = {'slug': ('title',)}
 
+admin.site.register(Release)
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
