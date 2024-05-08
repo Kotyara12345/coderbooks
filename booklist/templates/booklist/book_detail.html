@@ -13,21 +13,16 @@
 </script>
 {% block lang %}{% if book.lang_category == 1 %}<html lang="ru">{% endif %}{% if book.lang_category == 2 %}<html lang="en">{% endif %}{% endblock %}
 {% block title %}
-    {{ book.title }}.
+                                        {{ book.title }}.
 	
-	{% if book.author_book %}{{ book.author_book }}
-					{% else %}
 					{% for author in book.author.all %}{{author.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
 		                        
-					{% endif %}
-
 			                {% if book.release_date %}({{ book.release_date }})
 					{% else %}
 					{% for release in book.release.all %}({{release.year }}){% endfor %}	                        
 					{% endif %}
 	
-	
-	{% if book.lang_category == 1 %}скачать{% endif %}{% if book.lang_category == 2 %}download{% endif %}
+	                                {% if book.lang_category == 1 %}скачать{% endif %}{% if book.lang_category == 2 %}download{% endif %}
 	 
 {% endblock %}
 {% block description %}
@@ -80,14 +75,10 @@
 					    {% else %}
                                         <span class="nh_info-title">Автор: </span>
 					    {% endif %}
-					{% if book.author_book %}
-                                        <span class="nh_info-value">{{ book.author_book }}</span>
-					{% else %}
+
                                     {% for author in book.author.all %}
-                                    <span class="nh_info-value"><a href="{{ author.get_absolute_url }}">{{ author.name }}{% if not forloop.last %}, {% endif %}</a></span>
-                                    
+                                    <span class="nh_info-value"><a href="{{ author.get_absolute_url }}">{{ author.name }}{% if not forloop.last %}, {% endif %}</a></span>                                    
                                     {% endfor %}
-					{% endif %}
                                         {% endif %}
                                        
                                         {% if book.lang_category == 2 %}
@@ -96,14 +87,10 @@
 					    {% else %}
                                         <span class="nh_info-title">Author: </span>
 					    {% endif %}
-                                        {% if book.author_book %}
-                                        <span class="nh_info-value">{{ book.author_book }}</span>
-					{% else %}
+
 					{% for author in book.author.all %}
-                                        <span class="nh_info-value"><a href="{{ author.get_absolute_url }}">{{ author.name }}{% if not forloop.last %}, {% endif %}</a></span>
-					    
+                                        <span class="nh_info-value"><a href="{{ author.get_absolute_url }}">{{ author.name }}{% if not forloop.last %}, {% endif %}</a></span>					    
                                         {% endfor %}
-					{% endif %}
                                         {% endif %}
                                     </li>
                                     
