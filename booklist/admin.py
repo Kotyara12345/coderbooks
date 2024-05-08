@@ -19,7 +19,7 @@ class BookAdmin(admin.ModelAdmin):
     release_list.short_description = 'Релиз' 
     
     list_filter = ('created', 'category', 'publisher_book', 'author', 'release_date')
-    search_fields = ('title', 'description', 'author_book')
+    search_fields = ('title', 'description')
     prepopulated_fields = {'slug': ('title',)}
 
 
