@@ -3,7 +3,7 @@ from .models import Book, Category, Author, Publisher, Release
 
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
-    list_display = ('title', 'lang_category', 'author_list', 'publisher_book_list', 'release_date')
+    list_display = ('title', 'lang_category', 'author_list', 'publisher_book_list', 'release_date', 'release_list')
 
 
     def publisher_book_list(self, obj):
