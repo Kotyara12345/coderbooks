@@ -5,12 +5,6 @@ from .models import Book, Category, Author, Publisher, Release
 class BookAdmin(admin.ModelAdmin):
     list_display = ('title', 'lang_category', 'author_list', 'publisher_book_list', 'release_date', 'release_list')
 
-    
-    list_filter = ('created', 'category', 'publisher_book', 'author_list')
-    search_fields = ('title', 'description', 'author_book')
-    prepopulated_fields = {'slug': ('title',)}
-
-
     def publisher_book_list(self, obj):
         return ", ".join([publisher_book.name for publisher_book in obj.publisher_book.all()])
     publisher_book_list.short_description = 'Издательства' 
@@ -23,6 +17,12 @@ class BookAdmin(admin.ModelAdmin):
     def release_list(self, obj):
         return ", ".join([release.name for release in obj.release.all()])
     release_list.short_description = 'Релиз' 
+    
+    list_filter = ('created', 'category', 'publisher_book', 'author')
+    search_fields = ('title', 'description', 'author_book')
+    prepopulated_fields = {'slug': ('title',)}
+
+
 
 
 
