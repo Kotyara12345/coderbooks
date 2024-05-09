@@ -16,12 +16,12 @@ class SearchView(View):
     template_name = 'search.html'
 
     def get(self, request, *args, **kwargs):
-        categories = Category.objects.all()
+        categories_queryset = Category.objects.all()
         preferred_language = request.META.get('HTTP_ACCEPT_LANGUAGE')
         lang = 'ru' if (preferred_language and preferred_language.startswith('ru')) else 'en'
         question = request.GET.get('search')
         context = {
-            'categories': categories,
+            'categories': categories_queryset,
             'lang': lang,
         }
         if not question or len(question) < 3:
@@ -82,7 +82,7 @@ def error_404(request, exception, template_name='404.html'):
     return render(request, template_name, status=404)
 
 def other_page(request, page):
-    categories = Category.objects.all()
+    categories_queryset = Category.objects.all()
     preferred_language = request.META.get('HTTP_ACCEPT_LANGUAGE')
     lang = 'ru' if (preferred_language and preferred_language.startswith('ru')) else 'en'
     try:
@@ -91,7 +91,7 @@ def other_page(request, page):
         raise Http404
 
     context = {
-        'categories': categories,
+        'categories': categories_queryset,
         'lang': lang,
     }  
     return HttpResponse(template.render(context, request=request))
