@@ -217,34 +217,24 @@ class ReleaseDetailView(View):
         release = Release.objects.get(year=slug)
         categories = Category.objects.all()
         preferred_language = request.META.get('HTTP_ACCEPT_LANGUAGE')
-        if preferred_language:
-            lang = 'ru' if preferred_language.startswith('ru') else 'en'
-        else:
-            lang = settings.LANGUAGE_CODE
+        lang = 'ru' if (preferred_language and preferred_language.startswith('ru')) else settings.LANGUAGE_CODE
         
-        
-            # Пагинатор начало
-    paginator2 = Paginator(books, 24)
-    page_number1 = request.GET.get('page', default=1)
-    page1 = paginator2.get_page(page_number1)
-    is_paginated1 = page2.has_other_pages()
+        paginator = Paginator(books, 24)
+        page_number = request.GET.get('page', default=1)
+        page = paginator.get_page(page_number)
+        is_paginated = page.has_other_pages()
 
-    if page2.has_previous():
-        prev_url2 = '?page={}'.format(page1.previous_page_number())
-    else:
-        prev_url2 = ''
+        prev_url = '?page={}'.format(page.previous_page_number()) if page.has_previous() else ''
+        next_url = '?page={}'.format(page.next_page_number()) if page.has_next() else ''
 
-    if page1.has_next():
-        next_url2 = '?page={}'.format(page1.next_page_number())
-    else:
-        next_url2 = ''
-    # Пагинатор конец
-        
-    context = {
-        'categories': categories,
-        'release': release,
-        'lang': lang,
-        'page_object2': page2,
+        context = {
+            'categories': categories,
+            'release': release,
+            'lang': lang,
+            'page_object': page,
+            'is_paginated': is_paginated,
+            'prev_url': prev_url,
+            'next_url': next_url,
         }
         
-    return render(request, 'booklist/release_detail.html', context=context)
+        return render(request, 'booklist/release_detail.html', context=context)
