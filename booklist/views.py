@@ -247,4 +247,4 @@ class ReleaseDetailView(View):
         'page_object2': page2,
         }
         
-     return render(request, 'booklist/release_detail.html', context=context)
+    return render(request, 'booklist/release_detail.html', context=context)
