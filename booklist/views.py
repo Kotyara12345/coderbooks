@@ -213,7 +213,8 @@ class PublisherDetailView(View):
 
 
 class ReleaseDetailView(View):
-    def get(self, request, slug):
+    def get(self, request, slug):        
+        books = Book.objects.all()
         release = Release.objects.get(year=slug)
         categories = Category.objects.all()
         preferred_language = request.META.get('HTTP_ACCEPT_LANGUAGE')
@@ -228,6 +229,7 @@ class ReleaseDetailView(View):
         next_url = '?page={}'.format(page.next_page_number()) if page.has_next() else ''
 
         context = {
+            'books': books,
             'categories': categories,
             'release': release,
             'lang': lang,
