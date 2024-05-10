@@ -213,8 +213,8 @@ class PublisherDetailView(View):
 
 
 def release_detail(request, slug):      
-    books = Book.objects.all()
     release = Release.objects.get(year=slug)
+    books = Book.objects.filter(release=release)
     categories = Category.objects.all()
     preferred_language = request.META.get('HTTP_ACCEPT_LANGUAGE')
     lang = 'ru' if (preferred_language and preferred_language.startswith('ru')) else settings.LANGUAGE_CODE
