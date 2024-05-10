@@ -30,11 +30,11 @@ All books by {{ publisher_book.name }} are available for free download in PDF fo
 {% block content %} 
                     <div class="nh_detail-page">
 			    
-                        <h1>{{ publisher_book.name }}</h1>
+                        <h1>{{ publisher.name }}</h1>
                         <div class="nh_content-detail">
                             <div class="nh_detail-image">
-				    {% if publisher_book.image %} 
-				    <img src="{{ publisher_book.image.url }}">
+				    {% if publisher.image %} 
+				    <img src="{{ publisher.image.url }}">
 				    {% else %} 
 				    <img src="{% static 'image/no_foto.webp' %}">
 				    {% endif %}
@@ -48,7 +48,7 @@ All books by {{ publisher_book.name }} are available for free download in PDF fo
                              {% endif %}
                                 <div class="nh_detail-description">
                                      {% autoescape off %}
-                                    {{ publisher_book.description }}
+                                    {{ publisher.description }}
                                    {% endautoescape %}
 
 					
@@ -60,7 +60,7 @@ All books by {{ publisher_book.name }} are available for free download in PDF fo
                              {% else %}
                                         <span class="nh_info-title"><br>Books:</span>
                              {% endif %}
-                                        {% for books in publisher_book.publisher_books.all %}<br>
+                                        {% for books in publisher.publisher_books.all %}<br>
                                         <span class="nh_info-value"><a href="{% url 'book_detail_url' books.slug %}">{{ books.title }}</a></span>
                                         {% endfor %}
                                         
