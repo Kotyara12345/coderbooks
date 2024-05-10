@@ -31,7 +31,7 @@
                     
 			                {% if book.release_date %}<span>{{ book.release_date }}</span>
 					{% else %}
-					{% for release in book.release.all %}<span>{{release.year }}</span>{% endfor %}	                        
+					{% for release in book.release.all %}<a href="{{ book.release.first.get_absolute_url }}"><span>{{release.year }}</span></a>{% endfor %}		                        
 					{% endif %}
 			    			    
                 </div>
