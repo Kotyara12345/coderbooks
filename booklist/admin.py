@@ -36,6 +36,11 @@ class AuthorAdmin(admin.ModelAdmin):
     prepopulated_fields = {'url': ('name',)}
     search_fields = ('name', 'description')
 
+    def get_queryset(self, request):
+        queryset = super().get_queryset(request)
+        queryset = queryset.order_by('name')  # Сортировка по полю 'name'
+        return queryset
+
 @admin.register(Publisher)
 class PublisherAdmin(admin.ModelAdmin):
     prepopulated_fields = {'url': ('name',)}    
