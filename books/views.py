@@ -36,9 +36,7 @@ class SearchView(View):
             return render(request, 'search_error.html', context=context)
         if question is not None:
             books = Book.objects.filter(title__icontains=question)
-            courses = Course.objects.filter(title__icontains=question)
-            articles = Articles.objects.filter(title__icontains=question)
-            objects = list(books) + list(courses) + list(articles)
+            objects = list(books)
 
             last_question = '?search=%s' % question
 
