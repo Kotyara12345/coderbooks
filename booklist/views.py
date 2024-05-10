@@ -40,14 +40,33 @@ class LanguageContextMixin:
 class BookView(LanguageContextMixin, ListView):
     model = Book
     queryset = Book.objects.all()
-    paginate_by = 24
+    paginate_by = 1
 
 
 class BookDetail(LanguageContextMixin, DetailView):
     model = Book
     slug_field = 'slug'
 
-
+class CategoryView(LanguageContextMixin, ListView):
+    model = Book
+    template_name = 'booklist/category_detail.html'
+    context_object_name = 'books'
+    category = None
+    paginate_by = 1
+    
+    def get_queryset(self):
+        self.category = Category.objects.get(slug=self.kwargs['slug'])
+        queryset = Book.objects.filter(category__slug=self.category.slug)
+        return queryset
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['category'] = self.category
+        paginator = context['paginator']
+        page_obj = context['page_obj']
+        if paginator.count <= self.paginate_by:
+            context['hide_pagination'] = True
+        return context
 
 
 class AuthorDetailView(LanguageContextMixin, DetailView):
@@ -60,39 +79,14 @@ class PublisherDetailView(LanguageContextMixin, DetailView):
     slug_field = 'url'
 
 
-class BaseDetailView(LanguageContextMixin, ListView):
-    template_name = None
-    context_object_name = None
-    paginate_by = 24
-    key_field = None
-
-    def get_queryset(self):
-        key_value = self.kwargs['slug']
-        filter_kwargs = {self.key_field: key_value}
-        self.instance = self.model.objects.get(**filter_kwargs)
-        queryset = self.related_model.objects.filter(**{self.related_field: getattr(self.instance, self.key_field)})
-        return queryset
-        
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context[self.key_field] = self.instance
-        paginator = context['paginator']
-        if paginator.count <= self.paginate_by:
-            context['hide_pagination'] = True
-        return context
-
-class ReleaseView(BaseDetailView):
+class ReleaseView(LanguageContextMixin, ListView):
     model = Release
     template_name = 'booklist/release_detail.html'
     context_object_name = 'books'
-    key_field = 'year'
-    related_model = Book
-    related_field = 'release__year'
-
-class CategoryView(BaseDetailView):
-    model = Category
-    template_name = 'booklist/category_detail.html'
-    context_object_name = 'books'
-    key_field = 'slug'
-    related_model = Book
-    related_field = 'category__slug'
+    release = None
+    paginate_by = 1
+    
+    def get_queryset(self):
+        self.release = Release.objects.get(year=self.kwargs['slug'])
+        queryset = Book.objects.all().filter(release__year=self.release.year)
+        return queryset
