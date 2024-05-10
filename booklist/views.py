@@ -90,3 +90,12 @@ class ReleaseView(LanguageContextMixin, ListView):
         self.release = Release.objects.get(year=self.kwargs['slug'])
         queryset = Book.objects.all().filter(release__year=self.release.year)
         return queryset
+        
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['release'] = self.release
+        paginator = context['paginator']
+        page_obj = context['page_obj']
+        if paginator.count <= self.paginate_by:
+            context['hide_pagination'] = True
+        return context
