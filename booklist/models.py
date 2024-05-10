@@ -15,8 +15,8 @@ class Release(models.Model):
         verbose_name_plural = 'Даты'
         ordering = ['-year']
 
-  #  def get_absolute_url(self):
-  #      return reverse('year_detail', kwargs={'slug': self.year})
+    def get_absolute_url(self):
+        return reverse('release_books', kwargs={'slug': self.year})
 
 
 class Author(models.Model):
