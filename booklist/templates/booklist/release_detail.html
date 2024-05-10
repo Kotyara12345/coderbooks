@@ -47,12 +47,14 @@
 </div>
 {% endfor %}
 </div>
-{% if paginator2.count2 %}
+
+
+{% if paginator2.count %}
 {% if is_paginated2 %}
 <div class="nh_pagination">
     <a class="nh_pagination-button {% if not prev_url %}disabled{% endif %}" href="{{ prev_url }}"><</a>
 
-    {% for n in page_object2.paginator2.page_range %}
+    {% for n in page_object2.paginator.page_range %}
     {% if page_object2.number == n %}
 
     <a class="nh_pagination-button active" href="?page={{ n }}">{{ n }}</a>
@@ -67,4 +69,5 @@
 </div>
 {% endif %}
 {% endif %}
+
 {% endblock %}
