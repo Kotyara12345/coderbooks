@@ -1,3 +1,4 @@
+{% if not hide_pagination %}
 <div class="nh_pagination">
     <a class="nh_pagination-button {% if not prev_url %}disabled{% endif %}" href="{{ prev_url }}"><</a>
 
@@ -29,3 +30,4 @@
 
     <a class="nh_pagination-button {% if not next_url %}disabled{% endif %}" href="{{ next_url }}">></a>
 </div>
+{% endif %}
