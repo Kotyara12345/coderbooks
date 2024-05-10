@@ -3,7 +3,7 @@ from .models import Book, Category, Author, Publisher, Release
 
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
-    list_display = ('title', 'lang_category', 'author_list', 'publisher_book_list', 'release_date', 'release_list')
+    list_display = ('title', 'lang_category', 'author_list', 'publisher_book_list', 'release_list')
 
     def publisher_book_list(self, obj):
         return ", ".join([publisher_book.name for publisher_book in obj.publisher_book.all()])
@@ -18,7 +18,7 @@ class BookAdmin(admin.ModelAdmin):
         return ", ".join([release.year for release in obj.release.all()])
     release_list.short_description = 'Релиз' 
     
-    list_filter = ('created', 'category', 'publisher_book', 'author', 'release_date')
+    list_filter = ('created', 'category', 'publisher_book', 'author', 'release_list')
     search_fields = ('title', 'description')
     prepopulated_fields = {'slug': ('title',)}
 
