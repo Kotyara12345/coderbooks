@@ -11,7 +11,7 @@
 {% get_current_language as current_language %}
 <h1>{{ release.year }}</h1>
 <div class="nh_content-list">
-{% for book in page_object2 %}
+{% for book in books %}
 <div class="nh_content-list-item">
     <a href="{{ book.get_absolute_url }}"class="nh_item-image">
         <img src="{{ book.img_file.url }}">
@@ -47,27 +47,5 @@
 </div>
 {% endfor %}
 </div>
-
-
-{% if paginator2.count %}
-{% if is_paginated2 %}
-<div class="nh_pagination">
-    <a class="nh_pagination-button {% if not prev_url %}disabled{% endif %}" href="{{ prev_url }}"><</a>
-
-    {% for n in page_object2.paginator.page_range %}
-    {% if page_object2.number == n %}
-
-    <a class="nh_pagination-button active" href="?page={{ n }}">{{ n }}</a>
-    {% elif n > page_object2.number|add:-3 and n < page_object2.number|add:3 %}
-
-    <a class="nh_pagination-button" href="?page={{ n }}">{{ n }}</a>
-
-    {% endif %}{% endfor %}
-
-    <a class="nh_pagination-button {% if not next_url %}disabled{% endif %}" href="{{ next_url }}">></a>
-
-</div>
-{% endif %}
-{% endif %}
-
+{% include 'includes/pagination.html' %}
 {% endblock %}
