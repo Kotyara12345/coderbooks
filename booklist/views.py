@@ -40,7 +40,7 @@ class LanguageContextMixin:
 class BookView(LanguageContextMixin, ListView):
     model = Book
     queryset = Book.objects.all()
-    paginate_by = 1
+    paginate_by = 24
 
 
 class BookDetail(LanguageContextMixin, DetailView):
