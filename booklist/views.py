@@ -225,8 +225,8 @@ class ReleaseDetailView(View):
         page2 = paginator.get_page(page_number)
         is_paginated2 = page2.has_other_pages()
 
-        prev_url = '?page={}'.format(page.previous_page_number()) if page.has_previous() else ''
-        next_url = '?page={}'.format(page.next_page_number()) if page.has_next() else ''
+        prev_url = '?page={}'.format(page2.previous_page_number()) if page2.has_previous() else ''
+        next_url = '?page={}'.format(page2.next_page_number()) if page2.has_next() else ''
 
         context = {
             'books': books,
