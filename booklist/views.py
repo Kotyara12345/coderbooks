@@ -40,7 +40,7 @@ class LanguageContextMixin:
 class BookView(LanguageContextMixin, ListView):
     model = Book
     queryset = Book.objects.all()
-    paginate_by = 1
+    paginate_by = 24
 
 
 class BookDetail(LanguageContextMixin, DetailView):
@@ -52,7 +52,7 @@ class CategoryView(LanguageContextMixin, ListView):
     template_name = 'booklist/category_detail.html'
     context_object_name = 'books'
     category = None
-    paginate_by = 1
+    paginate_by = 24
     
     def get_queryset(self):
         self.category = Category.objects.get(slug=self.kwargs['slug'])
@@ -84,9 +84,18 @@ class ReleaseView(LanguageContextMixin, ListView):
     template_name = 'booklist/release_detail.html'
     context_object_name = 'books'
     release = None
-    paginate_by = 1
+    paginate_by = 24
     
     def get_queryset(self):
         self.release = Release.objects.get(year=self.kwargs['slug'])
         queryset = Book.objects.all().filter(release__year=self.release.year)
         return queryset
+        
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['release'] = self.release
+        paginator = context['paginator']
+        page_obj = context['page_obj']
+        if paginator.count <= self.paginate_by:
+            context['hide_pagination'] = True
+        return context
