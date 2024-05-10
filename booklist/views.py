@@ -212,7 +212,7 @@ class PublisherDetailView(View):
         return render(request, 'booklist/publisher_detail.html', context=context)
 
 
-def releasey_detail(request, slug):      
+def release_detail(request, slug):      
     books = Book.objects.all()
     release = Release.objects.get(year=slug)
     categories = Category.objects.all()
