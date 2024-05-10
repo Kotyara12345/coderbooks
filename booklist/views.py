@@ -56,8 +56,13 @@ class CategoryView(LanguageContextMixin, ListView):
     
     def get_queryset(self):
         self.category = Category.objects.get(slug=self.kwargs['slug'])
-        queryset = Book.objects.all().filter(category__slug=self.category.slug)
+        queryset = Book.objects.filter(category__slug=self.category.slug)
         return queryset
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['category'] = self.category
+        return context
 
 
 class AuthorDetailView(LanguageContextMixin, DetailView):
