@@ -35,7 +35,6 @@ class CategoryAdmin(admin.ModelAdmin):
 class AuthorAdmin(admin.ModelAdmin):
     prepopulated_fields = {'url': ('name',)}
     search_fields = ('name', 'description')
-    list_display = ('name',)
     ordering = ('name',)  # Сортировка по полю 'name'
 
 @admin.register(Publisher)
