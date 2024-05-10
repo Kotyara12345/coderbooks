@@ -2,14 +2,14 @@
 {% load i18n %}
 {% get_current_language as current_language %}
 {% load static %}
-{% block title %}Скачать книги в pdf по {{ book.category.title }}{% endblock %}
+{% block title %}Скачать книги в pdf по {{ category.title }}{% endblock %}
 
 {% block description %}
-    <meta name="description" content="Книги по программированию на {{ book.category.title }} - скачать и читать онлайн бесплатно и без регистрации &#11088;  Основы и руководства &#128285;  Для начинающих и профессионалов.">
+    <meta name="description" content="Книги по программированию на {{ category.title }} - скачать и читать онлайн бесплатно и без регистрации &#11088;  Основы и руководства &#128285;  Для начинающих и профессионалов.">
 {% endblock %}
 
 {% block content %} 
-<h1>{{ book.category.first }}</h1>
+<h1>{{ category.title }}</h1>
 <div class="nh_content-list">
 {% for book in books %}
 <div class="nh_content-list-item">
