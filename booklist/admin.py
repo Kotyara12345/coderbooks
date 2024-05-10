@@ -18,7 +18,7 @@ class BookAdmin(admin.ModelAdmin):
         return ", ".join([release.year for release in obj.release.all()])
     release_list.short_description = 'Релиз' 
     
-    list_filter = ('created', 'category', 'publisher_book', 'author')  # Убрал 'release_list', так как это метод, а не поле модели
+    list_filter = ('created', 'category', 'publisher_book', 'author', 'release')  # Убрал 'release_list', так как это метод, а не поле модели
     search_fields = ('title', 'description')
     prepopulated_fields = {'slug': ('title',)}
 
