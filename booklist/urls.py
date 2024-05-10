@@ -9,7 +9,7 @@ from .views import error_404
 handler404 = error_404
 
 urlpatterns = [
-    path('release/<str:slug>/', releasey_detail, name='release_books'),
+    path('release/<str:slug>/', release_detail, name='release_books'),
     path('author/<str:slug>/', views.AuthorDetailView.as_view(), name='author_detail'),
     path('publisher/<str:slug>/', views.PublisherDetailView.as_view(), name='publisher_detail'),
     path('category/<str:slug>/', category_detail, name='category_detail_url'),
