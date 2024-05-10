@@ -47,16 +47,16 @@
 </div>
 {% endfor %}
 </div>
-{% if paginator1.count %}
-{% if is_paginated1 %}
+{% if paginator2.count %}
+{% if is_paginated2 %}
 <div class="nh_pagination">
     <a class="nh_pagination-button {% if not prev_url %}disabled{% endif %}" href="{{ prev_url }}"><</a>
 
-    {% for n in page_object1.paginator.page_range %}
-    {% if page_object1.number == n %}
+    {% for n in page_object2.paginator.page_range %}
+    {% if page_object2.number == n %}
 
     <a class="nh_pagination-button active" href="?page={{ n }}">{{ n }}</a>
-    {% elif n > page_object1.number|add:-3 and n < page_object1.number|add:3 %}
+    {% elif n > page_object2.number|add:-3 and n < page_object2.number|add:3 %}
 
     <a class="nh_pagination-button" href="?page={{ n }}">{{ n }}</a>
 
