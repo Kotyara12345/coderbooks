@@ -9,9 +9,9 @@
 {% endblock %}
 
 {% block content %} 
-{% for book in books %}
 <h1>{{ book.category.first }}</h1>
 <div class="nh_content-list">
+{% for book in books %}
 <div class="nh_content-list-item">
     <a href="{{ book.get_absolute_url }}"class="nh_item-image">
         <img src="{{ book.img_file.url }}">
