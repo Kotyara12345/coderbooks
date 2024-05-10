@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
+{% load booklist_tag %}
 {% load i18n %}
+{% get_current_language as current_language %}
 {% load static %}
 <title>{% block title %}CoderBooks учебная литература для программистов{% endblock %} | CoderBooks</title>
 {% block content %} 
-{% get_current_language as current_language %}
 
 {% if current_language == lang %}
 <h1>Книги по программированию и IT</h1>
@@ -12,7 +13,7 @@
 {% endif %}
 
 <div class="nh_content-list">
-{% for book in page_object %}
+{% for book in book_list %}
 <div class="nh_content-list-item">
     <a href="{{ book.get_absolute_url }}"class="nh_item-image">
         <img src="{{ book.img_file.url }}">
@@ -29,10 +30,9 @@
                 <div class="nh_item-date-block">
                     <svg><use xlink:href="#icon-calendar"></use></svg>
                     
-			                {% if book.release_date %}<span>{{ book.release_date }}</span>
-					{% else %}
-					{% for release in book.release.all %}<a href="{{ book.release.first.get_absolute_url }}"><span>{{release.year }}</span></a>{% endfor %}		                        
-					{% endif %}
+
+					{% for release in book.release.all %}<a href="{{ book.release.first.get_absolute_url }}"><span>{{release.year }}</span></a>{% endfor %}	                        
+
 			    			    
                 </div>
                 <div class="nh_item-date-block">
@@ -51,23 +51,7 @@
 </div>
 {% endfor %}
 </div>
-{% if is_paginated %}
-<div class="nh_pagination">
-    <a class="nh_pagination-button {% if not prev_url %}disabled{% endif %}" href="{{ prev_url }}"><</a>
 
-    {% for n in page_object.paginator.page_range %}
-    {% if page_object.number == n %}
-
-    <a class="nh_pagination-button active" href="?page={{ n }}">{{ n }}</a>
-    {% elif n > page_object.number|add:-3 and n < page_object.number|add:3 %}
-
-    <a class="nh_pagination-button" href="?page={{ n }}">{{ n }}</a>
-
-    {% endif %}{% endfor %}
-
-    <a class="nh_pagination-button {% if not next_url %}disabled{% endif %}" href="{{ next_url }}">></a>
-
-</div>
-{% endif %}
+{% include 'includes/pagination.html' %}
 
 {% endblock %}
