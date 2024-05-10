@@ -1,6 +1,4 @@
 from django.shortcuts import render, redirect
-from video.models import Course
-from articles.models import Articles
 from booklist.models import Book
 from booklist.models import Category
 
