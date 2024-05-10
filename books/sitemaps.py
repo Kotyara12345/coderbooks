@@ -4,44 +4,8 @@ from booklist.models import Book
 from booklist.models import Author
 from booklist.models import Publisher
 from booklist.models import Category as BookCategory
-from video.models import Course
-from video.models import Category as VideoCategory
-from articles.models import Articles
-from articles.models import Category as ArticlesCategory
 
 from django.shortcuts import reverse
-
-
-class ArticleSitemap(Sitemap):
-    changefreq = 'daily'
-    priority = 0.5
-
-    def items(self):
-        return Articles.objects.all()
-
-
-class ArticlesCategorySitemap(Sitemap):
-    changefreq = 'daily'
-    priority = 0.5
-
-    def items(self):
-        return ArticlesCategory.objects.all()
-
-
-class CourseSitemap(Sitemap):
-    changefreq = 'daily'
-    priority = 0.5
-
-    def items(self):
-        return Course.objects.all()
-
-
-class VideoCategorySitemap(Sitemap):
-    changefreq = 'daily'
-    priority = 0.5
-
-    def items(self):
-        return VideoCategory.objects.all()
 
 
 class BookSitemap(Sitemap):
