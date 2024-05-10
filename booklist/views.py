@@ -212,31 +212,30 @@ class PublisherDetailView(View):
         return render(request, 'booklist/publisher_detail.html', context=context)
 
 
-class ReleaseDetailView(View):
-    def get(self, request, slug):        
-        books = Book.objects.all()
-        release = Release.objects.get(year=slug)
-        categories = Category.objects.all()
-        preferred_language = request.META.get('HTTP_ACCEPT_LANGUAGE')
-        lang = 'ru' if (preferred_language and preferred_language.startswith('ru')) else settings.LANGUAGE_CODE
+def releasey_detail(request, slug):      
+    books = Book.objects.all()
+    release = Release.objects.get(year=slug)
+    categories = Category.objects.all()
+    preferred_language = request.META.get('HTTP_ACCEPT_LANGUAGE')
+    lang = 'ru' if (preferred_language and preferred_language.startswith('ru')) else settings.LANGUAGE_CODE
         
-        paginator = Paginator(books, 24)
-        page_number = request.GET.get('page', default=1)
-        page2 = paginator.get_page(page_number)
-        is_paginated2 = page2.has_other_pages()
+    paginator = Paginator(books, 24)
+    page_number = request.GET.get('page', default=1)
+    page2 = paginator.get_page(page_number)
+    is_paginated2 = page2.has_other_pages()
 
-        prev_url = '?page={}'.format(page2.previous_page_number()) if page2.has_previous() else ''
-        next_url = '?page={}'.format(page2.next_page_number()) if page2.has_next() else ''
+    prev_url = '?page={}'.format(page2.previous_page_number()) if page2.has_previous() else ''
+    next_url = '?page={}'.format(page2.next_page_number()) if page2.has_next() else ''
 
-        context = {
-            'books': books,
-            'categories': categories,
-            'release': release,
-            'lang': lang,
-            'page_object2': page2,
-            'is_paginated2': is_paginated2,
-            'prev_url': prev_url,
-            'next_url': next_url,
-        }
+    context = {
+        'books': books,
+        'categories': categories,
+        'release': release,
+        'lang': lang,
+        'page_object2': page2,
+        'is_paginated2': is_paginated2,
+        'prev_url': prev_url,
+        'next_url': next_url,
+    }
         
-        return render(request, 'booklist/release_detail.html', context=context)
+    return render(request, 'booklist/release_detail.html', context=context)
