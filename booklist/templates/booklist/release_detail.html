@@ -33,7 +33,7 @@
                 </div>
                 <div class="nh_item-date-block">
                     <svg><use xlink:href="#icon-folder"></use></svg>
-                    <a href="{{ category.get_absolute_url }}">{{ book.category.first }}</a>
+                    {% for category in book.category.all %}<a href="{{ category.get_absolute_url }}">{{ book.category.first }}</a>{% endfor %}
                 </div>
                 <div class="nh_item-date-block">
                     <svg><use xlink:href="#icon-earth"></use></svg>
