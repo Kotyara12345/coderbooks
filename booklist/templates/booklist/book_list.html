@@ -16,7 +16,7 @@
 {% for book in book_list %}
 <div class="nh_content-list-item">
     <a href="{{ book.get_absolute_url }}"class="nh_item-image">
-        <img src="{{ book.img_file.url }}">
+        <img src="{{ book.img_file.url }}" alt="{{ book.title }}">
     </a>
     <div class="nh_item-content">
         <a href="{{ book.get_absolute_url }}" class="nh_item-title">
