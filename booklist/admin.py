@@ -8,15 +8,17 @@ class BookAdmin(admin.ModelAdmin):
     def publisher_book_list(self, obj):
         return ", ".join([publisher_book.name for publisher_book in obj.publisher_book.all()])
     publisher_book_list.short_description = 'Издательства' 
+    publisher_book_list.admin_order_field = 'publisher_book__name'
     
     def author_list(self, obj):
         return ", ".join([author.name for author in obj.author.all()])
     author_list.short_description = 'Авторы' 
-
+    author_list.admin_order_field = 'author__name'
         
     def release_list(self, obj):
         return ", ".join([release.year for release in obj.release.all()])
     release_list.short_description = 'Релиз' 
+    release_list.admin_order_field = 'release__year'
     
     list_filter = ('created', 'category', 'publisher_book', 'author', 'release')  # Убрал 'release_list', так как это метод, а не поле модели
     search_fields = ('title', 'description')
