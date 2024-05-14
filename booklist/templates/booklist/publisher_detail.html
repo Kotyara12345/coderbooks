@@ -3,9 +3,9 @@
 {% load i18n %}
 {% block title %}
 {% get_current_language as current_language %}{% if current_language == lang %}
-Все книги {{ publisher_book.name }} скачать бесплатно в pdf
+Все книги {{ publisher.name }} скачать бесплатно в pdf
 {% else %}
-All books by {{ publisher_book.name }} are available for free download in PDF format
+All books by {{ publisher.name }} are available for free download in PDF format
 {% endif %}
 {% endblock %}
 {% block description %}
