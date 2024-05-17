@@ -6,10 +6,8 @@ class BookAdmin(admin.ModelAdmin):
     list_display = ('title', 'lang_category', 'author_list', 'publisher_book_list', 'release_list', 'book_file', 'img_file')
 
 
-    filter_horizontal = ('book_file','img_file',)
     
     def delete_model(self, request, obj):
-        obj.img_file.delete()
         obj.book_file.delete()
         obj.delete()
 
