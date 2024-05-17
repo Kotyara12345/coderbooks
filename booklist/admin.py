@@ -5,6 +5,9 @@ from .models import Book, Category, Author, Publisher, Release
 class BookAdmin(admin.ModelAdmin):
     list_display = ('title', 'lang_category', 'author_list', 'publisher_book_list', 'release_list')
 
+
+    filter_horizontal = ('book_file','img_file',)
+    
     def publisher_book_list(self, obj):
         return ", ".join([publisher_book.name for publisher_book in obj.publisher_book.all()])
     publisher_book_list.short_description = 'Издательства' 
