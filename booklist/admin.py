@@ -3,9 +3,9 @@ from .models import Book, Category, Author, Publisher, Release
 
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
-    list_display = ('title', 'lang_category', 'author_list', 'publisher_book_list', 'release_list', 'book_file', 'img_file')
+    list_display = ('title', 'lang_category', 'author_list', 'publisher_book_list', 'release_list')
 
-
+    fields = (('title', 'slug'), ('author', 'release', ' publisher_book', 'category'), 'lang_category', 'description', 'book_pages', 'codes', 'book_file', 'img_file', 'virus_total')
     
     def delete_model(self, request, obj):
         obj.book_file.delete()
