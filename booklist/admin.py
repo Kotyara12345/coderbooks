@@ -3,10 +3,16 @@ from .models import Book, Category, Author, Publisher, Release
 
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
-    list_display = ('title', 'lang_category', 'author_list', 'publisher_book_list', 'release_list')
+    list_display = ('title', 'lang_category', 'author_list', 'publisher_book_list', 'release_list', 'book_file', 'img_file')
 
 
     filter_horizontal = ('book_file','img_file',)
+    
+    def delete_model(self, request, obj):
+        obj.img_file.delete()
+        obj.book_file.delete()
+        obj.delete()
+
     
     def publisher_book_list(self, obj):
         return ", ".join([publisher_book.name for publisher_book in obj.publisher_book.all()])
