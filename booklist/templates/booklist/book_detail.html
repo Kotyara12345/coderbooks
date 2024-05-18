@@ -14,22 +14,22 @@
 {% block description %}
     <!-- русский -->
     {% if book.lang_category == 1 %}
-        <meta name="description" content="Смотреть, читать и скачать бесплатно книгу &#34;{{ book.title }}.{% if book.author_book %} {{ author.name }} {% endif %}{% if book.release_date %} ({{release.year }}) {% endif %}&#34; в формате pdf на сайте онлайн библиотеки по программированию CoderBooks.ru">
+        <meta name="description" content="Смотреть, читать и скачать бесплатно книгу &#34;{{ book.title }}.{% for author in book.author.all %}{{author.name }}{% if not forloop.last %}, {% endif %}{% endfor %} {% for release in book.release.all %}({{release.year }}){% endfor %} &#34; в формате pdf на сайте онлайн библиотеки по программированию CoderBooks.ru">
     {% endif %}
     <!-- английский -->
     {% if book.lang_category == 2 %}
-        <meta name="description" content="Look, read and download a book for free &#34;{{ book.title }}.{% if book.author_book %} {{ author.name }} {% endif %}{% if book.release_date %} ({{release.year }}) {% endif %}&#34; in the format of PDF on the website of an online library on programming CoderBooks.ru">
+        <meta name="description" content="Look, read and download a book for free &#34;{{ book.title }}. {% for author in book.author.all %}{{author.name }}{% if not forloop.last %}, {% endif %}{% endfor %} {% for release in book.release.all %}({{release.year }}){% endfor %} &#34; in the format of PDF on the website of an online library on programming CoderBooks.ru">
     {% endif %}
     <meta property="og:type" content="article">
     <meta property="og:title" content="{{ book.title }} {% for author in book.author.all %}{{ author.name }}{% if not forloop.last %}, {% endif %}{% endfor %} {% for release in book.release.all %}({{ release.year }}){% endfor %}">
     <meta property="og:url" content="https://coderbooks.ru/{{ book.get_absolute_url }}">
     <!-- русский -->
     {% if book.lang_category == 1 %}
-        <meta property="og:description" content="Смотреть, читать и скачать бесплатно книгу &#34;{{ book.title }}.{% if book.author_book %} {{ author.name }} {% endif %}{% if book.release_date %} ({{ release.year }}) {% endif %}&#34; в формате pdf на сайте онлайн библиотеки по программированию CoderBooks.ru">
+        <meta property="og:description" content="Смотреть, читать и скачать бесплатно книгу &#34;{{ book.title }}. {% for author in book.author.all %}{{author.name }}{% if not forloop.last %}, {% endif %}{% endfor %} {% for release in book.release.all %}({{release.year }}){% endfor %} &#34; в формате pdf на сайте онлайн библиотеки по программированию CoderBooks.ru">
     {% endif %}
     <!-- английский -->
     {% if book.lang_category == 2 %}
-        <meta property="og:description" content="Look, read and download a book for free &#34;{{ book.title }}.{% if book.author_book %} {{ author.name }} {% endif %}{% if book.release_date %} ({{ release.year }}) {% endif %}&#34; in the format of PDF on the website of an online library on programming CoderBooks.ru">
+        <meta property="og:description" content="Look, read and download a book for free &#34;{{ book.title }}. {% for author in book.author.all %}{{author.name }}{% if not forloop.last %}, {% endif %}{% endfor %} {% for release in book.release.all %}({{release.year }}){% endfor %} &#34; in the format of PDF on the website of an online library on programming CoderBooks.ru">
     {% endif %}
     <meta property="og:image" content="https://coderbooks.ru{{ book.img_file.url }}">
 {% endblock %}
