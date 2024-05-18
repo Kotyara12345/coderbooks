@@ -1,13 +1,13 @@
 {
   "background_color": "#ffffff",
-  "description": "CoderBooks это самая большая и бесплатная библиотека для начинающего и опытного программиста",
+  "description": "CoderBooks - это самая большая и бесплатная библиотека для начинающего и опытного программиста",
   "dir": "ltr",
   "display": "standalone",
   "name": "CoderBooks учебная литература для программистов|CoderBooks",
   "orientation": "any",
-  "scope": "https://coderbooks.ru/books/",
+  "scope": "https://coderbooks.ru/",
   "short_name": "CoderBooks",
-  "start_url": "https://coderbooks.ru/books/",
+  "start_url": "https://coderbooks.ru/",
   "theme_color": "#343a40",
   "categories": [
     "books",
