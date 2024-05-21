@@ -35,8 +35,8 @@ class SearchView(View):
         if not question or len(question) < 3:
             return render(request, 'search_error.html', context=context)
         
-           books = Book.objects.filter(Q(title__icontains=question) | Q(author__name__icontains=question) | Q(publisher_book__name__icontains=question))
-    objects = list(books) 
+            books = Book.objects.filter(Q(title__icontains=question) | Q(author__name__icontains=question) | Q(publisher_book__name__icontains=question))
+            objects = list(books) 
         
 
 
