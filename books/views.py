@@ -10,7 +10,7 @@ from django.http import HttpResponse
 from django.template import TemplateDoesNotExist
 from django.template.loader import get_template
 from django.conf import settings
-
+from django.db.models import Q
 
 def main_page(request):
     return redirect('/')
