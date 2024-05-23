@@ -45,10 +45,6 @@
               }
             }
             </script>
-
-            <!-- Yandex.RTB -->
-            <script>window.yaContextCb=window.yaContextCb||[]</script>
-            <script src="https://yandex.ru/ads/system/context.js" async></script>
     {% block description %}
         <meta name="description" content="CoderBooks это самая большая и бесплатная библиотека о программировании для начинающего и опытного программиста">
     {% endblock %}
@@ -67,18 +63,8 @@
                             <div class="nh_menu-button" data-toggle=".nh_menu">
                                 <span class="nh_menu-hamburger"></span>
                             </div>
-                            <div class="nh_mobile-top-links">
-                                <a class="nh_mobile-logo" href="{% url 'book_list_url' %}">CoderBooks</a>
-                                <a href="https://yoomoney.ru/to/410012907398549/0" class="nh_button white nh_donate_button" target="_blank">
-                                            {% get_current_language as current_language %}
-                                            {% if current_language == lang %}Поддержать{% else %}Donate{% endif %}
-                                </a>
-                            </div>
                         </div>
-                        <div class="nh_content-bottom">
-                            <div class="nh_content-advertising">
-                                {% include 'partner.html' %}
-                            </div>                                                                                                           
+                        <div class="nh_content-bottom">                                                                                                          
                                                                                 
                                 {% block content %}
                                 {% endblock %}
@@ -121,10 +107,6 @@
  }
      });
  </script>
-
-     <!-- Yandex.RTB -->
-<script>window.yaContextCb=window.yaContextCb||[]</script>
-<script src="https://yandex.ru/ads/system/context.js" async></script>
                         
  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111564187-1"></script>
  <script async>
